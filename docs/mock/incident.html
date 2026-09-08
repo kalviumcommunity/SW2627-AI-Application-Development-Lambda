@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Details - LambdaITSM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="incident.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="brand-name">LambdaITSM</div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link active">Incidents</a>
+                    <a href="#" class="nav-link">Knowledge</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231c1c1c'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='12' font-family='sans-serif'%3ERS%3C/text%3E%3C/svg%3E" alt="User avatar" />
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">RS</div>
+                        <div class="user-role">Rahul Shah</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content incident-detail" id="main-content">
+            <!-- Back Navigation -->
+            <div class="back-nav">
+                <a href="index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M10 12L6 8L10 4" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to incidents
+                </a>
+            </div>
+
+            <!-- Incident Header -->
+            <div class="incident-header">
+                <div class="incident-id-row">
+                    <div class="incident-id" id="detail-id">INC-1042</div>
+                    <button class="sparkle-btn" id="sparkle-btn" title="Open AI Assistant">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 0L9.5 5.5L15 7L9.5 8.5L8 14L6.5 8.5L1 7L6.5 5.5L8 0Z" fill="#1c1c1c"/>
+                        </svg>
+                    </button>
+                </div>
+                <h1 class="incident-title" id="detail-title">Payment API returning 5xx errors</h1>
+                <div class="incident-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text" id="detail-status">Investigating</span>
+                </div>
+            </div>
+
+            <!-- Key Information -->
+            <div class="key-info">
+                <div class="info-item">
+                    <div class="info-label">CLIENT</div>
+                    <div class="info-value" id="detail-client">Acme Financial Services</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">ASSIGNMENT</div>
+                    <div class="info-value" id="detail-assignment">Platform Support</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">SERVICE</div>
+                    <div class="info-value" id="detail-service">Payment API</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">PRIORITY</div>
+                    <div class="info-value" id="detail-priority">P1 - Critical</div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="description-section">
+                <h2 class="section-title">Description</h2>
+                <p class="description-text" id="detail-description">
+                    Production Payment API is returning elevated HTTP 502 responses. Database connection failures are visible in application logs.
+                </p>
+            </div>
+
+            <!-- Activity Thread -->
+            <div class="activity-section">
+                <div class="activity-header-row">
+                    <h2 class="section-title">Activity</h2>
+                    <button class="add-update-btn">Add update</button>
+                </div>
+                <div class="activity-thread" id="activity-thread">
+                    <!-- Activity items will be populated by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Chat Sidebar -->
+        <div class="chat-sidebar" id="chat-sidebar">
+            <div class="chat-header">
+                <div class="chat-brand">
+                    <div class="lambda-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4L12 20L20 4" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-name">Lambda</div>
+                        <div class="brand-subtitle">Contextual support assistant</div>
+                    </div>
+                </div>
+                <div class="chat-header-right">
+                    <div class="chat-user-profile">
+                        <div class="chat-user-avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231c1c1c'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='12' font-family='sans-serif'%3ERS%3C/text%3E%3C/svg%3E" alt="User avatar" />
+                        </div>
+                        <div class="chat-user-info">
+                            <div class="chat-user-name">RS</div>
+                            <div class="chat-user-fullname">Rahul Shah</div>
+                        </div>
+                    </div>
+                    <button class="chat-close-btn" id="chat-close-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M12 4L4 12M4 4L12 12" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="unified-context">
+                <div class="context-header" id="main-context-header">
+                    <span class="context-title">CONTEXT</span>
+                    <div class="context-header-right">
+                        <span class="grounded-tag">Grounded</span>
+                        <svg class="main-context-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 6L8 10L12 6" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="context-content" id="main-context-content">
+                    <div class="context-section">
+                        <div class="context-section-header" data-section="incident">
+                            <span class="context-section-title">Incident Details</span>
+                            <svg class="context-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M4 10L8 6L12 10" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="context-section-body" id="incident-context-body">
+                            <div class="context-item">
+                                <span class="context-id">INC-1042</span>
+                                <span class="context-client">Acme Financial Services</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-service">Payment API</span>
+                                <span class="context-priority">P1 - Critical</span>
+                            </div>
+                            <div class="context-note">Production failover requires service-owner approval.</div>
+                        </div>
+                    </div>
+                    <div class="context-divider"></div>
+                    <div class="context-section">
+                        <div class="context-section-header" data-section="client">
+                            <span class="context-section-title">Client Context</span>
+                            <svg class="context-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M4 10L8 6L12 10" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="context-section-body" id="client-context-body">
+                            <div class="context-item">
+                                <span class="context-label">SLA:</span>
+                                <span class="context-value">15 minute response time for P1 incidents</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-label">Contacts:</span>
+                                <span class="context-value">John Smith (Client Lead) - john.smith@acme.com</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-label">Procedure:</span>
+                                <span class="context-value">Follow Payment API Production Runbook v2.3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-content">
+                <div class="chat-placeholder" id="chat-placeholder">
+                    <div class="placeholder-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L28 20L44 24L28 28L24 44L20 28L4 24L20 20L24 4Z" stroke="#e8e8e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p>AI Assistant ready to help</p>
+                    <p class="placeholder-subtext">Start a conversation to get assistance with this incident</p>
+                </div>
+                <div class="chat-messages" id="chat-messages" style="display: none;">
+                    <!-- Chat messages will be populated here -->
+                </div>
+            </div>
+            <div class="chat-suggestions">
+                <button class="suggestion-btn" data-suggestion="Prepare a guidance document">Prepare a guidance document</button>
+                <button class="suggestion-btn" data-suggestion="Explain the SLAs">Explain the SLAs</button>
+                <button class="suggestion-btn" data-suggestion="What are the next steps?">What are the next steps?</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" placeholder="Ask about this incident..." />
+                <button class="chat-submit-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 8L14 2L8 14L6.5 8.5L2 8Z" stroke="#1c1c1c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="incident.js"></script>
+</body>
+</html>
