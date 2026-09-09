@@ -274,29 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
         filterIncidents(searchTerm, e.target.value);
     });
 
-    // Chat sidebar functionality
-    const headerSparkleBtn = document.getElementById('header-sparkle-btn');
+    // Chat sidebar functionality - removed header sparkle button
     const chatSidebar = document.getElementById('chat-sidebar');
     const chatCloseBtn = document.getElementById('chat-close-btn');
     const chatPlaceholder = document.getElementById('chat-placeholder');
     const chatMessages = document.getElementById('chat-messages');
-
-    if (headerSparkleBtn && chatSidebar) {
-        headerSparkleBtn.addEventListener('click', () => {
-            chatSidebar.classList.add('open');
-            
-            // Initialize chat with general context
-            if (chatPlaceholder && chatMessages) {
-                chatPlaceholder.style.display = 'none';
-                chatMessages.style.display = 'flex';
-                
-                // Only add messages if chat is empty
-                if (chatMessages.children.length === 0) {
-                    initializeGeneralChat();
-                }
-            }
-        });
-    }
 
     if (chatCloseBtn && chatSidebar) {
         chatCloseBtn.addEventListener('click', () => {
@@ -304,12 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close sidebar when clicking outside
-    document.addEventListener('click', (e) => {
-        if (chatSidebar && chatSidebar.classList.contains('open')) {
-            if (!chatSidebar.contains(e.target) && !headerSparkleBtn.contains(e.target)) {
-                chatSidebar.classList.remove('open');
-            }
+    // Set active navigation based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
         }
     });
 });
@@ -434,7 +420,7 @@ function addMessage(text, sender, options = null, sources = null) {
             </svg>
         `;
     } else {
-        avatarDiv.textContent = 'JD';
+        avatarDiv.textContent = 'AR';
     }
 
     const contentDiv = document.createElement('div');

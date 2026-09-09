@@ -276,6 +276,19 @@ document.addEventListener('DOMContentLoaded', () => {
             handleSuggestionClick(suggestion);
         });
     });
+
+    // Set active navigation based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 });
 
 // Function to initialize chat with incident context
@@ -318,7 +331,7 @@ function addMessage(text, sender, options = null, sources = null) {
             </svg>
         `;
     } else {
-        avatarDiv.textContent = 'RS';
+        avatarDiv.textContent = 'AR';
     }
 
     const contentDiv = document.createElement('div');
