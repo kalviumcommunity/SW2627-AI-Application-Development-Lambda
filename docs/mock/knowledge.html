@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="brand-name">Lambda<span id="itsm">ITSM</span></div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Incidents</a>
+                    <a href="knowledge.html" class="nav-link">Knowledge</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231c1c1c'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='12' font-family='sans-serif'%3EAR%3C/text%3E%3C/svg%3E" alt="User avatar" />
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">AR</div>
+                        <div class="user-role">Alex Rivera</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumb">KNOWLEDGE / SOURCES</div>
+                <h1 class="page-title">Knowledge Base</h1>
+                <p class="page-description">Access client documentation, runbooks, and service level agreements</p>
+            </div>
+
+
+
+            <!-- Knowledge Sources Grid -->
+            <div class="knowledge-grid">
+                <!-- CODs Card -->
+                <div class="knowledge-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2V8H20" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 13H8" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 17H8" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-title-group">
+                            <h3 class="card-title">Client-Onboarding Documentation</h3>
+                            <span class="card-subtitle">CODs</span>
+                        </div>
+                        <div class="card-source-badge">
+                            <span>Drive Files</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">Comprehensive documentation for new client onboarding including IT environment, applications, infrastructure, and architecture details.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Includes:</span>
+                                <span class="detail-value">Client details, IT environment, Applications, Infrastructure, Architecture & Dependencies, Monitoring & Observability, Escalations</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-action-btn">Browse Documents</button>
+                    </div>
+                </div>
+
+                <!-- Runbooks Card -->
+                <div class="knowledge-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-title-group">
+                            <h3 class="card-title">Runbooks</h3>
+                            <span class="card-subtitle">Operational Procedures</span>
+                        </div>
+                        <div class="card-source-badge">
+                            <span>Internal Wiki</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">Step-by-step instructions for performing specific operational tasks and responding to particular incidents with standardized procedures.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Coverage:</span>
+                                <span class="detail-value">Incident response, system maintenance, troubleshooting procedures, deployment guides</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-action-btn">Access Wiki</button>
+                    </div>
+                </div>
+
+                <!-- SLAs Card -->
+                <div class="knowledge-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 6V12L16 14" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-title-group">
+                            <h3 class="card-title">Service-Level Agreements</h3>
+                            <span class="card-subtitle">SLAs</span>
+                        </div>
+                        <div class="card-source-badge">
+                            <span>Database API</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">Service level commitments with measurable time targets for response and resolution times across different priority levels.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Metrics:</span>
+                                <span class="detail-value">Response time, resolution time, uptime guarantees, penalty clauses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="card-action-btn">View SLAs</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-left">
+                    <span class="sync-status">Knowledge base synced just now</span>
+                </div>
+                <div class="footer-right">
+                    <span class="filter-status">3 knowledge sources available</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Chat Sidebar -->
+        <div class="chat-sidebar" id="chat-sidebar">
+            <div class="chat-header">
+                <div class="chat-brand">
+                    <div class="lambda-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4L12 20L20 4" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-name">Lambda</div>
+                        <div class="brand-subtitle">Contextual support assistant</div>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chat-close-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M12 4L4 12M4 4L12 12" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="chat-content">
+                <div class="chat-placeholder" id="chat-placeholder">
+                    <div class="placeholder-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L28 20L44 24L28 28L24 44L20 28L4 24L20 20L24 4Z" stroke="#e8e8e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p>AI Assistant ready to help</p>
+                    <p class="placeholder-subtext">Ask about CODs, runbooks, or SLAs</p>
+                </div>
+                <div class="chat-messages" id="chat-messages" style="display: none;">
+                    <!-- Chat messages will be populated here -->
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" placeholder="Ask about knowledge base..." />
+                <button class="chat-submit-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 8L14 2L8 14L6.5 8.5L2 8Z" stroke="#1c1c1c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="knowledge.js"></script>
+</body>
+</html>
