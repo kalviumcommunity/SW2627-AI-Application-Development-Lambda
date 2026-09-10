@@ -1,0 +1,1363 @@
+[
+  {
+    "account_id": "ACC-1001",
+    "company_name": "Northstar Health Systems",
+    "industry": "Healthcare",
+    "company_size": "Enterprise",
+    "primary_region": "US",
+    "timezone": "America/New_York",
+
+    "services": [
+      "Managed Infrastructure",
+      "Cloud Operations",
+      "Service Desk",
+      "Security Monitoring"
+    ],
+
+    "critical_systems": [
+      "Electronic Health Records",
+      "Clinical API Platform",
+      "Identity and Access Management",
+      "Hospital Network"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1001",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Complete outage or severe degradation of a critical clinical or infrastructure service affecting multiple facilities or patient care operations.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major degradation affecting a department or critical workflow with limited workaround.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_minutes": 60
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized issue affecting a limited number of users where a workaround exists.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request, minor issue, informational request, or non-critical configuration change.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.95,
+      "sla_clock": "24x7",
+      "pause_conditions": [
+        "Waiting for customer approval",
+        "Waiting for customer-provided access",
+        "Third-party vendor dependency",
+        "Customer-requested maintenance window"
+      ],
+
+      "escalation": {
+        "p1_after_minutes": 15,
+        "executive_notification_after_minutes": 60,
+        "incident_commander_required": true
+      },
+
+      "service_credit": {
+        "enabled": true,
+        "maximum_monthly_credit_percent": 25
+      }
+    },
+
+    "support": {
+      "primary_channel": "Priority hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true,
+      "on_site_response_hours": 4
+    },
+
+    "contacts": {
+      "service_manager": "Sarah Mitchell",
+      "service_manager_role": "Account Service Manager",
+      "customer_it_owner": "David Chen",
+      "escalation_group": "Northstar IT Leadership"
+    },
+
+    "runbook_references": [
+      "RB-NSH-PROD-OUTAGE",
+      "RB-NSH-EHR-INCIDENT",
+      "RB-NSH-NETWORK-FAILURE"
+    ],
+
+    "special_instructions": [
+      "Security incidents involving patient data must be escalated immediately.",
+      "Do not restart EHR production servers without customer IT approval."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1002",
+    "company_name": "VertexPay Financial",
+    "industry": "Financial Services",
+    "company_size": "Enterprise",
+    "primary_region": "US",
+    "timezone": "America/Chicago",
+
+    "services": [
+      "Cloud Infrastructure",
+      "Database Operations",
+      "Application Support",
+      "Security Operations"
+    ],
+
+    "critical_systems": [
+      "Payment Gateway",
+      "Transaction Processing Platform",
+      "Fraud Detection Engine",
+      "Customer Authentication"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1002",
+      "effective_date": "2026-02-01",
+      "review_date": "2027-01-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Payment processing unavailable or widespread transaction failure.",
+          "response_target_minutes": 10,
+          "restore_target_hours": 2,
+          "update_frequency_minutes": 15
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Material degradation of payment or authentication services.",
+          "response_target_minutes": 20,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Limited application degradation with workaround.",
+          "response_target_minutes": 60,
+          "restore_target_hours": 12,
+          "update_frequency_hours": 2
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "General request or non-production issue.",
+          "response_target_business_hours": 4,
+          "resolution_target_business_days": 3
+        }
+      },
+
+      "availability_target_percent": 99.99,
+      "sla_clock": "24x7",
+
+      "pause_conditions": [
+        "Customer approval pending",
+        "Third-party payment processor outage",
+        "Scheduled maintenance"
+      ],
+
+      "escalation": {
+        "p1_after_minutes": 10,
+        "executive_notification_after_minutes": 30,
+        "incident_commander_required": true
+      },
+
+      "service_credit": {
+        "enabled": true,
+        "maximum_monthly_credit_percent": 30
+      }
+    },
+
+    "support": {
+      "primary_channel": "Emergency hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": false
+    },
+
+    "contacts": {
+      "service_manager": "Michael Torres",
+      "service_manager_role": "Financial Services Account Director",
+      "customer_it_owner": "Priya Shah",
+      "escalation_group": "VertexPay SRE Leadership"
+    },
+
+    "runbook_references": [
+      "RB-VP-PAYMENT-OUTAGE",
+      "RB-VP-DATABASE-FAILOVER",
+      "RB-VP-FRAUD-SERVICE"
+    ],
+
+    "special_instructions": [
+      "Do not modify transaction databases without approval from the VertexPay DBA team.",
+      "All suspected payment-data security incidents require immediate escalation."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1003",
+    "company_name": "BluePeak Retail Group",
+    "industry": "Retail",
+    "company_size": "Large",
+    "primary_region": "US",
+    "timezone": "America/Los_Angeles",
+
+    "services": [
+      "Store Network Operations",
+      "Cloud Infrastructure",
+      "POS Support",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Point of Sale",
+      "Store Network",
+      "Inventory Platform",
+      "E-commerce Platform"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1003",
+      "effective_date": "2026-01-15",
+      "review_date": "2027-01-14",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Multiple stores unable to process sales or enterprise-wide e-commerce outage.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "One or more stores experiencing major POS or network disruption.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Single-store or limited-user issue with workaround.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Standard service request or minor issue.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Service portal",
+      "secondary_channel": "Store operations hotline",
+      "after_hours": "24x7",
+      "on_site_support": true,
+      "on_site_response_hours": 6
+    },
+
+    "contacts": {
+      "service_manager": "Jason Lee",
+      "service_manager_role": "Retail Operations Manager",
+      "customer_it_owner": "Emily Rodriguez",
+      "escalation_group": "BluePeak Store Operations"
+    },
+
+    "runbook_references": [
+      "RB-BPR-POS-OUTAGE",
+      "RB-BPR-STORE-NETWORK",
+      "RB-BPR-Ecommerce"
+    ],
+
+    "special_instructions": [
+      "During major retail events, P1 incidents must be escalated immediately.",
+      "Store managers must not be instructed to factory-reset POS terminals."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1004",
+    "company_name": "Atlas Legal Partners",
+    "industry": "Legal Services",
+    "company_size": "Mid-Market",
+    "primary_region": "UK",
+    "timezone": "Europe/London",
+
+    "services": [
+      "Microsoft 365",
+      "Endpoint Management",
+      "Identity Management",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Document Management System",
+      "Microsoft 365",
+      "Email",
+      "Remote Access VPN"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1004",
+      "effective_date": "2026-03-01",
+      "review_date": "2027-02-28",
+      "support_model": "Business Hours + Emergency",
+
+      "business_hours": {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "start": "08:00",
+        "end": "18:00",
+        "timezone": "Europe/London"
+      },
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Firm-wide outage or inability to access case-critical systems.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 60
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Multiple lawyers or a major practice group blocked from working.",
+          "response_target_minutes": 60,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 2
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Individual user issue with workaround.",
+          "response_target_business_hours": 4,
+          "resolution_target_business_days": 2
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request or minor issue.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.5,
+      "sla_clock": "Business Hours"
+    },
+
+    "support": {
+      "primary_channel": "Service portal",
+      "secondary_channel": "Email",
+      "emergency_channel": "Emergency hotline",
+      "after_hours": "P1 only"
+    },
+
+    "contacts": {
+      "service_manager": "Oliver Grant",
+      "service_manager_role": "Client Service Manager",
+      "customer_it_owner": "Hannah Williams",
+      "escalation_group": "Atlas Technology Committee"
+    },
+
+    "runbook_references": [
+      "RB-AL-M365-OUTAGE",
+      "RB-AL-VPN",
+      "RB-AL-DOCUMENT-MGMT"
+    ],
+
+    "special_instructions": [
+      "Do not access or modify client matter files unless explicitly authorized.",
+      "Security incidents involving privileged legal documents require immediate escalation."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1005",
+    "company_name": "GreenGrid Energy",
+    "industry": "Energy & Utilities",
+    "company_size": "Enterprise",
+    "primary_region": "Canada",
+    "timezone": "America/Toronto",
+
+    "services": [
+      "Infrastructure Operations",
+      "Network Operations",
+      "Cloud Operations",
+      "24x7 Monitoring"
+    ],
+
+    "critical_systems": [
+      "Grid Monitoring",
+      "SCADA Support Systems",
+      "Network Operations Center",
+      "Customer Billing"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1005",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Failure affecting operational monitoring or critical utility infrastructure.",
+          "response_target_minutes": 10,
+          "restore_target_hours": 2,
+          "update_frequency_minutes": 15
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major degradation affecting operational teams.",
+          "response_target_minutes": 20,
+          "restore_target_hours": 6,
+          "update_frequency_minutes": 30
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Non-critical infrastructure issue with workaround.",
+          "response_target_minutes": 60,
+          "restore_target_hours": 12,
+          "update_frequency_hours": 2
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine infrastructure request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.99,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "NOC hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true,
+      "on_site_response_hours": 2
+    },
+
+    "contacts": {
+      "service_manager": "Mark Thompson",
+      "service_manager_role": "Infrastructure Service Manager",
+      "customer_it_owner": "Aisha Patel",
+      "escalation_group": "GreenGrid NOC"
+    },
+
+    "runbook_references": [
+      "RB-GGE-NETWORK-OUTAGE",
+      "RB-GGE-SCADA",
+      "RB-GGE-DATACENTER"
+    ],
+
+    "special_instructions": [
+      "Never directly modify operational control systems without customer authorization.",
+      "Operational technology incidents require NOC escalation."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1006",
+    "company_name": "Crestline Logistics",
+    "industry": "Transportation & Logistics",
+    "company_size": "Large",
+    "primary_region": "US",
+    "timezone": "America/Denver",
+
+    "services": [
+      "Warehouse Infrastructure",
+      "Cloud Operations",
+      "Network Support",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Warehouse Management System",
+      "Fleet Tracking",
+      "EDI Platform",
+      "Warehouse Wi-Fi"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1006",
+      "effective_date": "2026-02-15",
+      "review_date": "2027-02-14",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Warehouse operations halted or fleet tracking unavailable across multiple sites.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major warehouse or logistics workflow degraded.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized warehouse issue with workaround.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request or minor issue.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Operations hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true
+    },
+
+    "contacts": {
+      "service_manager": "Daniel Brooks",
+      "service_manager_role": "Account Manager",
+      "customer_it_owner": "Carlos Martinez",
+      "escalation_group": "Crestline Operations"
+    },
+
+    "runbook_references": [
+      "RB-CL-WMS-OUTAGE",
+      "RB-CL-WIFI",
+      "RB-CL-FLEET-TRACKING"
+    ],
+
+    "special_instructions": [
+      "Warehouse outages affecting shipping cutoffs must be treated as P1.",
+      "Coordinate with local warehouse management before restarting network equipment."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1007",
+    "company_name": "Nimbus Media Studios",
+    "industry": "Media & Entertainment",
+    "company_size": "Mid-Market",
+    "primary_region": "US",
+    "timezone": "America/Los_Angeles",
+
+    "services": [
+      "Cloud Infrastructure",
+      "Media Storage",
+      "Workstation Support",
+      "Network Operations"
+    ],
+
+    "critical_systems": [
+      "Media Asset Management",
+      "Production Storage",
+      "Rendering Cluster",
+      "Studio Network"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1007",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Production storage or studio infrastructure unavailable during active production.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major production workflow degraded.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Individual production team issue with workaround.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine workstation or access request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Production hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7"
+    },
+
+    "contacts": {
+      "service_manager": "Rachel Kim",
+      "service_manager_role": "Media Technology Manager",
+      "customer_it_owner": "Tom Wilson",
+      "escalation_group": "Nimbus Production Engineering"
+    },
+
+    "runbook_references": [
+      "RB-NMS-STORAGE",
+      "RB-NMS-RENDER-FARM",
+      "RB-NMS-STUDIO-NETWORK"
+    ],
+
+    "special_instructions": [
+      "Never delete media assets as part of incident remediation.",
+      "Production incidents during live shoots receive P1 priority."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1008",
+    "company_name": "Oakridge Manufacturing",
+    "industry": "Manufacturing",
+    "company_size": "Large",
+    "primary_region": "Germany",
+    "timezone": "Europe/Berlin",
+
+    "services": [
+      "Plant IT",
+      "Network Operations",
+      "Endpoint Management",
+      "ERP Support"
+    ],
+
+    "critical_systems": [
+      "Manufacturing Execution System",
+      "ERP",
+      "Plant Network",
+      "Production Monitoring"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1008",
+      "effective_date": "2026-04-01",
+      "review_date": "2027-03-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Production line stopped due to supported IT infrastructure failure.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 3,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Production process materially degraded but operational workaround exists.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized plant IT issue.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Plant IT hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true,
+      "on_site_response_hours": 3
+    },
+
+    "contacts": {
+      "service_manager": "Anna Keller",
+      "service_manager_role": "Plant Technology Manager",
+      "customer_it_owner": "Lukas Weber",
+      "escalation_group": "Oakridge Plant Operations"
+    },
+
+    "runbook_references": [
+      "RB-OM-PLANT-NETWORK",
+      "RB-OM-MES-OUTAGE",
+      "RB-OM-ERP"
+    ],
+
+    "special_instructions": [
+      "Do not reboot industrial controllers.",
+      "Coordinate all plant network changes with the local OT engineer."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1009",
+    "company_name": "HarborView Hotels",
+    "industry": "Hospitality",
+    "company_size": "Enterprise",
+    "primary_region": "Singapore",
+    "timezone": "Asia/Singapore",
+
+    "services": [
+      "Property Network",
+      "Guest Wi-Fi",
+      "Cloud Applications",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Property Management System",
+      "Guest Wi-Fi",
+      "Booking Platform",
+      "Payment Terminals"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1009",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Hotel property unable to check in guests, process payments, or access core property systems.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major property system degradation affecting hotel operations.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized guest or staff technology issue.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Hotel operations hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true
+    },
+
+    "contacts": {
+      "service_manager": "Wei Tan",
+      "service_manager_role": "Hospitality Account Manager",
+      "customer_it_owner": "James Lim",
+      "escalation_group": "HarborView Regional IT"
+    },
+
+    "runbook_references": [
+      "RB-HVH-PMS-OUTAGE",
+      "RB-HVH-GUEST-WIFI",
+      "RB-HVH-PAYMENT"
+    ],
+
+    "special_instructions": [
+      "Guest-facing outages take precedence over back-office issues.",
+      "Payment terminal incidents must be coordinated with hotel finance."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1010",
+    "company_name": "Summit Biotech",
+    "industry": "Biotechnology",
+    "company_size": "Mid-Market",
+    "primary_region": "US",
+    "timezone": "America/New_York",
+
+    "services": [
+      "Research Computing",
+      "Cloud Infrastructure",
+      "Identity Management",
+      "Security Monitoring"
+    ],
+
+    "critical_systems": [
+      "Laboratory Information System",
+      "Research Data Platform",
+      "Identity Provider",
+      "Cloud Storage"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1010",
+      "effective_date": "2026-02-01",
+      "review_date": "2027-01-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Loss of access to research systems or confirmed security incident affecting regulated data.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major research workflow unavailable.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized research technology issue.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Research IT hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7"
+    },
+
+    "contacts": {
+      "service_manager": "Laura Bennett",
+      "service_manager_role": "Research IT Manager",
+      "customer_it_owner": "Kevin Moore",
+      "escalation_group": "Summit Security Operations"
+    },
+
+    "runbook_references": [
+      "RB-SB-LAB-SYSTEM",
+      "RB-SB-CLOUD-STORAGE",
+      "RB-SB-SECURITY-INCIDENT"
+    ],
+
+    "special_instructions": [
+      "Do not delete research data during troubleshooting.",
+      "Suspected data exposure must immediately involve the security team."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1011",
+    "company_name": "MetroBuild Construction",
+    "industry": "Construction",
+    "company_size": "Large",
+    "primary_region": "Australia",
+    "timezone": "Australia/Sydney",
+
+    "services": [
+      "Cloud Operations",
+      "Field Connectivity",
+      "Microsoft 365",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Project Management Platform",
+      "Document Management",
+      "Field Connectivity",
+      "Microsoft 365"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1011",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "Business Hours + Emergency",
+
+      "business_hours": {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "start": "07:00",
+        "end": "18:00",
+        "timezone": "Australia/Sydney"
+      },
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Enterprise-wide outage or project-critical system unavailable.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 60
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major project team or site affected.",
+          "response_target_minutes": 60,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 2
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Individual site or user issue.",
+          "response_target_business_hours": 4,
+          "resolution_target_business_days": 2
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine service request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.5,
+      "sla_clock": "Business Hours"
+    },
+
+    "support": {
+      "primary_channel": "Service portal",
+      "secondary_channel": "Project support hotline",
+      "after_hours": "P1 only"
+    },
+
+    "contacts": {
+      "service_manager": "Nathan Cooper",
+      "service_manager_role": "Client Service Manager",
+      "customer_it_owner": "Sophie Martin",
+      "escalation_group": "MetroBuild Digital Operations"
+    },
+
+    "runbook_references": [
+      "RB-MBC-M365",
+      "RB-MBC-FIELD-NETWORK",
+      "RB-MBC-PROJECT-PLATFORM"
+    ],
+
+    "special_instructions": [
+      "Site connectivity issues affecting active construction operations are escalated ahead of office requests."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1012",
+    "company_name": "Pioneer University",
+    "industry": "Education",
+    "company_size": "Enterprise",
+    "primary_region": "US",
+    "timezone": "America/New_York",
+
+    "services": [
+      "Campus Network",
+      "Identity Management",
+      "Cloud Operations",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "Student Information System",
+      "Learning Management System",
+      "Campus Network",
+      "Identity Provider"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1012",
+      "effective_date": "2026-07-01",
+      "review_date": "2027-06-30",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Campus-wide outage or student/academic system unavailable.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major campus service degraded.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized issue affecting a department or group.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine service request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "University IT portal",
+      "secondary_channel": "IT hotline",
+      "after_hours": "24x7"
+    },
+
+    "contacts": {
+      "service_manager": "Robert Evans",
+      "service_manager_role": "Education Account Manager",
+      "customer_it_owner": "Maria Gonzalez",
+      "escalation_group": "Pioneer University IT Operations"
+    },
+
+    "runbook_references": [
+      "RB-PU-CAMPUS-NETWORK",
+      "RB-PU-LMS",
+      "RB-PU-IDENTITY"
+    ],
+
+    "special_instructions": [
+      "During examination periods, LMS and identity incidents are automatically treated as P1."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1013",
+    "company_name": "SilverOak Insurance",
+    "industry": "Insurance",
+    "company_size": "Enterprise",
+    "primary_region": "UK",
+    "timezone": "Europe/London",
+
+    "services": [
+      "Application Support",
+      "Cloud Infrastructure",
+      "Database Operations",
+      "Security Operations"
+    ],
+
+    "critical_systems": [
+      "Claims Platform",
+      "Policy Administration",
+      "Customer Portal",
+      "Identity Platform"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1013",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Claims or policy processing unavailable for a significant portion of users.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major business function impaired.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Limited user impact with workaround.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.95,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Service portal",
+      "secondary_channel": "Major incident hotline",
+      "after_hours": "24x7"
+    },
+
+    "contacts": {
+      "service_manager": "George Wilson",
+      "service_manager_role": "Insurance Account Director",
+      "customer_it_owner": "Amelia Brown",
+      "escalation_group": "SilverOak IT Leadership"
+    },
+
+    "runbook_references": [
+      "RB-SOI-CLAIMS-OUTAGE",
+      "RB-SOI-DATABASE",
+      "RB-SOI-CUSTOMER-PORTAL"
+    ],
+
+    "special_instructions": [
+      "Regulatory reporting deadlines require priority escalation.",
+      "Security incidents must be coordinated with SilverOak Security Operations."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1014",
+    "company_name": "Redwood Aerospace",
+    "industry": "Aerospace & Defense",
+    "company_size": "Enterprise",
+    "primary_region": "US",
+    "timezone": "America/Los_Angeles",
+
+    "services": [
+      "Infrastructure Operations",
+      "Network Operations",
+      "Endpoint Management",
+      "Security Operations"
+    ],
+
+    "critical_systems": [
+      "Engineering Systems",
+      "Manufacturing Systems",
+      "Secure File Transfer",
+      "Identity Management"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1014",
+      "effective_date": "2026-05-01",
+      "review_date": "2027-04-30",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Critical engineering or manufacturing system unavailable, or suspected security compromise.",
+          "response_target_minutes": 10,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major operational degradation.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized operational issue.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine service request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.95,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Secure service portal",
+      "secondary_channel": "Operations hotline",
+      "after_hours": "24x7"
+    },
+
+    "contacts": {
+      "service_manager": "Eric Johnson",
+      "service_manager_role": "Defense Account Manager",
+      "customer_it_owner": "Rachel Adams",
+      "escalation_group": "Redwood Security Operations"
+    },
+
+    "runbook_references": [
+      "RB-RA-SECURITY-INCIDENT",
+      "RB-RA-ENGINEERING",
+      "RB-RA-IDENTITY"
+    ],
+
+    "special_instructions": [
+      "Do not transfer restricted data to non-approved systems.",
+      "Security incidents must follow the customer security incident response process."
+    ]
+  },
+
+  {
+    "account_id": "ACC-1015",
+    "company_name": "Coastal Foods International",
+    "industry": "Food & Beverage",
+    "company_size": "Large",
+    "primary_region": "India",
+    "timezone": "Asia/Kolkata",
+
+    "services": [
+      "ERP Support",
+      "Plant Infrastructure",
+      "Cloud Operations",
+      "Service Desk"
+    ],
+
+    "critical_systems": [
+      "ERP",
+      "Warehouse Management",
+      "Production Planning",
+      "Distribution Network"
+    ],
+
+    "sla": {
+      "sla_id": "SLA-1015",
+      "effective_date": "2026-01-01",
+      "review_date": "2026-12-31",
+      "support_model": "24x7",
+
+      "priorities": {
+        "P1": {
+          "name": "Critical",
+          "definition": "Production or distribution operations halted due to supported IT failure.",
+          "response_target_minutes": 15,
+          "restore_target_hours": 4,
+          "update_frequency_minutes": 30
+        },
+        "P2": {
+          "name": "High",
+          "definition": "Major production or distribution workflow degraded.",
+          "response_target_minutes": 30,
+          "restore_target_hours": 8,
+          "update_frequency_hours": 1
+        },
+        "P3": {
+          "name": "Medium",
+          "definition": "Localized business system issue with workaround.",
+          "response_target_minutes": 120,
+          "restore_target_hours": 24,
+          "update_frequency_hours": 4
+        },
+        "P4": {
+          "name": "Low",
+          "definition": "Routine service request.",
+          "response_target_business_hours": 8,
+          "resolution_target_business_days": 5
+        }
+      },
+
+      "availability_target_percent": 99.9,
+      "sla_clock": "24x7"
+    },
+
+    "support": {
+      "primary_channel": "Service desk hotline",
+      "secondary_channel": "Service portal",
+      "after_hours": "24x7",
+      "on_site_support": true
+    },
+
+    "contacts": {
+      "service_manager": "Ravi Menon",
+      "service_manager_role": "India Account Manager",
+      "customer_it_owner": "Neha Kapoor",
+      "escalation_group": "Coastal Foods IT Operations"
+    },
+
+    "runbook_references": [
+      "RB-CFI-ERP-OUTAGE",
+      "RB-CFI-WMS",
+      "RB-CFI-PLANT-NETWORK"
+    ],
+
+    "special_instructions": [
+      "Production-impacting ERP incidents are P1 regardless of number of affected users.",
+      "Plant changes require approval from the local IT lead."
+    ]
+  }
+]
