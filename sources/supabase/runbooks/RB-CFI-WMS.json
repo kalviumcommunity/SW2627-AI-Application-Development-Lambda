@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CFI-WMS",
+  "title": "Warehouse Management System Incident Response",
+  "client": "Coastal Foods International",
+  "industry": "Food & Beverage",
+  "account_id": "ACC-1015",
+  "severity": "P1",
+  "description": "Warehouse Management System incidents affecting food distribution",
+  "affected_systems": [
+    "Warehouse Management"
+  ],
+  "services": [
+    "Plant Infrastructure",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete WMS outage affecting food distribution",
+    "Inventory tracking system failures",
+    "Food distribution coordination issues",
+    "Multiple warehouse WMS failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on food distribution and inventory management",
+    "Notify Coastal Foods IT Operations team",
+    "Implement manual warehouse procedures if needed",
+    "Contact distribution management for operational impact assessment"
+  ],
+  "investigation_steps": [
+    "Review WMS application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to warehouse systems",
+    "Analyze warehouse automation system integration"
+  ],
+  "resolution_steps": [
+    "Restart WMS services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply WMS patches or configuration changes",
+    "Coordinate with WMS vendor for complex issues"
+  ],
+  "verification": [
+    "Test WMS functionality at affected warehouses",
+    "Verify inventory tracking accuracy",
+    "Test food distribution coordination",
+    "Confirm with warehouse staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Ravi Menon",
+    "Customer IT Owner: Neha Kapoor",
+    "Escalation Group: Coastal Foods IT Operations"
+  ],
+  "special_considerations": [
+    "Warehouse management is critical for food distribution",
+    "Food safety regulations may apply to distribution processes",
+    "Manual procedures may impact food quality and distribution timelines",
+    "Coordinate with distribution management for minimal disruption"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-HVH-PAYMENT",
+  "title": "Payment Terminal Incident Response",
+  "client": "HarborView Hotels",
+  "industry": "Hospitality",
+  "account_id": "ACC-1009",
+  "severity": "P1",
+  "description": "Payment terminal incidents affecting hotel revenue operations",
+  "affected_systems": [
+    "Payment Terminals"
+  ],
+  "services": [
+    "Cloud Applications",
+    "Property Network"
+  ],
+  "triggers": [
+    "Complete payment terminal failure",
+    "Payment processing failures at properties",
+    "Payment terminal connectivity issues",
+    "Multiple property payment system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on hotel revenue operations and guest services",
+    "Notify HarborView Regional IT team",
+    "Implement manual payment procedures if needed",
+    "Contact hotel management for operational impact assessment"
+  ],
+  "investigation_steps": [
+    "Review payment terminal logs and status",
+    "Check payment gateway connectivity and performance",
+    "Verify network connectivity to payment terminals",
+    "Analyze payment processing patterns"
+  ],
+  "resolution_steps": [
+    "Restart payment terminal services following standard procedures",
+    "Implement payment gateway fixes if needed",
+    "Apply payment system patches or configuration changes",
+    "Coordinate with payment processor for complex issues"
+  ],
+  "verification": [
+    "Test payment terminal functionality at affected properties",
+    "Verify payment processing integration",
+    "Check payment gateway connectivity",
+    "Confirm with hotel staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Wei Tan",
+    "Customer IT Owner: James Lim",
+    "Escalation Group: HarborView Regional IT"
+  ],
+  "special_considerations": [
+    "Payment terminal incidents must be coordinated with hotel finance",
+    "Payment processing is critical for hotel revenue operations",
+    "Manual procedures may impact guest experience",
+    "Maintain PCI compliance during system restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

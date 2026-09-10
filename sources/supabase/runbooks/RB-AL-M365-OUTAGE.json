@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-AL-M365-OUTAGE",
+  "title": "Microsoft 365 Outage Response",
+  "client": "Atlas Legal Partners",
+  "industry": "Legal Services",
+  "account_id": "ACC-1004",
+  "severity": "P1",
+  "description": "Microsoft 365 service outages affecting legal operations",
+  "affected_systems": [
+    "Microsoft 365",
+    "Email"
+  ],
+  "services": [
+    "Microsoft 365",
+    "Service Desk"
+  ],
+  "triggers": [
+    "Complete Microsoft 365 service unavailability",
+    "Email system failures",
+    "Document collaboration tool issues",
+    "Multiple Microsoft 365 service failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on legal operations and client communications",
+    "Notify Atlas Technology Committee",
+    "Implement alternative communication methods if needed",
+    "Activate service desk for user support"
+  ],
+  "investigation_steps": [
+    "Check Microsoft 365 service status from vendor portal",
+    "Review Microsoft 365 admin center for issues",
+    "Verify network connectivity to Microsoft services",
+    "Analyze user-reported error patterns"
+  ],
+  "resolution_steps": [
+    "Contact Microsoft support for service issues",
+    "Implement workarounds suggested by Microsoft",
+    "Activate Microsoft 365 service continuity features",
+    "Coordinate with Microsoft for service restoration"
+  ],
+  "verification": [
+    "Test Microsoft 365 service accessibility",
+    "Verify email functionality",
+    "Test document collaboration features",
+    "Confirm with legal staff that services are operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Oliver Grant",
+    "Customer IT Owner: Hannah Williams",
+    "Escalation Group: Atlas Technology Committee"
+  ],
+  "special_considerations": [
+    "Legal client communications are time-sensitive",
+    "Security incidents involving privileged legal documents require immediate escalation",
+    "Maintain client confidentiality during service restoration",
+    "Document any service interruptions that may affect client deadlines"
+  ],
+  "estimated_resolution_time": "2-8 hours (vendor dependent)",
+  "last_updated": "2026-03-01"
+}

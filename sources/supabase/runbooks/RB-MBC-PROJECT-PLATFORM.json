@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-MBC-PROJECT-PLATFORM",
+  "title": "Project Management Platform Incident Response",
+  "client": "MetroBuild Construction",
+  "industry": "Construction",
+  "account_id": "ACC-1011",
+  "severity": "P2",
+  "description": "Project management platform incidents affecting construction operations",
+  "affected_systems": [
+    "Project Management Platform"
+  ],
+  "services": [
+    "Cloud Operations",
+    "Field Connectivity"
+  ],
+  "triggers": [
+    "Complete project management platform outage",
+    "Project tracking system failures",
+    "Document management issues",
+    "Project collaboration tool failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on construction project management and coordination",
+    "Notify MetroBuild Digital Operations team",
+    "Implement manual project tracking procedures if needed",
+    "Contact project managers for critical project needs"
+  ],
+  "investigation_steps": [
+    "Review project management platform logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to platform systems",
+    "Analyze project management integration points"
+  ],
+  "resolution_steps": [
+    "Restart project management services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply platform patches or configuration changes",
+    "Coordinate with platform vendor for complex issues"
+  ],
+  "verification": [
+    "Test project management platform functionality",
+    "Verify project tracking processes",
+    "Test document management integration",
+    "Confirm with project managers that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Nathan Cooper",
+    "Customer IT Owner: Sophie Martin",
+    "Escalation Group: MetroBuild Digital Operations"
+  ],
+  "special_considerations": [
+    "Project management is critical for construction project coordination",
+    "Manual procedures may impact project efficiency",
+    "Coordinate with project managers for critical project needs",
+    "Document any platform interruptions that may affect project timelines"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

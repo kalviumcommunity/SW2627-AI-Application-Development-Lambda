@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-HVH-PMS-OUTAGE",
+  "title": "Property Management System Outage Response",
+  "client": "HarborView Hotels",
+  "industry": "Hospitality",
+  "account_id": "ACC-1009",
+  "severity": "P1",
+  "description": "Property Management System outages affecting hotel operations",
+  "affected_systems": [
+    "Property Management System"
+  ],
+  "services": [
+    "Cloud Applications",
+    "Property Network"
+  ],
+  "triggers": [
+    "Complete PMS outage affecting hotel operations",
+    "Guest check-in/check-out system failures",
+    "Reservation system issues",
+    "Multiple property PMS failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on hotel operations and guest services",
+    "Notify HarborView Regional IT team",
+    "Implement manual guest procedures if needed",
+    "Contact hotel management for operational impact assessment"
+  ],
+  "investigation_steps": [
+    "Review PMS application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to hotel properties",
+    "Analyze PMS integration points"
+  ],
+  "resolution_steps": [
+    "Restart PMS services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply PMS patches or configuration changes",
+    "Coordinate with PMS vendor for complex issues"
+  ],
+  "verification": [
+    "Test PMS functionality at affected properties",
+    "Verify guest check-in/check-out processes",
+    "Test reservation system integration",
+    "Confirm with hotel staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Wei Tan",
+    "Customer IT Owner: James Lim",
+    "Escalation Group: HarborView Regional IT"
+  ],
+  "special_considerations": [
+    "Guest-facing outages take precedence over back-office issues",
+    "Hotel property unable to check in guests is P1",
+    "Manual procedures may impact guest experience",
+    "Maintain guest service quality during system restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

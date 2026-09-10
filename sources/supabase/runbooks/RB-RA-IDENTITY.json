@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-RA-IDENTITY",
+  "title": "Identity Management Incident Response",
+  "client": "Redwood Aerospace",
+  "industry": "Aerospace & Defense",
+  "account_id": "ACC-1014",
+  "severity": "P1",
+  "description": "Identity management system incidents affecting aerospace access and security",
+  "affected_systems": [
+    "Identity Management"
+  ],
+  "services": [
+    "Security Operations",
+    "Endpoint Management"
+  ],
+  "triggers": [
+    "Complete identity management system outage",
+    "Employee authentication failures",
+    "Access control system issues",
+    "Multiple identity system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on aerospace operations and security",
+    "Notify Redwood Security Operations team",
+    "Implement alternative authentication if available",
+    "Contact security team for access impact assessment"
+  ],
+  "investigation_steps": [
+    "Review identity management system logs and status",
+    "Check authentication service connectivity",
+    "Verify network connectivity to identity systems",
+    "Analyze authentication patterns and failures"
+  ],
+  "resolution_steps": [
+    "Restart identity management services following standard procedures",
+    "Implement authentication service fixes if needed",
+    "Apply identity system patches or configuration changes",
+    "Coordinate with identity vendor for complex issues"
+  ],
+  "verification": [
+    "Test identity management system functionality",
+    "Verify employee authentication processes",
+    "Test access control system integration",
+    "Confirm with aerospace staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Eric Johnson",
+    "Customer IT Owner: Rachel Adams",
+    "Escalation Group: Redwood Security Operations"
+  ],
+  "special_considerations": [
+    "Identity management is critical for aerospace security",
+    "Do not transfer restricted data to non-approved systems",
+    "Maintain security during system restoration",
+    "Coordinate with security team for minimal disruption to operations"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-05-01"
+}

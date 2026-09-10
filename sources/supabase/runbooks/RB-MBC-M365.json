@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-MBC-M365",
+  "title": "Microsoft 365 Incident Response",
+  "client": "MetroBuild Construction",
+  "industry": "Construction",
+  "account_id": "ACC-1011",
+  "severity": "P2",
+  "description": "Microsoft 365 service incidents affecting construction operations",
+  "affected_systems": [
+    "Microsoft 365"
+  ],
+  "services": [
+    "Microsoft 365",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete Microsoft 365 service unavailability",
+    "Email system failures",
+    "Document collaboration tool issues",
+    "Multiple Microsoft 365 service failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on construction operations and site communications",
+    "Notify MetroBuild Digital Operations team",
+    "Implement alternative communication methods if needed",
+    "Activate service desk for user support"
+  ],
+  "investigation_steps": [
+    "Check Microsoft 365 service status from vendor portal",
+    "Review Microsoft 365 admin center for issues",
+    "Verify network connectivity to Microsoft services",
+    "Analyze user-reported error patterns"
+  ],
+  "resolution_steps": [
+    "Contact Microsoft support for service issues",
+    "Implement workarounds suggested by Microsoft",
+    "Activate Microsoft 365 service continuity features",
+    "Coordinate with Microsoft for service restoration"
+  ],
+  "verification": [
+    "Test Microsoft 365 service accessibility",
+    "Verify email functionality",
+    "Test document collaboration features",
+    "Confirm with construction staff that services are operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Nathan Cooper",
+    "Customer IT Owner: Sophie Martin",
+    "Escalation Group: MetroBuild Digital Operations"
+  ],
+  "special_considerations": [
+    "Site communications are critical for construction operations",
+    "Field teams may have limited connectivity alternatives",
+    "Maintain communication with site managers during outages",
+    "Document any service interruptions that may affect project timelines"
+  ],
+  "estimated_resolution_time": "2-8 hours (vendor dependent)",
+  "last_updated": "2026-01-01"
+}

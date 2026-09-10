@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CFI-ERP-OUTAGE",
+  "title": "ERP System Outage Response",
+  "client": "Coastal Foods International",
+  "industry": "Food & Beverage",
+  "account_id": "ACC-1015",
+  "severity": "P1",
+  "description": "ERP system outages affecting food production and distribution operations",
+  "affected_systems": [
+    "ERP"
+  ],
+  "services": [
+    "ERP Support",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete ERP outage affecting production and distribution",
+    "Production planning system failures",
+    "Supply chain management issues",
+    "Multiple ERP system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on food production and distribution operations",
+    "Notify Coastal Foods IT Operations team",
+    "Implement manual ERP procedures if needed",
+    "Contact production management for operational impact assessment"
+  ],
+  "investigation_steps": [
+    "Review ERP application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to ERP systems",
+    "Analyze ERP integration points"
+  ],
+  "resolution_steps": [
+    "Restart ERP services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply ERP patches or configuration changes",
+    "Coordinate with ERP vendor for complex issues"
+  ],
+  "verification": [
+    "Test ERP functionality for production and distribution",
+    "Verify production planning processes",
+    "Test supply chain management integration",
+    "Confirm with production staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Ravi Menon",
+    "Customer IT Owner: Neha Kapoor",
+    "Escalation Group: Coastal Foods IT Operations"
+  ],
+  "special_considerations": [
+    "Production-impacting ERP incidents are P1 regardless of number of affected users",
+    "ERP is critical for food production and distribution",
+    "Manual procedures may impact food safety and distribution timelines",
+    "Coordinate with production management for minimal disruption"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

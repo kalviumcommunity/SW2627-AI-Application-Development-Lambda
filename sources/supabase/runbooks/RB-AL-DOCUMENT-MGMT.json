@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-AL-DOCUMENT-MGMT",
+  "title": "Document Management System Incident Response",
+  "client": "Atlas Legal Partners",
+  "industry": "Legal Services",
+  "account_id": "ACC-1004",
+  "severity": "P1",
+  "description": "Document management system incidents affecting legal document access",
+  "affected_systems": [
+    "Document Management System"
+  ],
+  "services": [
+    "Microsoft 365",
+    "Endpoint Management"
+  ],
+  "triggers": [
+    "Complete document management system outage",
+    "Document access failures",
+    "Document collaboration tool issues",
+    "Performance degradation affecting document retrieval"
+  ],
+  "immediate_actions": [
+    "Assess impact on legal operations and client matters",
+    "Notify Atlas Technology Committee",
+    "Implement alternative document access if available",
+    "Activate service desk for user support"
+  ],
+  "investigation_steps": [
+    "Review document management system logs",
+    "Check database connectivity and performance",
+    "Verify integration with Microsoft 365",
+    "Analyze user-reported error patterns"
+  ],
+  "resolution_steps": [
+    "Restart document management services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply system patches or configuration changes",
+    "Coordinate with document management vendor for complex issues"
+  ],
+  "verification": [
+    "Test document management system functionality",
+    "Verify document access and retrieval",
+    "Test document collaboration features",
+    "Confirm with legal staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Oliver Grant",
+    "Customer IT Owner: Hannah Williams",
+    "Escalation Group: Atlas Technology Committee"
+  ],
+  "special_considerations": [
+    "Do not access or modify client matter files unless explicitly authorized",
+    "Security incidents involving privileged legal documents require immediate escalation",
+    "Maintain client confidentiality during system restoration",
+    "Document any system interruptions that may affect client deadlines"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-03-01"
+}

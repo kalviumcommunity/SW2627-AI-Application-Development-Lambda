@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CFI-PLANT-NETWORK",
+  "title": "Plant Network Incident Response",
+  "client": "Coastal Foods International",
+  "industry": "Food & Beverage",
+  "account_id": "ACC-1015",
+  "severity": "P1",
+  "description": "Plant network failures affecting food production operations",
+  "affected_systems": [
+    "Distribution Network"
+  ],
+  "services": [
+    "Plant Infrastructure",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete plant network outage",
+    "Food production system connectivity failures",
+    "Plant device connectivity issues",
+    "Network performance degradation affecting production"
+  ],
+  "immediate_actions": [
+    "Assess impact on food production operations",
+    "Notify Coastal Foods IT Operations team",
+    "Implement emergency network bypass if available",
+    "Contact plant management for production impact assessment"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify network connectivity to plant facilities",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Apply network configuration fixes or rollbacks",
+    "Coordinate with local IT lead for plant systems"
+  ],
+  "verification": [
+    "Test network connectivity to production systems",
+    "Verify plant device connectivity",
+    "Check network performance metrics",
+    "Confirm with plant staff that network is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Ravi Menon",
+    "Customer IT Owner: Neha Kapoor",
+    "Escalation Group: Coastal Foods IT Operations"
+  ],
+  "special_considerations": [
+    "Plant changes require approval from the local IT lead",
+    "Plant network is critical for food production operations",
+    "Food safety regulations may apply to production processes",
+    "Maintain operational safety during network restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

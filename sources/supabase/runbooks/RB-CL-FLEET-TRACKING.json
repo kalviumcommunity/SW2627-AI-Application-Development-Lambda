@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CL-FLEET-TRACKING",
+  "title": "Fleet Tracking System Incident Response",
+  "client": "Crestline Logistics",
+  "industry": "Transportation & Logistics",
+  "account_id": "ACC-1006",
+  "severity": "P2",
+  "description": "Fleet tracking system incidents affecting logistics operations",
+  "affected_systems": [
+    "Fleet Tracking"
+  ],
+  "services": [
+    "Cloud Operations",
+    "Network Support"
+  ],
+  "triggers": [
+    "Complete fleet tracking system outage",
+    "Vehicle tracking failures",
+    "GPS connectivity issues",
+    "Fleet management system performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on fleet operations and logistics coordination",
+    "Notify logistics operations team",
+    "Implement manual fleet tracking procedures if needed",
+    "Activate customer service team for shipment inquiries"
+  ],
+  "investigation_steps": [
+    "Review fleet tracking system logs and status",
+    "Check GPS service connectivity and performance",
+    "Verify network connectivity to tracking devices",
+    "Analyze vehicle communication patterns"
+  ],
+  "resolution_steps": [
+    "Restart fleet tracking services following standard procedures",
+    "Implement GPS service fixes if needed",
+    "Apply tracking system patches or configuration changes",
+    "Coordinate with GPS service provider for complex issues"
+  ],
+  "verification": [
+    "Test fleet tracking system functionality",
+    "Verify vehicle location tracking accuracy",
+    "Check fleet management system integration",
+    "Confirm with logistics staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Daniel Brooks",
+    "Customer IT Owner: Carlos Martinez",
+    "Escalation Group: Crestline Operations"
+  ],
+  "special_considerations": [
+    "Fleet tracking is critical for logistics coordination",
+    "Manual tracking procedures may impact operational efficiency",
+    "Maintain communication with drivers during system restoration",
+    "Document any tracking interruptions that may affect shipments"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-15"
+}

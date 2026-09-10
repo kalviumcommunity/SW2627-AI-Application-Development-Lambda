@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CL-WIFI",
+  "title": "Warehouse Wi-Fi Incident Response",
+  "client": "Crestline Logistics",
+  "industry": "Transportation & Logistics",
+  "account_id": "ACC-1006",
+  "severity": "P2",
+  "description": "Warehouse Wi-Fi failures affecting logistics operations",
+  "affected_systems": [
+    "Warehouse Wi-Fi"
+  ],
+  "services": [
+    "Network Support",
+    "Warehouse Infrastructure"
+  ],
+  "triggers": [
+    "Complete Wi-Fi outage at warehouse locations",
+    "Warehouse device connectivity failures",
+    "Wi-Fi performance degradation",
+    "Multiple access point failures"
+  ],
+  "immediate_actions": [
+    "Identify scope of Wi-Fi failure (single warehouse vs multi-warehouse)",
+    "Notify warehouse management of connectivity status",
+    "Implement wired connections for critical devices if available",
+    "Activate network support team"
+  ],
+  "investigation_steps": [
+    "Check wireless access point status and logs",
+    "Review network controller configuration",
+    "Verify network connectivity to access points",
+    "Analyze wireless signal patterns and interference"
+  ],
+  "resolution_steps": [
+    "Restart failed access points following standard procedures",
+    "Implement network controller fixes if needed",
+    "Apply wireless configuration changes or optimizations",
+    "Coordinate with wireless vendor for complex issues"
+  ],
+  "verification": [
+    "Test Wi-Fi connectivity at affected warehouses",
+    "Verify device connectivity and performance",
+    "Check wireless coverage in warehouse areas",
+    "Confirm with warehouse staff that Wi-Fi is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Daniel Brooks",
+    "Customer IT Owner: Carlos Martinez",
+    "Escalation Group: Crestline Operations"
+  ],
+  "special_considerations": [
+    "Coordinate with local warehouse management before restarting network equipment",
+    "Warehouse operations may rely on wireless devices",
+    "Maintain network security during troubleshooting",
+    "Document any connectivity workarounds implemented"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-15"
+}

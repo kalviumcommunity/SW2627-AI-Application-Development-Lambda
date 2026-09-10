@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-GGE-DATACENTER",
+  "title": "Datacenter Incident Response",
+  "client": "GreenGrid Energy",
+  "industry": "Energy & Utilities",
+  "account_id": "ACC-1005",
+  "severity": "P1",
+  "description": "Datacenter incidents affecting utility infrastructure and operations",
+  "affected_systems": [
+    "Network Operations Center",
+    "Customer Billing"
+  ],
+  "services": [
+    "Infrastructure Operations",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete datacenter outage",
+    "Power failures in datacenter facilities",
+    "Cooling system failures affecting equipment",
+    "Network failures at datacenter locations"
+  ],
+  "immediate_actions": [
+    "Assess impact on utility operations and customer services",
+    "Notify GreenGrid NOC immediately",
+    "Activate backup datacenter if available",
+    "Contact on-site support team (2-hour response)"
+  ],
+  "investigation_steps": [
+    "Check datacenter facility status (power, cooling)",
+    "Review network and server equipment status",
+    "Verify backup systems and generators",
+    "Analyze environmental monitoring data"
+  ],
+  "resolution_steps": [
+    "Implement emergency power restoration procedures",
+    "Activate backup cooling systems if needed",
+    "Restart critical infrastructure equipment",
+    "Coordinate with facilities team for environmental issues"
+  ],
+  "verification": [
+    "Test datacenter infrastructure functionality",
+    "Verify power and cooling systems",
+    "Check network connectivity from datacenter",
+    "Confirm with operational staff that systems are operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Mark Thompson",
+    "Customer IT Owner: Aisha Patel",
+    "Escalation Group: GreenGrid NOC"
+  ],
+  "special_considerations": [
+    "Datacenter outages can affect utility operations regionally",
+    "Operational technology incidents require NOC escalation",
+    "Maintain environmental safety during restoration",
+    "Coordinate with facilities team for physical infrastructure issues"
+  ],
+  "estimated_resolution_time": "4-8 hours",
+  "last_updated": "2026-01-01"
+}

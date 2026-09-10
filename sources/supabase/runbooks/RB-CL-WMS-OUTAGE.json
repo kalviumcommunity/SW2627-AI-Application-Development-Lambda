@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-CL-WMS-OUTAGE",
+  "title": "Warehouse Management System Outage Response",
+  "client": "Crestline Logistics",
+  "industry": "Transportation & Logistics",
+  "account_id": "ACC-1006",
+  "severity": "P1",
+  "description": "Warehouse Management System outages affecting logistics operations",
+  "affected_systems": [
+    "Warehouse Management System"
+  ],
+  "services": [
+    "Warehouse Infrastructure",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete WMS outage affecting warehouse operations",
+    "Inventory tracking system failures",
+    "Warehouse automation system issues",
+    "Multiple warehouse WMS failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on warehouse operations and shipping",
+    "Notify Crestline Operations leadership",
+    "Implement manual warehouse procedures if needed",
+    "Contact on-site support team"
+  ],
+  "investigation_steps": [
+    "Review WMS application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to warehouses",
+    "Analyze warehouse automation system integration"
+  ],
+  "resolution_steps": [
+    "Restart WMS services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply WMS patches or configuration changes",
+    "Coordinate with WMS vendor for complex issues"
+  ],
+  "verification": [
+    "Test WMS functionality at affected warehouses",
+    "Verify inventory tracking accuracy",
+    "Test warehouse automation integration",
+    "Confirm with warehouse staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Daniel Brooks",
+    "Customer IT Owner: Carlos Martinez",
+    "Escalation Group: Crestline Operations"
+  ],
+  "special_considerations": [
+    "Warehouse outages affecting shipping cutoffs must be treated as P1",
+    "Coordinate with local warehouse management before restarting network equipment",
+    "Manual procedures may impact inventory accuracy",
+    "Maintain operational safety during system restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-15"
+}

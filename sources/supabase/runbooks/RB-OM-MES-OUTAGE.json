@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-OM-MES-OUTAGE",
+  "title": "Manufacturing Execution System Outage Response",
+  "client": "Oakridge Manufacturing",
+  "industry": "Manufacturing",
+  "account_id": "ACC-1008",
+  "severity": "P1",
+  "description": "Manufacturing Execution System outages affecting production operations",
+  "affected_systems": [
+    "Manufacturing Execution System"
+  ],
+  "services": [
+    "Plant IT",
+    "ERP Support"
+  ],
+  "triggers": [
+    "Complete MES outage affecting production lines",
+    "Manufacturing process control failures",
+    "Production tracking system issues",
+    "Multiple production line MES failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on production operations and manufacturing processes",
+    "Notify Oakridge Plant Operations team",
+    "Implement manual production procedures if needed",
+    "Contact plant management for production impact assessment"
+  ],
+  "investigation_steps": [
+    "Review MES application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to production lines",
+    "Analyze manufacturing process integration"
+  ],
+  "resolution_steps": [
+    "Restart MES services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply MES patches or configuration changes",
+    "Coordinate with MES vendor for complex issues"
+  ],
+  "verification": [
+    "Test MES functionality at affected production lines",
+    "Verify manufacturing process control accuracy",
+    "Test production tracking integration",
+    "Confirm with plant staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Anna Keller",
+    "Customer IT Owner: Lukas Weber",
+    "Escalation Group: Oakridge Plant Operations"
+  ],
+  "special_considerations": [
+    "Production line stopped due to supported IT infrastructure failure is P1",
+    "Do not reboot industrial controllers",
+    "Coordinate all plant network changes with the local OT engineer",
+    "Maintain operational safety during system restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-04-01"
+}

@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-BPR-POS-OUTAGE",
+  "title": "POS System Outage Response",
+  "client": "BluePeak Retail Group",
+  "industry": "Retail",
+  "account_id": "ACC-1003",
+  "severity": "P1",
+  "description": "Point of Sale system outages affecting store operations",
+  "affected_systems": [
+    "Point of Sale"
+  ],
+  "services": [
+    "POS Support",
+    "Store Network Operations"
+  ],
+  "triggers": [
+    "Multiple stores unable to process sales",
+    "POS terminal failures across locations",
+    "Store-wide POS outages",
+    "Payment processing failures at POS"
+  ],
+  "immediate_actions": [
+    "Identify scope of POS outage (single store vs multi-store)",
+    "Notify BluePeak Store Operations leadership",
+    "Activate manual sales procedures if needed",
+    "Contact on-site support team (6-hour response)"
+  ],
+  "investigation_steps": [
+    "Check POS system status and connectivity",
+    "Review POS application logs",
+    "Verify network connectivity to affected stores",
+    "Check payment processing integration"
+  ],
+  "resolution_steps": [
+    "Restart POS terminals following standard procedures",
+    "Implement backup POS system if available",
+    "Coordinate with store managers for manual processing",
+    "Apply POS system fixes or patches"
+  ],
+  "verification": [
+    "Test POS functionality at affected stores",
+    "Verify payment processing integration",
+    "Confirm sales data synchronization",
+    "Check inventory updates from POS transactions"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Jason Lee",
+    "Customer IT Owner: Emily Rodriguez",
+    "Escalation Group: BluePeak Store Operations"
+  ],
+  "special_considerations": [
+    "During major retail events, P1 incidents must be escalated immediately",
+    "Store managers must not be instructed to factory-reset POS terminals",
+    "Coordinate with store operations for minimal sales disruption",
+    "Manual sales procedures may impact inventory accuracy"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-15"
+}

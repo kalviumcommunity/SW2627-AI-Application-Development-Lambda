@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-SOI-DATABASE",
+  "title": "Database Incident Response",
+  "client": "SilverOak Insurance",
+  "industry": "Insurance",
+  "account_id": "ACC-1013",
+  "severity": "P1",
+  "description": "Database incidents affecting insurance operations",
+  "affected_systems": [
+    "Policy Administration",
+    "Customer Portal"
+  ],
+  "services": [
+    "Database Operations",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete database outage",
+    "Policy database failures",
+    "Customer data access issues",
+    "Database performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on insurance operations and data access",
+    "Notify SilverOak IT Leadership team",
+    "Activate database failover if available",
+    "Contact business users for critical data access needs"
+  ],
+  "investigation_steps": [
+    "Review database logs and performance metrics",
+    "Check database replication status",
+    "Verify storage system health",
+    "Analyze database connection patterns"
+  ],
+  "resolution_steps": [
+    "Execute database failover following approved procedures",
+    "Implement database fixes or restart if needed",
+    "Apply database patches or configuration changes",
+    "Coordinate with database vendor for complex issues"
+  ],
+  "verification": [
+    "Test database connectivity from applications",
+    "Verify data integrity after restoration",
+    "Check database performance metrics",
+    "Confirm with business users that data access is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: George Wilson",
+    "Customer IT Owner: Amelia Brown",
+    "Escalation Group: SilverOak IT Leadership"
+  ],
+  "special_considerations": [
+    "Data integrity is critical for insurance operations",
+    "Regulatory compliance requirements may apply",
+    "Coordinate with compliance team for audit requirements",
+    "Document all database restoration steps and timing"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

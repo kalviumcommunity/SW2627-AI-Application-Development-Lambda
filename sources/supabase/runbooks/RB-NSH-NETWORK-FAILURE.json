@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-NSH-NETWORK-FAILURE",
+  "title": "Network Failure Response",
+  "client": "Northstar Health Systems",
+  "industry": "Healthcare",
+  "account_id": "ACC-1001",
+  "severity": "P1",
+  "description": "Hospital network failures affecting clinical operations",
+  "affected_systems": [
+    "Hospital Network",
+    "Identity and Access Management"
+  ],
+  "services": [
+    "Managed Infrastructure",
+    "Network Operations"
+  ],
+  "triggers": [
+    "Complete network outage at clinical facilities",
+    "Critical application connectivity failures",
+    "Wireless network failures in patient care areas",
+    "Network device failures"
+  ],
+  "immediate_actions": [
+    "Identify scope of network failure (single site vs multi-site)",
+    "Activate network incident response team",
+    "Implement emergency network bypass if available",
+    "Notify clinical leadership of connectivity status"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify ISP connectivity and circuit status",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Coordinate with ISP for circuit issues",
+    "Apply network configuration fixes or rollbacks"
+  ],
+  "verification": [
+    "Test connectivity to critical clinical systems",
+    "Verify wireless network coverage in patient areas",
+    "Confirm network performance metrics",
+    "Test remote access for clinical staff"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Sarah Mitchell",
+    "Customer IT Owner: David Chen",
+    "Escalation Group: Northstar IT Leadership"
+  ],
+  "special_considerations": [
+    "Patient care areas have highest priority for restoration",
+    "Coordinate with clinical staff for minimal disruption",
+    "Maintain network security during troubleshooting",
+    "Document network topology changes made during incident"
+  ],
+  "estimated_resolution_time": "2-6 hours",
+  "last_updated": "2026-01-01"
+}

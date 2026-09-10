@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-SOI-CUSTOMER-PORTAL",
+  "title": "Customer Portal Incident Response",
+  "client": "SilverOak Insurance",
+  "industry": "Insurance",
+  "account_id": "ACC-1013",
+  "severity": "P2",
+  "description": "Customer portal incidents affecting insurance customer service",
+  "affected_systems": [
+    "Customer Portal"
+  ],
+  "services": [
+    "Application Support",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete customer portal outage",
+    "Customer self-service failures",
+    "Policy access issues for customers",
+    "Customer portal performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on customer service and customer experience",
+    "Notify SilverOak IT Leadership team",
+    "Implement alternative customer service channels if needed",
+    "Contact customer service team for customer inquiry management"
+  ],
+  "investigation_steps": [
+    "Review customer portal logs and status",
+    "Check web server and application server status",
+    "Verify database connectivity and performance",
+    "Analyze web traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart customer portal services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply portal patches or configuration changes",
+    "Coordinate with portal vendor for complex issues"
+  ],
+  "verification": [
+    "Test customer portal functionality",
+    "Verify customer self-service processes",
+    "Test policy access for customers",
+    "Confirm with customer service that portal is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: George Wilson",
+    "Customer IT Owner: Amelia Brown",
+    "Escalation Group: SilverOak IT Leadership"
+  ],
+  "special_considerations": [
+    "Customer portal is important for customer satisfaction",
+    "Regulatory reporting deadlines require priority escalation",
+    "Coordinate with customer service for customer communication",
+    "Document any portal interruptions that may affect customer service"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

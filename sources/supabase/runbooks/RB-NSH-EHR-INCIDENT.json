@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-NSH-EHR-INCIDENT",
+  "title": "Electronic Health Records Incident Response",
+  "client": "Northstar Health Systems",
+  "industry": "Healthcare",
+  "account_id": "ACC-1001",
+  "severity": "P1",
+  "description": "EHR system incidents affecting patient care operations",
+  "affected_systems": [
+    "Electronic Health Records"
+  ],
+  "services": [
+    "Managed Infrastructure",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "EHR system performance degradation",
+    "Patient record access failures",
+    "Medication ordering system issues",
+    "Clinical documentation errors"
+  ],
+  "immediate_actions": [
+    "Assess impact on patient care operations",
+    "Notify clinical leadership of system status",
+    "Activate EHR vendor support if applicable",
+    "Implement manual documentation procedures if needed"
+  ],
+  "investigation_steps": [
+    "Review EHR application logs",
+    "Check database performance and connectivity",
+    "Verify integration points with clinical systems",
+    "Analyze user-reported error patterns"
+  ],
+  "resolution_steps": [
+    "Restart EHR application services following vendor procedures",
+    "Clear application cache if performance issues",
+    "Implement vendor-provided patches or fixes",
+    "Escalate to EHR vendor for complex issues"
+  ],
+  "verification": [
+    "Test patient record access and retrieval",
+    "Verify medication ordering functionality",
+    "Confirm clinical documentation features",
+    "Check integration with pharmacy and lab systems"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Sarah Mitchell",
+    "Customer IT Owner: David Chen",
+    "Escalation Group: Northstar IT Leadership"
+  ],
+  "special_considerations": [
+    "Patient data integrity is critical",
+    "Coordinate with clinical staff for patient safety",
+    "Maintain HIPAA compliance during resolution",
+    "Document any workarounds for patient care"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

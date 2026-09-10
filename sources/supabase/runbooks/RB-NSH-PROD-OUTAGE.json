@@ -1,0 +1,61 @@
+{
+  "runbook_id": "RB-NSH-PROD-OUTAGE",
+  "title": "Production Outage Response",
+  "client": "Northstar Health Systems",
+  "industry": "Healthcare",
+  "account_id": "ACC-1001",
+  "severity": "P1",
+  "description": "Critical production infrastructure outage affecting clinical operations",
+  "affected_systems": [
+    "Electronic Health Records",
+    "Clinical API Platform",
+    "Hospital Network"
+  ],
+  "services": [
+    "Managed Infrastructure",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete EHR system unavailability",
+    "Clinical API failures",
+    "Hospital-wide network outage",
+    "Multiple facility impact"
+  ],
+  "immediate_actions": [
+    "Declare P1 incident and activate incident commander",
+    "Notify Northstar IT Leadership immediately",
+    "Contact on-site support team (4-hour response)",
+    "Enable emergency failover systems if available"
+  ],
+  "investigation_steps": [
+    "Check infrastructure monitoring dashboards",
+    "Verify network connectivity to clinical facilities",
+    "Review recent system changes and deployments",
+    "Check with external service providers (connectivity, cloud providers)"
+  ],
+  "resolution_steps": [
+    "Restore primary systems from backup if necessary",
+    "Implement temporary workarounds for clinical staff",
+    "Coordinate with clinical teams for patient care continuity",
+    "Document all actions and timeline"
+  ],
+  "verification": [
+    "Confirm EHR system accessibility across all facilities",
+    "Verify clinical API functionality",
+    "Test network connectivity to critical endpoints",
+    "Confirm with clinical staff that systems are operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Sarah Mitchell",
+    "Customer IT Owner: David Chen",
+    "Escalation Group: Northstar IT Leadership"
+  ],
+  "special_considerations": [
+    "Security incidents involving patient data must be escalated immediately",
+    "Do not restart EHR production servers without customer IT approval",
+    "Patient care continuity is highest priority",
+    "HIPAA compliance must be maintained throughout incident"
+  ],
+  "estimated_resolution_time": "4 hours",
+  "last_updated": "2026-01-01"
+}

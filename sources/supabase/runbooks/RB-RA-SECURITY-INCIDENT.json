@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-RA-SECURITY-INCIDENT",
+  "title": "Security Incident Response",
+  "client": "Redwood Aerospace",
+  "industry": "Aerospace & Defense",
+  "account_id": "ACC-1014",
+  "severity": "P1",
+  "description": "Security incidents affecting aerospace systems and sensitive data",
+  "affected_systems": [
+    "Engineering Systems",
+    "Manufacturing Systems"
+  ],
+  "services": [
+    "Security Operations",
+    "Infrastructure Operations"
+  ],
+  "triggers": [
+    "Confirmed security incident affecting engineering or manufacturing systems",
+    "Unauthorized access to sensitive aerospace data",
+    "Data breach indicators",
+    "Security control failures"
+  ],
+  "immediate_actions": [
+    "Activate security incident response team immediately",
+    "Notify Redwood Security Operations team",
+    "Isolate affected systems to prevent further damage",
+    "Preserve forensic evidence"
+  ],
+  "investigation_steps": [
+    "Review security logs and alerts",
+    "Identify scope and impact of security incident",
+    "Analyze attacker methods and access points",
+    "Assess data exposure and regulatory impact"
+  ],
+  "resolution_steps": [
+    "Contain security incident and prevent further access",
+    "Implement security patches and configuration changes",
+    "Restore systems from clean backups if needed",
+    "Coordinate with regulatory bodies if data breach confirmed"
+  ],
+  "verification": [
+    "Verify that security incident is contained",
+    "Confirm that attacker access is eliminated",
+    "Test security controls are functioning properly",
+    "Validate system integrity and data safety"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Eric Johnson",
+    "Customer IT Owner: Rachel Adams",
+    "Escalation Group: Redwood Security Operations"
+  ],
+  "special_considerations": [
+    "Do not transfer restricted data to non-approved systems",
+    "Security incidents must follow the customer security incident response process",
+    "Aerospace data may have national security implications",
+    "Document all incident response activities for regulatory reporting"
+  ],
+  "estimated_resolution_time": "4-24 hours (incident dependent)",
+  "last_updated": "2026-05-01"
+}

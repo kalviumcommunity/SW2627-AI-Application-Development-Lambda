@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-NMS-RENDER-FARM",
+  "title": "Render Farm Incident Response",
+  "client": "Nimbus Media Studios",
+  "industry": "Media & Entertainment",
+  "account_id": "ACC-1007",
+  "severity": "P1",
+  "description": "Render farm incidents affecting media production",
+  "affected_systems": [
+    "Rendering Cluster"
+  ],
+  "services": [
+    "Cloud Infrastructure",
+    "Network Operations"
+  ],
+  "triggers": [
+    "Complete render farm outage",
+    "Rendering job failures",
+    "Render farm performance degradation",
+    "Multiple rendering node failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on production timelines and rendering schedules",
+    "Notify Nimbus Production Engineering team",
+    "Implement alternative rendering resources if available",
+    "Contact production team for deadline impact assessment"
+  ],
+  "investigation_steps": [
+    "Review render farm logs and node status",
+    "Check network connectivity to rendering nodes",
+    "Verify rendering software and license availability",
+    "Analyze rendering job queue and failures"
+  ],
+  "resolution_steps": [
+    "Restart failed rendering nodes following standard procedures",
+    "Implement network fixes if connectivity issues",
+    "Apply rendering software patches or configuration changes",
+    "Coordinate with rendering software vendor for complex issues"
+  ],
+  "verification": [
+    "Test render farm functionality",
+    "Verify rendering job processing",
+    "Check rendering performance metrics",
+    "Confirm with production staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Rachel Kim",
+    "Customer IT Owner: Tom Wilson",
+    "Escalation Group: Nimbus Production Engineering"
+  ],
+  "special_considerations": [
+    "Production incidents during live shoots receive P1 priority",
+    "Rendering timelines are critical for production schedules",
+    "Coordinate with production team for deadline management",
+    "Document any rendering delays that may affect production"
+  ],
+  "estimated_resolution_time": "2-6 hours",
+  "last_updated": "2026-01-01"
+}
