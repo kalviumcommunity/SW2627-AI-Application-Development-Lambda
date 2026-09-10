@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LambdaITSM Wiki</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <h1>LambdaITSM Wiki</h1>
+        <p>Internal wiki containing all the Runbooks</p>
+    </header>
+    <h2 id="container-heading">
+        Runbooks
+    </h2>
+    <div id="container">
+        {% for company_name, runbooks in grouped_runbooks.items() %}
+            <div class="runbook-block">
+                <h3 class="runbook-heading">
+                    {{ company_name }}
+                </h3>
+                {% for runbook in runbooks %}
+                <button>
+                    <a
+                    class="runbook-btn"
+                    href="{{ url_for('runbook', runbook_reference=runbook.runbook_reference) }}"
+                >
+                    {{ runbook.runbook_reference }}
+                </a>
+                </button>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
