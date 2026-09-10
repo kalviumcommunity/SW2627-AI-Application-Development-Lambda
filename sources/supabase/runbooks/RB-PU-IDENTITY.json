@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-PU-IDENTITY",
+  "title": "Identity Management Incident Response",
+  "client": "Pioneer University",
+  "industry": "Education",
+  "account_id": "ACC-1012",
+  "severity": "P1",
+  "description": "Identity management system incidents affecting university access",
+  "affected_systems": [
+    "Identity Provider"
+  ],
+  "services": [
+    "Identity Management",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete identity management system outage",
+    "Student and faculty authentication failures",
+    "Access control system issues",
+    "Multiple identity system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on university access and security",
+    "Notify Pioneer University IT Operations team",
+    "Implement alternative authentication if available",
+    "Contact university administration for security impact assessment"
+  ],
+  "investigation_steps": [
+    "Review identity management system logs and status",
+    "Check authentication service connectivity",
+    "Verify network connectivity to identity systems",
+    "Analyze authentication patterns and failures"
+  ],
+  "resolution_steps": [
+    "Restart identity management services following standard procedures",
+    "Implement authentication service fixes if needed",
+    "Apply identity system patches or configuration changes",
+    "Coordinate with identity vendor for complex issues"
+  ],
+  "verification": [
+    "Test identity management system functionality",
+    "Verify student and faculty authentication processes",
+    "Test access control system integration",
+    "Confirm with university staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Robert Evans",
+    "Customer IT Owner: Maria Gonzalez",
+    "Escalation Group: Pioneer University IT Operations"
+  ],
+  "special_considerations": [
+    "During examination periods, LMS and identity incidents are automatically treated as P1",
+    "Identity management is critical for university security and access",
+    "Maintain security during system restoration",
+    "Coordinate with academic departments for minimal disruption"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-07-01"
+}

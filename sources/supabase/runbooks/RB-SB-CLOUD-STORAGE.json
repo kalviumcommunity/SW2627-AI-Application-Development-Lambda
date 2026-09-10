@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-SB-CLOUD-STORAGE",
+  "title": "Cloud Storage Incident Response",
+  "client": "Summit Biotech",
+  "industry": "Biotechnology",
+  "account_id": "ACC-1010",
+  "severity": "P1",
+  "description": "Cloud storage incidents affecting research data access",
+  "affected_systems": [
+    "Cloud Storage"
+  ],
+  "services": [
+    "Cloud Infrastructure",
+    "Research Computing"
+  ],
+  "triggers": [
+    "Complete cloud storage outage",
+    "Research data access failures",
+    "Cloud storage performance degradation",
+    "Multiple cloud storage system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on research operations and data access",
+    "Notify Summit Security Operations team",
+    "Implement alternative storage access if available",
+    "Contact research team for data access needs"
+  ],
+  "investigation_steps": [
+    "Review cloud storage service logs and status",
+    "Check storage array health and connectivity",
+    "Verify network connectivity to cloud storage",
+    "Analyze storage performance metrics"
+  ],
+  "resolution_steps": [
+    "Restart cloud storage services following standard procedures",
+    "Implement storage array fixes if needed",
+    "Apply storage system patches or configuration changes",
+    "Coordinate with cloud storage vendor for complex issues"
+  ],
+  "verification": [
+    "Test cloud storage system functionality",
+    "Verify research data access and retrieval",
+    "Check storage performance metrics",
+    "Confirm with research staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Laura Bennett",
+    "Customer IT Owner: Kevin Moore",
+    "Escalation Group: Summit Security Operations"
+  ],
+  "special_considerations": [
+    "Do not delete research data during troubleshooting",
+    "Suspected data exposure must immediately involve the security team",
+    "Research data is valuable and must be preserved",
+    "Coordinate with research team for minimal disruption to data access"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-01"
+}

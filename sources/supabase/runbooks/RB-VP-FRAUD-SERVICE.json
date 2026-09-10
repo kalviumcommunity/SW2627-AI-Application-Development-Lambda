@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-VP-FRAUD-SERVICE",
+  "title": "Fraud Detection Service Incident Response",
+  "client": "VertexPay Financial",
+  "industry": "Financial Services",
+  "account_id": "ACC-1002",
+  "severity": "P2",
+  "description": "Fraud detection system incidents affecting transaction security",
+  "affected_systems": [
+    "Fraud Detection Engine"
+  ],
+  "services": [
+    "Security Operations",
+    "Application Support"
+  ],
+  "triggers": [
+    "Fraud detection service failures",
+    "High false positive rates",
+    "Missed fraud detection alerts",
+    "Performance degradation in fraud analysis"
+  ],
+  "immediate_actions": [
+    "Assess impact on transaction processing and security",
+    "Notify security operations team",
+    "Implement manual fraud review if automated system unavailable",
+    "Escalate if fraud risk is elevated"
+  ],
+  "investigation_steps": [
+    "Review fraud detection service logs",
+    "Check machine learning model performance",
+    "Analyze recent fraud detection patterns",
+    "Verify integration with transaction processing"
+  ],
+  "resolution_steps": [
+    "Restart fraud detection services following vendor procedures",
+    "Implement model retraining if performance issues",
+    "Adjust fraud detection thresholds if needed",
+    "Coordinate with fraud analysis team for manual review"
+  ],
+  "verification": [
+    "Test fraud detection with sample transactions",
+    "Verify false positive rates return to normal",
+    "Confirm real-time fraud analysis functionality",
+    "Check integration with transaction processing"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Michael Torres",
+    "Customer IT Owner: Priya Shah",
+    "Escalation Group: VertexPay SRE Leadership"
+  ],
+  "special_considerations": [
+    "Fraud risk increases when detection systems are degraded",
+    "Coordinate with fraud analysis team for manual review",
+    "Maintain security monitoring during service restoration",
+    "Document any transactions that bypassed fraud detection"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-01"
+}

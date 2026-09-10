@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-BPR-Ecommerce",
+  "title": "E-commerce Platform Incident Response",
+  "client": "BluePeak Retail Group",
+  "industry": "Retail",
+  "account_id": "ACC-1003",
+  "severity": "P1",
+  "description": "E-commerce platform incidents affecting online sales",
+  "affected_systems": [
+    "E-commerce Platform"
+  ],
+  "services": [
+    "Cloud Infrastructure",
+    "Application Support"
+  ],
+  "triggers": [
+    "Complete e-commerce platform outage",
+    "Online ordering system failures",
+    "Payment processing issues on website",
+    "Performance degradation affecting user experience"
+  ],
+  "immediate_actions": [
+    "Assess impact on online sales and customer experience",
+    "Notify e-commerce operations team",
+    "Implement maintenance page if platform unavailable",
+    "Activate customer service team for order inquiries"
+  ],
+  "investigation_steps": [
+    "Review e-commerce platform logs",
+    "Check web server and application server status",
+    "Verify database connectivity and performance",
+    "Analyze web traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart e-commerce platform services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply platform patches or configuration changes",
+    "Coordinate with third-party services (payment gateways, CDNs)"
+  ],
+  "verification": [
+    "Test e-commerce platform functionality",
+    "Verify online ordering process",
+    "Check payment processing integration",
+    "Confirm inventory synchronization"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Jason Lee",
+    "Customer IT Owner: Emily Rodriguez",
+    "Escalation Group: BluePeak Store Operations"
+  ],
+  "special_considerations": [
+    "Online sales impact revenue directly",
+    "Coordinate with customer service for order inquiries",
+    "Maintain customer communication during outages",
+    "Document any orders that may have been affected"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-15"
+}

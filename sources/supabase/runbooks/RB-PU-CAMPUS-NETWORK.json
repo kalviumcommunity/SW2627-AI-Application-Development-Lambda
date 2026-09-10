@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-PU-CAMPUS-NETWORK",
+  "title": "Campus Network Incident Response",
+  "client": "Pioneer University",
+  "industry": "Education",
+  "account_id": "ACC-1012",
+  "severity": "P1",
+  "description": "Campus network failures affecting university operations",
+  "affected_systems": [
+    "Campus Network"
+  ],
+  "services": [
+    "Campus Network",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete campus network outage",
+    "Academic building connectivity failures",
+    "Student network access issues",
+    "Network performance degradation affecting academic operations"
+  ],
+  "immediate_actions": [
+    "Assess impact on university operations and academic activities",
+    "Notify Pioneer University IT Operations team",
+    "Implement emergency network bypass if available",
+    "Contact university administration for operational impact assessment"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify network connectivity to campus facilities",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Apply network configuration fixes or rollbacks",
+    "Coordinate with network vendor for complex issues"
+  ],
+  "verification": [
+    "Test network connectivity to academic buildings",
+    "Verify student network access functionality",
+    "Check network performance metrics",
+    "Confirm with university staff that network is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Robert Evans",
+    "Customer IT Owner: Maria Gonzalez",
+    "Escalation Group: Pioneer University IT Operations"
+  ],
+  "special_considerations": [
+    "Campus-wide outage or student/academic system unavailable is P1",
+    "During examination periods, LMS and identity incidents are automatically treated as P1",
+    "Academic operations are critical for university functions",
+    "Coordinate with academic departments for minimal disruption"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-07-01"
+}

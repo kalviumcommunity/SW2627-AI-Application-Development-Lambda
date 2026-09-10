@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-AL-VPN",
+  "title": "Remote Access VPN Incident Response",
+  "client": "Atlas Legal Partners",
+  "industry": "Legal Services",
+  "account_id": "ACC-1004",
+  "severity": "P2",
+  "description": "Remote access VPN failures affecting attorney remote work",
+  "affected_systems": [
+    "Remote Access VPN"
+  ],
+  "services": [
+    "Identity Management",
+    "Endpoint Management"
+  ],
+  "triggers": [
+    "Complete VPN service unavailability",
+    "VPN authentication failures",
+    "VPN connectivity issues for remote users",
+    "VPN performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on remote attorney productivity",
+    "Notify IT support team for user assistance",
+    "Implement alternative remote access if available",
+    "Activate emergency VPN if available"
+  ],
+  "investigation_steps": [
+    "Check VPN gateway status and logs",
+    "Verify authentication system connectivity",
+    "Review VPN configuration changes",
+    "Analyze VPN connection patterns and errors"
+  ],
+  "resolution_steps": [
+    "Restart VPN services following standard procedures",
+    "Implement authentication system fixes if needed",
+    "Apply VPN configuration changes or rollbacks",
+    "Coordinate with VPN vendor for complex issues"
+  ],
+  "verification": [
+    "Test VPN connectivity from remote locations",
+    "Verify VPN authentication process",
+    "Check VPN performance metrics",
+    "Confirm with remote users that VPN is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Oliver Grant",
+    "Customer IT Owner: Hannah Williams",
+    "Escalation Group: Atlas Technology Committee"
+  ],
+  "special_considerations": [
+    "Attorneys rely on VPN for client work and court deadlines",
+    "Maintain security during VPN troubleshooting",
+    "Coordinate with attorneys for minimal disruption to client work",
+    "Document any VPN interruptions that may affect client matters"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-03-01"
+}

@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-HVH-GUEST-WIFI",
+  "title": "Guest Wi-Fi Incident Response",
+  "client": "HarborView Hotels",
+  "industry": "Hospitality",
+  "account_id": "ACC-1009",
+  "severity": "P2",
+  "description": "Guest Wi-Fi failures affecting hotel guest experience",
+  "affected_systems": [
+    "Guest Wi-Fi"
+  ],
+  "services": [
+    "Guest Wi-Fi",
+    "Property Network"
+  ],
+  "triggers": [
+    "Complete guest Wi-Fi outage at hotel properties",
+    "Guest device connectivity failures",
+    "Wi-Fi performance degradation affecting guest experience",
+    "Multiple access point failures"
+  ],
+  "immediate_actions": [
+    "Identify scope of Wi-Fi failure (single property vs multi-property)",
+    "Notify hotel management of connectivity status",
+    "Implement wired connections for guest areas if available",
+    "Activate network support team"
+  ],
+  "investigation_steps": [
+    "Check wireless access point status and logs",
+    "Review network controller configuration",
+    "Verify network connectivity to access points",
+    "Analyze wireless signal patterns and interference"
+  ],
+  "resolution_steps": [
+    "Restart failed access points following standard procedures",
+    "Implement network controller fixes if needed",
+    "Apply wireless configuration changes or optimizations",
+    "Coordinate with wireless vendor for complex issues"
+  ],
+  "verification": [
+    "Test Wi-Fi connectivity at affected properties",
+    "Verify guest device connectivity and performance",
+    "Check wireless coverage in guest areas",
+    "Confirm with hotel staff that Wi-Fi is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Wei Tan",
+    "Customer IT Owner: James Lim",
+    "Escalation Group: HarborView Regional IT"
+  ],
+  "special_considerations": [
+    "Guest-facing outages take precedence over back-office issues",
+    "Guest Wi-Fi is important for guest satisfaction",
+    "Maintain network security during troubleshooting",
+    "Communicate with guests about connectivity status"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

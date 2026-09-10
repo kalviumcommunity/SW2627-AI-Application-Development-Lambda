@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-VP-DATABASE-FAILOVER",
+  "title": "Database Failover Procedures",
+  "client": "VertexPay Financial",
+  "industry": "Financial Services",
+  "account_id": "ACC-1002",
+  "severity": "P1",
+  "description": "Database failover procedures for transaction processing systems",
+  "affected_systems": [
+    "Transaction Processing Platform",
+    "Customer Authentication"
+  ],
+  "services": [
+    "Database Operations",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Primary database failure",
+    "Database performance degradation",
+    "Database connectivity issues",
+    "Replication lag or failures"
+  ],
+  "immediate_actions": [
+    "Assess database health and replication status",
+    "Notify VertexPay DBA team before any changes",
+    "Prepare for database failover if necessary",
+    "Activate read-only mode if needed to prevent data corruption"
+  ],
+  "investigation_steps": [
+    "Review database error logs and performance metrics",
+    "Check database replication status",
+    "Verify storage system health",
+    "Analyze database connection patterns"
+  ],
+  "resolution_steps": [
+    "Execute database failover following approved procedures",
+    "Verify data integrity after failover",
+    "Update application connection strings if needed",
+    "Monitor database performance after failover"
+  ],
+  "verification": [
+    "Test database connectivity from applications",
+    "Verify transaction processing functionality",
+    "Check database performance metrics",
+    "Confirm data consistency between nodes"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Michael Torres",
+    "Customer IT Owner: Priya Shah",
+    "Escalation Group: VertexPay SRE Leadership"
+  ],
+  "special_considerations": [
+    "Do not modify transaction databases without approval from the VertexPay DBA team",
+    "Data integrity is critical for financial transactions",
+    "Coordinate with compliance team for audit requirements",
+    "Document all failover steps and timing"
+  ],
+  "estimated_resolution_time": "1-2 hours",
+  "last_updated": "2026-02-01"
+}

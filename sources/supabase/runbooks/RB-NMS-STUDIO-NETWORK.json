@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-NMS-STUDIO-NETWORK",
+  "title": "Studio Network Incident Response",
+  "client": "Nimbus Media Studios",
+  "industry": "Media & Entertainment",
+  "account_id": "ACC-1007",
+  "severity": "P1",
+  "description": "Studio network failures affecting production operations",
+  "affected_systems": [
+    "Studio Network"
+  ],
+  "services": [
+    "Network Operations",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete studio network outage",
+    "Production network connectivity failures",
+    "Studio device connectivity issues",
+    "Network performance degradation affecting production"
+  ],
+  "immediate_actions": [
+    "Assess impact on production operations and studio activities",
+    "Notify Nimbus Production Engineering team",
+    "Implement emergency network bypass if available",
+    "Contact production team for current shooting status"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify network connectivity to studio facilities",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Apply network configuration fixes or rollbacks",
+    "Coordinate with network vendor for complex issues"
+  ],
+  "verification": [
+    "Test network connectivity to production systems",
+    "Verify studio device connectivity",
+    "Check network performance metrics",
+    "Confirm with production staff that network is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Rachel Kim",
+    "Customer IT Owner: Tom Wilson",
+    "Escalation Group: Nimbus Production Engineering"
+  ],
+  "special_considerations": [
+    "Production incidents during live shoots receive P1 priority",
+    "Studio network is critical for production operations",
+    "Coordinate with production team for minimal disruption",
+    "Maintain network security during troubleshooting"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-PU-LMS",
+  "title": "Learning Management System Incident Response",
+  "client": "Pioneer University",
+  "industry": "Education",
+  "account_id": "ACC-1012",
+  "severity": "P1",
+  "description": "Learning Management System incidents affecting academic operations",
+  "affected_systems": [
+    "Learning Management System"
+  ],
+  "services": [
+    "Cloud Operations",
+    "Campus Network"
+  ],
+  "triggers": [
+    "Complete LMS outage affecting academic operations",
+    "Student learning platform failures",
+    "Course content access issues",
+    "Multiple academic system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on academic operations and student learning",
+    "Notify Pioneer University IT Operations team",
+    "Implement alternative learning procedures if needed",
+    "Contact academic departments for course impact assessment"
+  ],
+  "investigation_steps": [
+    "Review LMS application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to LMS systems",
+    "Analyze LMS integration points"
+  ],
+  "resolution_steps": [
+    "Restart LMS services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply LMS patches or configuration changes",
+    "Coordinate with LMS vendor for complex issues"
+  ],
+  "verification": [
+    "Test LMS functionality for students and faculty",
+    "Verify course content access processes",
+    "Test academic system integration",
+    "Confirm with academic staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Robert Evans",
+    "Customer IT Owner: Maria Gonzalez",
+    "Escalation Group: Pioneer University IT Operations"
+  ],
+  "special_considerations": [
+    "During examination periods, LMS and identity incidents are automatically treated as P1",
+    "Student learning is critical for academic operations",
+    "Coordinate with academic departments for minimal disruption",
+    "Document any LMS interruptions that may affect academic schedules"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-07-01"
+}

@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-SB-LAB-SYSTEM",
+  "title": "Laboratory Information System Incident Response",
+  "client": "Summit Biotech",
+  "industry": "Biotechnology",
+  "account_id": "ACC-1010",
+  "severity": "P1",
+  "description": "Laboratory Information System incidents affecting research operations",
+  "affected_systems": [
+    "Laboratory Information System"
+  ],
+  "services": [
+    "Research Computing",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete LIS outage affecting laboratory operations",
+    "Research data management failures",
+    "Laboratory equipment integration issues",
+    "Multiple laboratory system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on research operations and laboratory workflows",
+    "Notify Summit Security Operations team",
+    "Implement manual laboratory procedures if needed",
+    "Contact research team for experiment impact assessment"
+  ],
+  "investigation_steps": [
+    "Review LIS application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to laboratory systems",
+    "Analyze laboratory equipment integration"
+  ],
+  "resolution_steps": [
+    "Restart LIS services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply LIS patches or configuration changes",
+    "Coordinate with LIS vendor for complex issues"
+  ],
+  "verification": [
+    "Test LIS functionality at affected laboratories",
+    "Verify research data management processes",
+    "Test laboratory equipment integration",
+    "Confirm with research staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Laura Bennett",
+    "Customer IT Owner: Kevin Moore",
+    "Escalation Group: Summit Security Operations"
+  ],
+  "special_considerations": [
+    "Do not delete research data during troubleshooting",
+    "Suspected data exposure must immediately involve the security team",
+    "Research data integrity is critical for scientific operations",
+    "Coordinate with research team for minimal disruption to experiments"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-02-01"
+}

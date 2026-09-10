@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-NMS-STORAGE",
+  "title": "Media Storage Incident Response",
+  "client": "Nimbus Media Studios",
+  "industry": "Media & Entertainment",
+  "account_id": "ACC-1007",
+  "severity": "P1",
+  "description": "Media storage system incidents affecting production operations",
+  "affected_systems": [
+    "Production Storage"
+  ],
+  "services": [
+    "Media Storage",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete media storage system outage",
+    "Media asset access failures",
+    "Storage performance degradation affecting production",
+    "Multiple storage system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on production operations and media access",
+    "Notify Nimbus Production Engineering team",
+    "Implement alternative storage access if available",
+    "Contact production team for current shooting status"
+  ],
+  "investigation_steps": [
+    "Review storage system logs and status",
+    "Check storage array health and connectivity",
+    "Verify network connectivity to storage systems",
+    "Analyze storage performance metrics"
+  ],
+  "resolution_steps": [
+    "Restart storage services following standard procedures",
+    "Implement storage array fixes if needed",
+    "Apply storage system patches or configuration changes",
+    "Coordinate with storage vendor for complex issues"
+  ],
+  "verification": [
+    "Test media storage system functionality",
+    "Verify media asset access and retrieval",
+    "Check storage performance metrics",
+    "Confirm with production staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Rachel Kim",
+    "Customer IT Owner: Tom Wilson",
+    "Escalation Group: Nimbus Production Engineering"
+  ],
+  "special_considerations": [
+    "Never delete media assets as part of incident remediation",
+    "Production incidents during live shoots receive P1 priority",
+    "Media assets are valuable and must be preserved",
+    "Coordinate with production team for minimal disruption"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

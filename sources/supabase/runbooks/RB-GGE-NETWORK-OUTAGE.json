@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-GGE-NETWORK-OUTAGE",
+  "title": "Network Outage Response",
+  "client": "GreenGrid Energy",
+  "industry": "Energy & Utilities",
+  "account_id": "ACC-1005",
+  "severity": "P1",
+  "description": "Network failures affecting operational monitoring and utility infrastructure",
+  "affected_systems": [
+    "Grid Monitoring",
+    "Network Operations Center"
+  ],
+  "services": [
+    "Network Operations",
+    "Infrastructure Operations"
+  ],
+  "triggers": [
+    "Complete network outage affecting grid monitoring",
+    "SCADA system connectivity failures",
+    "Network failures at operational sites",
+    "Wide-area network issues affecting utility operations"
+  ],
+  "immediate_actions": [
+    "Assess impact on grid monitoring and operational control",
+    "Notify GreenGrid NOC immediately",
+    "Activate emergency network bypass if available",
+    "Contact on-site support team (2-hour response)"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify ISP connectivity and circuit status",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Coordinate with ISP for circuit issues",
+    "Apply network configuration fixes or rollbacks"
+  ],
+  "verification": [
+    "Test connectivity to grid monitoring systems",
+    "Verify SCADA system connectivity",
+    "Confirm network performance metrics",
+    "Test remote access for operational staff"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Mark Thompson",
+    "Customer IT Owner: Aisha Patel",
+    "Escalation Group: GreenGrid NOC"
+  ],
+  "special_considerations": [
+    "Never directly modify operational control systems without customer authorization",
+    "Operational technology incidents require NOC escalation",
+    "Grid monitoring is critical for utility operations",
+    "Maintain network security during troubleshooting"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

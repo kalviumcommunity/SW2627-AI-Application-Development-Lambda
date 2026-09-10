@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-GGE-SCADA",
+  "title": "SCADA System Incident Response",
+  "client": "GreenGrid Energy",
+  "industry": "Energy & Utilities",
+  "account_id": "ACC-1005",
+  "severity": "P1",
+  "description": "SCADA system incidents affecting operational control and monitoring",
+  "affected_systems": [
+    "SCADA Support Systems"
+  ],
+  "services": [
+    "Infrastructure Operations",
+    "24x7 Monitoring"
+  ],
+  "triggers": [
+    "Complete SCADA system outage",
+    "SCADA connectivity failures",
+    "Operational control system issues",
+    "SCADA performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on operational control and grid monitoring",
+    "Notify GreenGrid NOC immediately",
+    "Activate manual operational procedures if needed",
+    "Contact on-site support team (2-hour response)"
+  ],
+  "investigation_steps": [
+    "Review SCADA system logs and status",
+    "Check network connectivity to SCADA systems",
+    "Verify integration with grid monitoring",
+    "Analyze SCADA communication patterns"
+  ],
+  "resolution_steps": [
+    "Restart SCADA services following vendor procedures",
+    "Implement network fixes if connectivity issues",
+    "Apply SCADA system patches or configuration changes",
+    "Coordinate with SCADA vendor for complex issues"
+  ],
+  "verification": [
+    "Test SCADA system functionality",
+    "Verify operational control system connectivity",
+    "Check SCADA data monitoring capabilities",
+    "Confirm with operational staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Mark Thompson",
+    "Customer IT Owner: Aisha Patel",
+    "Escalation Group: GreenGrid NOC"
+  ],
+  "special_considerations": [
+    "Never directly modify operational control systems without customer authorization",
+    "Operational technology incidents require NOC escalation",
+    "SCADA systems are critical for utility operations",
+    "Maintain operational safety during system restoration"
+  ],
+  "estimated_resolution_time": "2-6 hours",
+  "last_updated": "2026-01-01"
+}

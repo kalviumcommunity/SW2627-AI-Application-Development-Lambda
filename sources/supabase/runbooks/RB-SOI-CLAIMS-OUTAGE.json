@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-SOI-CLAIMS-OUTAGE",
+  "title": "Claims Platform Outage Response",
+  "client": "SilverOak Insurance",
+  "industry": "Insurance",
+  "account_id": "ACC-1013",
+  "severity": "P1",
+  "description": "Claims platform outages affecting insurance operations",
+  "affected_systems": [
+    "Claims Platform"
+  ],
+  "services": [
+    "Application Support",
+    "Cloud Infrastructure"
+  ],
+  "triggers": [
+    "Complete claims platform outage",
+    "Claims processing system failures",
+    "Customer claims access issues",
+    "Multiple claims system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on insurance operations and customer service",
+    "Notify SilverOak IT Leadership team",
+    "Implement manual claims processing if needed",
+    "Contact customer service team for claim inquiry management"
+  ],
+  "investigation_steps": [
+    "Review claims platform logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to claims systems",
+    "Analyze claims processing patterns"
+  ],
+  "resolution_steps": [
+    "Restart claims platform services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply claims platform patches or configuration changes",
+    "Coordinate with claims platform vendor for complex issues"
+  ],
+  "verification": [
+    "Test claims platform functionality",
+    "Verify claims processing accuracy",
+    "Test customer claims access",
+    "Confirm with insurance staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: George Wilson",
+    "Customer IT Owner: Amelia Brown",
+    "Escalation Group: SilverOak IT Leadership"
+  ],
+  "special_considerations": [
+    "Regulatory reporting deadlines require priority escalation",
+    "Claims processing is critical for insurance operations",
+    "Manual procedures may impact customer service levels",
+    "Coordinate with regulatory compliance team for reporting requirements"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-01-01"
+}

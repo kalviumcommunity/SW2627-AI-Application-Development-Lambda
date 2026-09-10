@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-RA-ENGINEERING",
+  "title": "Engineering Systems Incident Response",
+  "client": "Redwood Aerospace",
+  "industry": "Aerospace & Defense",
+  "account_id": "ACC-1014",
+  "severity": "P1",
+  "description": "Engineering system incidents affecting aerospace development",
+  "affected_systems": [
+    "Engineering Systems"
+  ],
+  "services": [
+    "Infrastructure Operations",
+    "Network Operations"
+  ],
+  "triggers": [
+    "Complete engineering system outage",
+    "CAD/CAM system failures",
+    "Engineering simulation tool issues",
+    "Multiple engineering system failures"
+  ],
+  "immediate_actions": [
+    "Assess impact on aerospace development projects",
+    "Notify Redwood Security Operations team",
+    "Implement alternative engineering tools if available",
+    "Contact engineering team for project impact assessment"
+  ],
+  "investigation_steps": [
+    "Review engineering system logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to engineering systems",
+    "Analyze engineering software integration"
+  ],
+  "resolution_steps": [
+    "Restart engineering services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply engineering system patches or configuration changes",
+    "Coordinate with engineering software vendor for complex issues"
+  ],
+  "verification": [
+    "Test engineering system functionality",
+    "Verify CAD/CAM system performance",
+    "Test engineering simulation tools",
+    "Confirm with engineering staff that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Eric Johnson",
+    "Customer IT Owner: Rachel Adams",
+    "Escalation Group: Redwood Security Operations"
+  ],
+  "special_considerations": [
+    "Engineering systems are critical for aerospace development",
+    "Do not transfer restricted data to non-approved systems",
+    "Coordinate with engineering team for minimal disruption to projects",
+    "Document any system interruptions that may affect development timelines"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-05-01"
+}

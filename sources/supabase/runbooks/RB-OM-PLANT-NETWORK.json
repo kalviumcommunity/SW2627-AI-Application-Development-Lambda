@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-OM-PLANT-NETWORK",
+  "title": "Plant Network Incident Response",
+  "client": "Oakridge Manufacturing",
+  "industry": "Manufacturing",
+  "account_id": "ACC-1008",
+  "severity": "P1",
+  "description": "Plant network failures affecting manufacturing operations",
+  "affected_systems": [
+    "Plant Network"
+  ],
+  "services": [
+    "Plant IT",
+    "Network Operations"
+  ],
+  "triggers": [
+    "Complete plant network outage",
+    "Manufacturing system connectivity failures",
+    "Plant device connectivity issues",
+    "Network performance degradation affecting production"
+  ],
+  "immediate_actions": [
+    "Assess impact on manufacturing operations and production lines",
+    "Notify Oakridge Plant Operations team",
+    "Implement emergency network bypass if available",
+    "Contact plant management for production impact assessment"
+  ],
+  "investigation_steps": [
+    "Check network device status and logs",
+    "Verify network connectivity to plant facilities",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Apply network configuration fixes or rollbacks",
+    "Coordinate with local OT engineer for plant systems"
+  ],
+  "verification": [
+    "Test network connectivity to manufacturing systems",
+    "Verify plant device connectivity",
+    "Check network performance metrics",
+    "Confirm with plant staff that network is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Anna Keller",
+    "Customer IT Owner: Lukas Weber",
+    "Escalation Group: Oakridge Plant Operations"
+  ],
+  "special_considerations": [
+    "Do not reboot industrial controllers",
+    "Coordinate all plant network changes with the local OT engineer",
+    "Plant network is critical for manufacturing operations",
+    "Maintain operational safety during network restoration"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-04-01"
+}

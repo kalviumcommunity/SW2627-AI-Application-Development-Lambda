@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-MBC-FIELD-NETWORK",
+  "title": "Field Network Incident Response",
+  "client": "MetroBuild Construction",
+  "industry": "Construction",
+  "account_id": "ACC-1011",
+  "severity": "P2",
+  "description": "Field network failures affecting construction site operations",
+  "affected_systems": [
+    "Field Connectivity"
+  ],
+  "services": [
+    "Field Connectivity",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete field network outage at construction sites",
+    "Site connectivity failures",
+    "Field device connectivity issues",
+    "Network performance degradation affecting site operations"
+  ],
+  "immediate_actions": [
+    "Identify scope of network failure (single site vs multi-site)",
+    "Notify site managers of connectivity status",
+    "Implement alternative connectivity if available",
+    "Activate network support team"
+  ],
+  "investigation_steps": [
+    "Check network device status at affected sites",
+    "Verify ISP connectivity and circuit status",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Coordinate with ISP for circuit issues",
+    "Apply network configuration fixes or rollbacks"
+  ],
+  "verification": [
+    "Test network connectivity at affected construction sites",
+    "Verify field device connectivity",
+    "Check network performance metrics",
+    "Confirm with site staff that network is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Nathan Cooper",
+    "Customer IT Owner: Sophie Martin",
+    "Escalation Group: MetroBuild Digital Operations"
+  ],
+  "special_considerations": [
+    "Site connectivity issues affecting active construction operations are escalated ahead of office requests",
+    "Field teams may have limited connectivity alternatives",
+    "Maintain network security during troubleshooting",
+    "Coordinate with site managers for minimal disruption to construction operations"
+  ],
+  "estimated_resolution_time": "2-6 hours",
+  "last_updated": "2026-01-01"
+}

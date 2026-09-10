@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-OM-ERP",
+  "title": "ERP System Incident Response",
+  "client": "Oakridge Manufacturing",
+  "industry": "Manufacturing",
+  "account_id": "ACC-1008",
+  "severity": "P2",
+  "description": "ERP system incidents affecting manufacturing operations",
+  "affected_systems": [
+    "ERP"
+  ],
+  "services": [
+    "ERP Support",
+    "Cloud Operations"
+  ],
+  "triggers": [
+    "Complete ERP system outage",
+    "Manufacturing planning system failures",
+    "Supply chain management issues",
+    "ERP performance degradation"
+  ],
+  "immediate_actions": [
+    "Assess impact on manufacturing operations and business processes",
+    "Notify Oakridge Plant Operations team",
+    "Implement manual ERP procedures if needed",
+    "Contact business users for critical process needs"
+  ],
+  "investigation_steps": [
+    "Review ERP application logs and status",
+    "Check database connectivity and performance",
+    "Verify network connectivity to ERP systems",
+    "Analyze ERP integration points"
+  ],
+  "resolution_steps": [
+    "Restart ERP services following standard procedures",
+    "Implement database fixes or restart if needed",
+    "Apply ERP patches or configuration changes",
+    "Coordinate with ERP vendor for complex issues"
+  ],
+  "verification": [
+    "Test ERP system functionality",
+    "Verify manufacturing planning processes",
+    "Check supply chain management integration",
+    "Confirm with business users that system is operational"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Anna Keller",
+    "Customer IT Owner: Lukas Weber",
+    "Escalation Group: Oakridge Plant Operations"
+  ],
+  "special_considerations": [
+    "ERP is critical for manufacturing operations and business processes",
+    "Manual procedures may impact operational efficiency",
+    "Coordinate with business users for critical process needs",
+    "Document any ERP interruptions that may affect production"
+  ],
+  "estimated_resolution_time": "2-4 hours",
+  "last_updated": "2026-04-01"
+}

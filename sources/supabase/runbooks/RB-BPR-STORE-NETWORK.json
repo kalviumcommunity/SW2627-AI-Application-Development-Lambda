@@ -1,0 +1,59 @@
+{
+  "runbook_id": "RB-BPR-STORE-NETWORK",
+  "title": "Store Network Outage Response",
+  "client": "BluePeak Retail Group",
+  "industry": "Retail",
+  "account_id": "ACC-1003",
+  "severity": "P2",
+  "description": "Store network failures affecting retail operations",
+  "affected_systems": [
+    "Store Network"
+  ],
+  "services": [
+    "Store Network Operations",
+    "Network Support"
+  ],
+  "triggers": [
+    "Complete network outage at store locations",
+    "POS system connectivity failures",
+    "Wireless network failures in sales areas",
+    "Network device failures at stores"
+  ],
+  "immediate_actions": [
+    "Identify scope of network failure (single store vs multi-store)",
+    "Activate network incident response team",
+    "Implement emergency network bypass if available",
+    "Notify store managers of connectivity status"
+  ],
+  "investigation_steps": [
+    "Check network device status at affected stores",
+    "Verify ISP connectivity and circuit status",
+    "Review network configuration changes",
+    "Analyze network traffic patterns for anomalies"
+  ],
+  "resolution_steps": [
+    "Restart failed network devices following standard procedures",
+    "Implement redundant network paths if available",
+    "Coordinate with ISP for circuit issues",
+    "Apply network configuration fixes or rollbacks"
+  ],
+  "verification": [
+    "Test connectivity to POS systems",
+    "Verify wireless network coverage in sales areas",
+    "Confirm network performance metrics",
+    "Test remote access for store staff"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Jason Lee",
+    "Customer IT Owner: Emily Rodriguez",
+    "Escalation Group: BluePeak Store Operations"
+  ],
+  "special_considerations": [
+    "Sales areas have highest priority for network restoration",
+    "Coordinate with store managers for minimal disruption",
+    "Maintain network security during troubleshooting",
+    "Document network topology changes made during incident"
+  ],
+  "estimated_resolution_time": "2-6 hours",
+  "last_updated": "2026-01-15"
+}

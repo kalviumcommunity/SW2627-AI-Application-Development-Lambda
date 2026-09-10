@@ -1,0 +1,61 @@
+{
+  "runbook_id": "RB-VP-PAYMENT-OUTAGE",
+  "title": "Payment Gateway Outage Response",
+  "client": "VertexPay Financial",
+  "industry": "Financial Services",
+  "account_id": "ACC-1002",
+  "severity": "P1",
+  "description": "Payment processing system outage affecting transaction processing",
+  "affected_systems": [
+    "Payment Gateway",
+    "Transaction Processing Platform"
+  ],
+  "services": [
+    "Cloud Infrastructure",
+    "Database Operations",
+    "Application Support"
+  ],
+  "triggers": [
+    "Complete payment processing failure",
+    "Transaction timeout errors",
+    "Payment gateway connectivity issues",
+    "Widespread transaction failures"
+  ],
+  "immediate_actions": [
+    "Declare P1 incident and activate incident commander",
+    "Notify VertexPay SRE Leadership immediately",
+    "Assess impact on transaction processing volume",
+    "Activate payment processing failover if available"
+  ],
+  "investigation_steps": [
+    "Check payment gateway service status",
+    "Review transaction processing logs",
+    "Verify database connectivity and performance",
+    "Check with payment network partners"
+  ],
+  "resolution_steps": [
+    "Restart payment processing services following vendor procedures",
+    "Implement transaction queue processing if backlog exists",
+    "Coordinate with payment network partners for any issues",
+    "Apply database fixes or restart if needed"
+  ],
+  "verification": [
+    "Test payment processing with test transactions",
+    "Verify transaction processing rates return to normal",
+    "Confirm payment gateway connectivity",
+    "Check transaction success rates"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Michael Torres",
+    "Customer IT Owner: Priya Shah",
+    "Escalation Group: VertexPay SRE Leadership"
+  ],
+  "special_considerations": [
+    "All suspected payment-data security incidents require immediate escalation",
+    "Do not modify transaction databases without approval from the VertexPay DBA team",
+    "Coordinate with compliance team for regulatory requirements",
+    "Maintain audit trail during incident resolution"
+  ],
+  "estimated_resolution_time": "2 hours",
+  "last_updated": "2026-02-01"
+}

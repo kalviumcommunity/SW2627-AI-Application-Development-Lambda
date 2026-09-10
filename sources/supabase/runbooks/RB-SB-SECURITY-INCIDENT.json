@@ -1,0 +1,60 @@
+{
+  "runbook_id": "RB-SB-SECURITY-INCIDENT",
+  "title": "Security Incident Response",
+  "client": "Summit Biotech",
+  "industry": "Biotechnology",
+  "account_id": "ACC-1010",
+  "severity": "P1",
+  "description": "Security incidents affecting research systems and regulated data",
+  "affected_systems": [
+    "Research Data Platform",
+    "Identity Provider"
+  ],
+  "services": [
+    "Security Monitoring",
+    "Identity Management"
+  ],
+  "triggers": [
+    "Confirmed security incident affecting research data",
+    "Unauthorized access to research systems",
+    "Data breach indicators",
+    "Security control failures"
+  ],
+  "immediate_actions": [
+    "Activate security incident response team immediately",
+    "Notify Summit Security Operations team",
+    "Isolate affected systems to prevent further damage",
+    "Preserve forensic evidence"
+  ],
+  "investigation_steps": [
+    "Review security logs and alerts",
+    "Identify scope and impact of security incident",
+    "Analyze attacker methods and access points",
+    "Assess data exposure and regulatory impact"
+  ],
+  "resolution_steps": [
+    "Contain security incident and prevent further access",
+    "Implement security patches and configuration changes",
+    "Restore systems from clean backups if needed",
+    "Coordinate with regulatory bodies if data breach confirmed"
+  ],
+  "verification": [
+    "Verify that security incident is contained",
+    "Confirm that attacker access is eliminated",
+    "Test security controls are functioning properly",
+    "Validate system integrity and data safety"
+  ],
+  "escalation_contacts": [
+    "Service Manager: Laura Bennett",
+    "Customer IT Owner: Kevin Moore",
+    "Escalation Group: Summit Security Operations"
+  ],
+  "special_considerations": [
+    "Suspected data exposure must immediately involve the security team",
+    "Loss of access to research systems or confirmed security incident affecting regulated data is P1",
+    "Regulatory compliance requirements may apply",
+    "Document all incident response activities for regulatory reporting"
+  ],
+  "estimated_resolution_time": "4-24 hours (incident dependent)",
+  "last_updated": "2026-02-01"
+}
