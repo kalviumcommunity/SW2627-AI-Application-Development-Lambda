@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ runbook.title }} | LambdaITSM Wiki</title>
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <a href="/runbooks" class="back-link">
+            ← Back to Runbooks
+        </a>
+        <h1>{{ runbook.title }}</h1>
+        <p>
+            {{ runbook.description }}
+        </p>
+    </header>
+    <section class="runbook-meta">
+
+        <div class="meta-item">
+            <span class="meta-label">Runbook ID</span>
+            <span>{{ runbook.runbook_id }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Client</span>
+            <span>{{ runbook.client }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Industry</span>
+            <span>{{ runbook.industry }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Account</span>
+            <span>{{ runbook.account_id }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Severity</span>
+            <span class="severity severity-{{ runbook.severity|lower }}">
+                {{ runbook.severity }}
+            </span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Estimated Resolution</span>
+            <span>{{ runbook.estimated_resolution_time }}</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Last Updated</span>
+            <span>{{ runbook.last_updated }}</span>
+        </div>
+
+    </section>
+    <section class="runbook-section">
+
+        <h2>Affected Systems</h2>
+
+        <ul>
+            {% for system in runbook.affected_systems %}
+                <li>{{ system }}</li>
+            {% endfor %}
+        </ul>
+
+    </section>
+    <section class="runbook-section">
+
+        <h2>Services</h2>
+
+        <div class="tag-list">
+            {% for service in runbook.services %}
+                <span class="tag">{{ service }}</span>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="runbook-section">
+        <h2>Triggers</h2>
+        <ul>
+            {% for trigger in runbook.triggers %}
+                <li>{{ trigger }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="runbook-section">
+        <h2>Immediate Actions</h2>
+        <ol>
+            {% for action in runbook.immediate_actions %}
+                <li>{{ action }}</li>
+            {% endfor %}
+        </ol>
+    </section>
+    <section class="runbook-section">
+        <h2>Investigation Steps</h2>
+        <ol>
+            {% for step in runbook.investigation_steps %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+
+    </section>
+    <section class="runbook-section">
+
+        <h2>Resolution Steps</h2>
+
+        <ol>
+            {% for step in runbook.resolution_steps %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+    </section>
+    <section class="runbook-section">
+        <h2>Verification</h2>
+        <ul>
+            {% for item in runbook.verification %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+    </section>
+    <section class="runbook-section">
+        <h2>Escalation Contacts</h2>
+        <ul>
+            {% for contact in runbook.escalation_contacts %}
+                <li>{{ contact }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="runbook-section warning-section">
+        <h2>Special Considerations</h2>
+        <ul>
+            {% for consideration in runbook.special_considerations %}
+                <li>{{ consideration }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
