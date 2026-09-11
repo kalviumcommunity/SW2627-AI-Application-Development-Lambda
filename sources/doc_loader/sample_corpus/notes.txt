@@ -1,0 +1,6 @@
+Quarterly retrieval pipeline notes.
+
+The intake step normalizes every document to plain text before anything
+gets embedded or indexed. This keeps the downstream chunking logic simple
+because it never has to know whether a document originally came from a
+PDF, a web page, or a markdown file.
