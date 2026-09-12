@@ -1,0 +1,26 @@
+CONFIDENTIAL - INTERNAL DRAFT
+Quarterly   Retrieval    Report
+
+
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users donâ€™t need to reformat anything by hand; the loader handles it.
+
+
+
+
+Page 1 of 3
+CONFIDENTIAL - INTERNAL DRAFTSection 2: Cleaning Rules
+Cleaning removes noise    while    keeping   numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+
+Page 2 of 3
+CONFIDENTIAL - INTERNAL DRAFT
+Section 3: Summary
+This closes the report with a final note about ownersâ€™ responsibilities.
+
+
+
+Page 3 of 3
