@@ -1,0 +1,89 @@
+{
+  "source_documents_found": 8,
+  "documents_ingested": 6,
+  "documents_failed": 2,
+  "failures": [
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\broken.pdf",
+      "reason": "Stream has ended unexpectedly"
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\data.csv",
+      "reason": "unsupported file format: .csv"
+    }
+  ],
+  "total_chunks": 17,
+  "reconciled": true,
+  "sample_chunks": [
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 0,
+      "end_char": 446,
+      "text": "Retrieval System Design Notes\n\nThis report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing."
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#11",
+      "chunk_index": 11,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 3572,
+      "end_char": 3822,
+      "text": "Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long."
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\noisy.txt",
+      "chunk_id": "noisy.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Quarterly Retrieval Report",
+      "start_char": 0,
+      "end_char": 435,
+      "text": "Quarterly Retrieval Report\n\nSection 1: Overview\nThe pipeline ingests documents and normalizes them before indexing.\nUsers don’t need to reformat anything by hand; the loader handles it.\n\nSection 2: Cleaning Rules\nCleaning removes noise while keeping numbers like 42 and 3.14 intact.\nHeadings such as Section 2 must survive cleaning unchanged.\n\nSection 3: Summary\nThis closes the report with a final note about owners’ responsibilities."
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\notes.txt",
+      "chunk_id": "notes.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": null,
+      "start_char": 0,
+      "end_char": 290,
+      "text": "Quarterly retrieval pipeline notes.\n\nThe intake step normalizes every document to plain text before anything\ngets embedded or indexed. This keeps the downstream chunking logic simple\nbecause it never has to know whether a document originally came from a\nPDF, a web page, or a markdown file."
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\page.html",
+      "chunk_id": "page.html#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": null,
+      "start_char": 0,
+      "end_char": 223,
+      "text": "Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage\nbefore they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed"
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\readme.md",
+      "chunk_id": "readme.md#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Sample Corpus",
+      "start_char": 0,
+      "end_char": 277,
+      "text": "# Sample Corpus\n\nThis folder holds a handful of small documents used to exercise the\ndocument loader end-to-end.\n\n## Contents\n\n- A plain text file\n- This markdown file\n- An HTML page\n- A small PDF report\n\nEach file is short on purpose so the printed text samples stay readable."
+    },
+    {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\report.pdf",
+      "chunk_id": "report.pdf#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Retrieval Pipeline Status Report",
+      "start_char": 0,
+      "end_char": 152,
+      "text": "Retrieval Pipeline Status Report\nThis report summarizes ingestion coverage across formats.\nPDF extraction is verified using pypdf in this sample corpus."
+    }
+  ]
+}
