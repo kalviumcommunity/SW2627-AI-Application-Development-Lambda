@@ -1,0 +1,342 @@
+[
+  {
+    "text": "Retrieval System Design Notes\n\nThis report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 0,
+      "end_char": 446
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.00864,
+      0.08381,
+      -0.15145,
+      -0.0587,
+      0.04083
+    ]
+  },
+  {
+    "text": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#1",
+      "chunk_index": 1,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 448,
+      "end_char": 894
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.00501,
+      0.00313,
+      -0.17509,
+      -0.09001,
+      0.02315
+    ]
+  },
+  {
+    "text": "The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#2",
+      "chunk_index": 2,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 896,
+      "end_char": 1366
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.05445,
+      -0.01331,
+      -0.17629,
+      -0.05714,
+      0.02238
+    ]
+  },
+  {
+    "text": "Runs of blank lines and repeated spaces are also collapsed down to a single blank line or a single space, which keeps chunk boundaries from landing on meaningless whitespace.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#3",
+      "chunk_index": 3,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 1367,
+      "end_char": 1541
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.05772,
+      0.04355,
+      -0.16837,
+      -0.08096,
+      0.06685
+    ]
+  },
+  {
+    "text": "The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#4",
+      "chunk_index": 4,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 1543,
+      "end_char": 1978
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.06839,
+      0.01922,
+      -0.16834,
+      -0.08794,
+      0.01229
+    ]
+  },
+  {
+    "text": "The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#5",
+      "chunk_index": 5,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 1979,
+      "end_char": 2224
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.06518,
+      0.05699,
+      -0.1428,
+      -0.05538,
+      0.01569
+    ]
+  },
+  {
+    "text": "Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#6",
+      "chunk_index": 6,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 2226,
+      "end_char": 2483
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.07158,
+      0.07623,
+      -0.12766,
+      -0.11434,
+      -0.01086
+    ]
+  },
+  {
+    "text": "Its weakness is that the cut points are arbitrary with respect to meaning, so a chunk can start or end mid-sentence, which can hurt both the quality of the embedding for that chunk and the readability of the snippet shown back to a user during retrieval.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#7",
+      "chunk_index": 7,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 2484,
+      "end_char": 2738
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.02481,
+      0.05778,
+      -0.13347,
+      -0.09398,
+      0.07558
+    ]
+  },
+  {
+    "text": "Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#8",
+      "chunk_index": 8,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 2740,
+      "end_char": 2993
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.04152,
+      0.06507,
+      -0.12686,
+      -0.10711,
+      0.01514
+    ]
+  },
+  {
+    "text": "Its weakness is that paragraph lengths vary a lot between documents and even within a single document, so the resulting chunk sizes are less uniform, and a document with no paragraph breaks at all degrades toward one enormous chunk unless the sentence-level fallback kicks in.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#9",
+      "chunk_index": 9,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 2994,
+      "end_char": 3270
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.06816,
+      0.07691,
+      -0.13855,
+      -0.06798,
+      0.04054
+    ]
+  },
+  {
+    "text": "For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#10",
+      "chunk_index": 10,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 3272,
+      "end_char": 3571
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.05828,
+      0.08195,
+      -0.14307,
+      -0.10239,
+      0.00908
+    ]
+  },
+  {
+    "text": "Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_id": "long_report.txt#11",
+      "chunk_index": 11,
+      "total_chunks": 12,
+      "section": "Retrieval System Design Notes",
+      "start_char": 3572,
+      "end_char": 3822
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.08767,
+      0.07044,
+      -0.12822,
+      -0.0937,
+      -0.02968
+    ]
+  },
+  {
+    "text": "Quarterly Retrieval Report\n\nSection 1: Overview\nThe pipeline ingests documents and normalizes them before indexing.\nUsers don’t need to reformat anything by hand; the loader handles it.\n\nSection 2: Cleaning Rules\nCleaning removes noise while keeping numbers like 42 and 3.14 intact.\nHeadings such as Section 2 must survive cleaning unchanged.\n\nSection 3: Summary\nThis closes the report with a final note about owners’ responsibilities.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\noisy.txt",
+      "chunk_id": "noisy.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Quarterly Retrieval Report",
+      "start_char": 0,
+      "end_char": 435
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.03919,
+      0.03112,
+      -0.16923,
+      -0.06283,
+      0.01256
+    ]
+  },
+  {
+    "text": "Quarterly retrieval pipeline notes.\n\nThe intake step normalizes every document to plain text before anything\ngets embedded or indexed. This keeps the downstream chunking logic simple\nbecause it never has to know whether a document originally came from a\nPDF, a web page, or a markdown file.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\notes.txt",
+      "chunk_id": "notes.txt#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": null,
+      "start_char": 0,
+      "end_char": 290
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.03681,
+      0.01283,
+      -0.17926,
+      -0.04994,
+      0.01371
+    ]
+  },
+  {
+    "text": "Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage\nbefore they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\page.html",
+      "chunk_id": "page.html#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": null,
+      "start_char": 0,
+      "end_char": 223
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      -0.01591,
+      0.05435,
+      -0.15553,
+      -0.05425,
+      0.03545
+    ]
+  },
+  {
+    "text": "# Sample Corpus\n\nThis folder holds a handful of small documents used to exercise the\ndocument loader end-to-end.\n\n## Contents\n\n- A plain text file\n- This markdown file\n- An HTML page\n- A small PDF report\n\nEach file is short on purpose so the printed text samples stay readable.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\readme.md",
+      "chunk_id": "readme.md#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Sample Corpus",
+      "start_char": 0,
+      "end_char": 277
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.01429,
+      0.0349,
+      -0.16269,
+      -0.12656,
+      -0.00484
+    ]
+  },
+  {
+    "text": "Retrieval Pipeline Status Report\nThis report summarizes ingestion coverage across formats.\nPDF extraction is verified using pypdf in this sample corpus.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\report.pdf",
+      "chunk_id": "report.pdf#0",
+      "chunk_index": 0,
+      "total_chunks": 1,
+      "section": "Retrieval Pipeline Status Report",
+      "start_char": 0,
+      "end_char": 152
+    },
+    "vector_dimension": 768,
+    "vector_preview": [
+      0.01497,
+      0.0383,
+      -0.17989,
+      -0.04508,
+      0.05252
+    ]
+  }
+]
