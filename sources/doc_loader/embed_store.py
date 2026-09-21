@@ -38,6 +38,31 @@ VECTOR_PREVIEW_LENGTH = 5
 REQUIRED_ENV_VARS = ("EMBEDDING_BASE_URL", "EMBEDDING_API_KEY", "EMBEDDING_MODEL")
 
 
+class EmbeddingRequestError(RuntimeError):
+    """
+    Raised when an embedding request fails.
+
+    The "retryable" attribute is True when the failure is transient
+    (connection problem, timeout, rate limit, or server error) and False
+    when repeating the same request would not help.
+    """
+
+    def __init__(self, message, retryable):
+        """
+        Create the error.
+
+        Args:
+            message (str): Human-readable description of the failure.
+            retryable (bool): True if the failure is transient and the
+                request is worth retrying.
+
+        Returns:
+            None
+        """
+        super().__init__(message)
+        self.retryable = retryable
+
+
 def load_dotenv_file(path):
     """
     Parse a simple KEY=VALUE ".env" file.
@@ -125,22 +150,29 @@ def embed_texts(texts, base_url, api_key, model_name):
             same order as texts.
 
     Raises:
-        RuntimeError: If the backend returns a non-200 response or a
-            response body that cannot be parsed into embeddings.
+        EmbeddingRequestError: If the backend cannot be reached, returns
+            a non-200 response, or returns a body that cannot be parsed
+            into embeddings. The error's "retryable" attribute is True
+            for connection failures, timeouts, HTTP 429, and HTTP 5xx.
     """
-    response = requests.post(
-        "{}/embeddings".format(base_url.rstrip("/")),
-        headers={
-            "Authorization": "Bearer {}".format(api_key),
-            "Content-Type": "application/json",
-        },
-        json={"model": model_name, "input": texts},
-        timeout=60,
-    )
+    try:
+        response = requests.post(
+            "{}/embeddings".format(base_url.rstrip("/")),
+            headers={
+                "Authorization": "Bearer {}".format(api_key),
+                "Content-Type": "application/json",
+            },
+            json={"model": model_name, "input": texts},
+            timeout=60,
+        )
+    except (requests.ConnectionError, requests.Timeout) as error:
+        raise EmbeddingRequestError("embedding backend unreachable: {}".format(error), retryable=True)
 
     if response.status_code != 200:
-        raise RuntimeError(
-            "embedding request failed with status {}: {}".format(response.status_code, response.text)
+        retryable = response.status_code == 429 or response.status_code >= 500
+        raise EmbeddingRequestError(
+            "embedding request failed with status {}: {}".format(response.status_code, response.text),
+            retryable=retryable,
         )
 
     payload = response.json()
