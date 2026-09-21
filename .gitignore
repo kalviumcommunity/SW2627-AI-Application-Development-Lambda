@@ -4,3 +4,7 @@
 **/*.pyc
 
 **/node_modules/
+
+# for googleauth
+**/credentials.json
+**/token.json
