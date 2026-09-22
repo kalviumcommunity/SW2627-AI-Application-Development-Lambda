@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "total": 7,
+    "passed": 5,
+    "failed": 2
+  },
+  "results": [
+    {
+      "query": "What Python libraries are used to extract text from PDF and HTML documents?",
+      "expected_chunk_id": "long_report.txt#1",
+      "expected_rank": 1,
+      "expected_score": 0.6915275918152922,
+      "top_chunk_id": "long_report.txt#1",
+      "top_score": 0.6915275918152922,
+      "unrelated_max_score": 0.6061239596079416,
+      "beats_unrelated": true,
+      "passed": true,
+      "note": null
+    },
+    {
+      "query": "How does the pipeline remove repeated page headers and footers from documents?",
+      "expected_chunk_id": "long_report.txt#2",
+      "expected_rank": 1,
+      "expected_score": 0.6546306755913592,
+      "top_chunk_id": "long_report.txt#2",
+      "top_score": 0.6546306755913592,
+      "unrelated_max_score": 0.5268937999946307,
+      "beats_unrelated": true,
+      "passed": true,
+      "note": null
+    },
+    {
+      "query": "What is the downside of cutting text into fixed-size chunks?",
+      "expected_chunk_id": "long_report.txt#7",
+      "expected_rank": 7,
+      "expected_score": 0.7131716617716447,
+      "top_chunk_id": "long_report.txt#6",
+      "top_score": 0.8339769373112338,
+      "unrelated_max_score": 0.5778476385672359,
+      "beats_unrelated": true,
+      "passed": false,
+      "note": "Chunk #7 opens with the bare pronoun \"Its\" and never restates \"fixed-size chunking\" -- the paragraph-based chunker split that phrase into the previous chunk (#6). Without the subject noun phrase in its own text, chunk #7's embedding has a weaker pull toward this query than chunks that do mention \"fixed-size\" explicitly, even though chunk #6 only describes the benefit, not the downside asked about. This shows sentence-level splitting can strand a pronoun-led sentence away from the topic it depends on."
+    },
+    {
+      "query": "What is the downside of chunking text by paragraph?",
+      "expected_chunk_id": "long_report.txt#9",
+      "expected_rank": 3,
+      "expected_score": 0.7901637482698819,
+      "top_chunk_id": "long_report.txt#8",
+      "top_score": 0.8187438739551551,
+      "unrelated_max_score": 0.5538105997152765,
+      "beats_unrelated": true,
+      "passed": false,
+      "note": "Same pattern as the fixed-size case: chunk #9 also opens with \"Its weakness is...\" with no restated subject, so it is outranked by sibling chunks #8 and #11 that name \"paragraph-based chunking\" or \"fixed-size chunking\" directly."
+    },
+    {
+      "query": "What file formats are included in the sample corpus?",
+      "expected_chunk_id": "readme.md#0",
+      "expected_rank": 1,
+      "expected_score": 0.7747944226000468,
+      "top_chunk_id": "readme.md#0",
+      "top_score": 0.7747944226000468,
+      "unrelated_max_score": 0.6240754472926486,
+      "beats_unrelated": true,
+      "passed": true,
+      "note": null
+    },
+    {
+      "query": "What does the PDF report say about ingestion coverage?",
+      "expected_chunk_id": "report.pdf#0",
+      "expected_rank": 1,
+      "expected_score": 0.7801612673996429,
+      "top_chunk_id": "report.pdf#0",
+      "top_score": 0.7801612673996429,
+      "unrelated_max_score": 0.5486939892812056,
+      "beats_unrelated": true,
+      "passed": true,
+      "note": null
+    },
+    {
+      "query": "Why is paragraph-based chunking recommended for a real corpus of prose documents?",
+      "expected_chunk_id": "long_report.txt#10",
+      "expected_rank": 1,
+      "expected_score": 0.9106503584919394,
+      "top_chunk_id": "long_report.txt#10",
+      "top_score": 0.9106503584919394,
+      "unrelated_max_score": 0.6462821347947536,
+      "beats_unrelated": true,
+      "passed": true,
+      "note": null
+    }
+  ]
+}
