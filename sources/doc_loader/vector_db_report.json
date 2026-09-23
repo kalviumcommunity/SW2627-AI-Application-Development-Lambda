@@ -1,0 +1,21 @@
+{
+  "collection": {
+    "name": "corpus_chunks",
+    "dimension": 768,
+    "distance_metric": "cosine",
+    "record_count": 1
+  },
+  "readback": {
+    "id": "long_report.txt#0",
+    "vector_length": 768,
+    "text": "Retrieval System Design Notes\n\nThis report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.",
+    "metadata": {
+      "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+      "chunk_index": 0,
+      "end_char": 446,
+      "start_char": 0,
+      "section": "Retrieval System Design Notes",
+      "total_chunks": 12
+    }
+  }
+}
