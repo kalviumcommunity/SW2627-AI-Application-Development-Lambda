@@ -1,0 +1,36 @@
+2026-09-24 09:48:18,281 INFO OUTGOING POST http://localhost:9/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:48:18,282 INFO   system: Reply with one word.
+2026-09-24 09:48:18,283 INFO   user: Hello?
+2026-09-24 09:48:22,437 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=no-such-model, key=****lder)
+2026-09-24 09:48:22,438 INFO   system: Reply with one word.
+2026-09-24 09:48:22,438 INFO   user: Hello?
+2026-09-24 09:48:24,492 INFO INCOMING HTTP 404
+2026-09-24 09:48:24,494 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:48:24,495 INFO   system: Reply with one word.
+2026-09-24 09:48:24,495 INFO   user: Hello?
+2026-09-24 09:48:24,497 INFO INCOMING HTTP 401
+2026-09-24 09:48:24,498 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:48:24,500 INFO   system: Reply with one word.
+2026-09-24 09:48:24,500 INFO   user: Hello?
+2026-09-24 09:48:24,501 INFO INCOMING HTTP 429
+2026-09-24 09:48:24,502 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:48:24,503 INFO   system: You are a concise assistant for a document retrieval project. Answer in two sentences or fewer.
+2026-09-24 09:48:24,503 INFO   user: In plain terms, why does a retrieval pipeline split documents into chunks before embedding them?
+2026-09-24 09:48:31,379 INFO INCOMING HTTP 200
+2026-09-24 09:48:31,380 INFO   assistant: A retrieval pipeline splits documents into chunks to enable more efficient processing and ensure that small chunks do not disrupt the embedding process. This allows for smaller, manageable pieces of information to be processed, thus benefiting from optimized computation.
+2026-09-24 09:48:31,381 INFO   usage: {"prompt_tokens": 48, "prompt_tokens_details": {"cached_tokens": 3}, "completion_tokens": 44, "total_tokens": 92}
+2026-09-24 09:48:31,382 DEBUG   raw response: {"id": "chatcmpl-723", "object": "chat.completion", "created": 1790223511, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A retrieval pipeline splits documents into chunks to enable more efficient processing and ensure that small chunks do not disrupt the embedding process. This allows for smaller, manageable pieces of information to be processed, thus benefiting from optimized computation."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 48, "prompt_tokens_details": {"cached_tokens": 3}, "completion_tokens": 44, "total_tokens": 92}}
+2026-09-24 09:48:51,572 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=no-such-model, key=****lder)
+2026-09-24 09:48:51,572 INFO   system: You are a concise assistant for a document retrieval project. Answer in two sentences or fewer.
+2026-09-24 09:48:51,573 INFO   user: In plain terms, why does a retrieval pipeline split documents into chunks before embedding them?
+2026-09-24 09:48:53,643 INFO INCOMING HTTP 404
+2026-09-24 09:48:54,778 INFO OUTGOING POST http://localhost:9/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:48:54,778 INFO   system: You are a concise assistant for a document retrieval project. Answer in two sentences or fewer.
+2026-09-24 09:48:54,778 INFO   user: In plain terms, why does a retrieval pipeline split documents into chunks before embedding them?
+2026-09-24 09:49:00,143 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder)
+2026-09-24 09:49:00,143 INFO   system: You are a concise assistant for a document retrieval project. Answer in two sentences or fewer.
+2026-09-24 09:49:00,144 INFO   user: In plain terms, why does a retrieval pipeline split documents into chunks before embedding them?
+2026-09-24 09:49:04,940 INFO INCOMING HTTP 200
+2026-09-24 09:49:04,941 INFO   assistant: A retrieval pipeline typically splits documents intochunks before embedding them because it allows for better handling of variable-sized documents and reduces computational overhead by working with smaller chunks that can be processed faster.
+2026-09-24 09:49:04,941 INFO   usage: {"prompt_tokens": 48, "prompt_tokens_details": {"cached_tokens": 47}, "completion_tokens": 37, "total_tokens": 85}
+2026-09-24 09:49:04,942 DEBUG   raw response: {"id": "chatcmpl-655", "object": "chat.completion", "created": 1790223544, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A retrieval pipeline typically splits documents intochunks before embedding them because it allows for better handling of variable-sized documents and reduces computational overhead by working with smaller chunks that can be processed faster."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 48, "prompt_tokens_details": {"cached_tokens": 47}, "completion_tokens": 37, "total_tokens": 85}}
