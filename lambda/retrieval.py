@@ -8,9 +8,14 @@
 # llm will use info found in these chunks to form a proper answer to the user's question
 
 from supabase import create_client
-from ingestion.embedder import generate_embedding
+import sys
 import os
+from pathlib import Path
 from dotenv import load_dotenv
+
+# Add parent directory to path to import ingestion module
+sys.path.append(str(Path(__file__).parent.parent))
+from ingestion.embedder import generate_embedding
 
 load_dotenv()
 
