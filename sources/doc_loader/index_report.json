@@ -1,0 +1,59 @@
+{
+  "collection": {
+    "name": "corpus_chunks",
+    "dimension": 768,
+    "distance_metric": "cosine"
+  },
+  "records_stored": 17,
+  "count_validation": {
+    "collection_count": 17,
+    "chunk_count": 17,
+    "counts_match": true,
+    "missing_ids": [],
+    "extra_ids": [],
+    "ids_match": true
+  },
+  "failures": [],
+  "spot_checks": [
+    {
+      "chunk_id": "long_report.txt#6",
+      "found": true,
+      "id_match": true,
+      "text_match": true,
+      "metadata_match": true,
+      "vector_length_match": true,
+      "vector_values_match": true,
+      "vector_length": 768,
+      "stored_metadata": {
+        "section": "Retrieval System Design Notes",
+        "total_chunks": 12,
+        "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\long_report.txt",
+        "start_char": 2226,
+        "chunk_index": 6,
+        "end_char": 2483
+      },
+      "mismatched_metadata_fields": [],
+      "passed": true
+    },
+    {
+      "chunk_id": "noisy.txt#0",
+      "found": true,
+      "id_match": true,
+      "text_match": true,
+      "metadata_match": true,
+      "vector_length_match": true,
+      "vector_values_match": true,
+      "vector_length": 768,
+      "stored_metadata": {
+        "source": "D:\\SW2627-AI-Application-Development-Lambda\\sources\\doc_loader\\sample_corpus\\noisy.txt",
+        "total_chunks": 1,
+        "start_char": 0,
+        "end_char": 435,
+        "chunk_index": 0,
+        "section": "Quarterly Retrieval Report"
+      },
+      "mismatched_metadata_fields": [],
+      "passed": true
+    }
+  ]
+}
