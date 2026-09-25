@@ -1,0 +1,4 @@
+# One question per line; lines starting with "#" are skipped.
+What file formats does the loading stage read?
+Why is paragraph-based chunking recommended for prose documents?
+Which company funds this project?

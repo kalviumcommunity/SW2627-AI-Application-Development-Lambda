@@ -1,0 +1,5 @@
+# How one retrieved chunk is written into {context} of other templates.
+# Placeholders: {chunk_id}, {section}, {text}
+[user]
+[{chunk_id}] (section: {section})
+{text}
