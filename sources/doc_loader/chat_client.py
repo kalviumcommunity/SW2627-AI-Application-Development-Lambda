@@ -201,7 +201,7 @@ def raise_for_failure(response, config):
     raise ChatError("backend_error", "Backend returned HTTP {}: {}".format(status, detail))
 
 
-def send_chat_completion(messages, config, logger, post_fn=requests.post):
+def send_chat_completion(messages, config, logger, post_fn=requests.post, options=None):
     """
     Send one chat completion request and return the model's reply.
 
@@ -215,6 +215,8 @@ def send_chat_completion(messages, config, logger, post_fn=requests.post):
         post_fn (callable): Function used to send the HTTP POST, with
             the same signature as requests.post; replaceable for
             testing.
+        options (dict or None): Extra request fields merged into the
+            payload, such as "temperature" or "seed".
 
     Returns:
         dict: "reply" (str), "model" (str, as reported by the backend),
@@ -226,9 +228,10 @@ def send_chat_completion(messages, config, logger, post_fn=requests.post):
             or returns a body without a reply.
     """
     url = "{}/chat/completions".format(config["base_url"].rstrip("/"))
-    payload = {"model": config["model_name"], "messages": messages}
+    payload = dict(options or {}, model=config["model_name"], messages=messages)
 
-    logger.info("OUTGOING POST %s (model=%s, key=%s)", url, config["model_name"], mask_key(config["api_key"]))
+    logger.info("OUTGOING POST %s (model=%s, key=%s, options=%s)", url, config["model_name"],
+                mask_key(config["api_key"]), options or {})
     for message in messages:
         logger.info("  %s: %s", message["role"], message["content"])
 
