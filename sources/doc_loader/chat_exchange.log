@@ -1945,3 +1945,1358 @@ Summary of the earlier conversation: To remove repeated page footers before chun
 2026-09-25 10:30:22,416 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
 2026-09-25 10:30:22,416 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
 2026-09-25 10:30:22,417 DEBUG   raw response: {"id": "chatcmpl-47", "object": "chat.completion", "created": 1790312422, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:37:48,462 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:37:48,462 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:37:48,462 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:38:05,073 INFO INCOMING HTTP 200
+2026-09-25 10:38:05,074 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:38:05,074 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 3}, "completion_tokens": 43, "total_tokens": 469}
+2026-09-25 10:38:05,075 DEBUG   raw response: {"id": "chatcmpl-880", "object": "chat.completion", "created": 1790312885, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 3}, "completion_tokens": 43, "total_tokens": 469}}
+2026-09-25 10:38:05,076 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:38:05,076 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:05,077 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: Which company funds this project?
+2026-09-25 10:38:10,769 INFO INCOMING HTTP 200
+2026-09-25 10:38:10,769 INFO   assistant: {
+  "answer": "The provided context does not say.",
+  "source": "none",
+  "found": false
+}
+2026-09-25 10:38:10,769 INFO   usage: {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}
+2026-09-25 10:38:10,770 DEBUG   raw response: {"id": "chatcmpl-829", "object": "chat.completion", "created": 1790312890, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The provided context does not say.\",\n  \"source\": \"none\",\n  \"found\": false\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}}
+2026-09-25 10:38:10,771 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:38:10,771 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:10,771 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What does the cleaning stage remove?
+2026-09-25 10:38:20,755 INFO INCOMING HTTP 200
+2026-09-25 10:38:20,756 INFO   assistant: ```json
+{
+  "answer": "The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.",
+  "source": "long_report.txt#2",
+  "found": true
+}
+```
+2026-09-25 10:38:20,756 INFO   usage: {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}
+2026-09-25 10:38:20,756 DEBUG   raw response: {"id": "chatcmpl-846", "object": "chat.completion", "created": 1790312900, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "```json\n{\n  \"answer\": \"The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.\",\n  \"source\": \"long_report.txt#2\",\n  \"found\": true\n}\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}}
+2026-09-25 10:38:20,759 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 12, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:38:20,759 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:20,763 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:38:24,968 INFO INCOMING HTTP 200
+2026-09-25 10:38:24,969 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:38:24,969 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}
+2026-09-25 10:38:24,969 DEBUG   raw response: {"id": "chatcmpl-154", "object": "chat.completion", "created": 1790312904, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF,"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}}
+2026-09-25 10:38:24,970 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:38:24,971 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:24,971 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:38:24,971 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:38:24,971 INFO   user: Your reply could not be used: invalid JSON: Unterminated string starting at (line 2, column 13). Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:38:36,903 INFO INCOMING HTTP 200
+2026-09-25 10:38:36,904 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:38:36,904 INFO   usage: {"prompt_tokens": 486, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 598}
+2026-09-25 10:38:36,904 DEBUG   raw response: {"id": "chatcmpl-679", "object": "chat.completion", "created": 1790312916, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 486, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 598}}
+2026-09-25 10:38:36,906 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:38:36,907 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:36,907 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:38:36,908 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files."}
+2026-09-25 10:38:36,908 INFO   user: Your reply could not be used: missing required field "source"; missing required field "found". Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:38:43,662 INFO INCOMING HTTP 200
+2026-09-25 10:38:43,662 INFO   assistant: {"answer": "The provided context does not say.", "source": "none", "found": false}
+2026-09-25 10:38:43,662 INFO   usage: {"prompt_tokens": 486, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 23, "total_tokens": 509}
+2026-09-25 10:38:43,663 DEBUG   raw response: {"id": "chatcmpl-10", "object": "chat.completion", "created": 1790312923, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"The provided context does not say.\", \"source\": \"none\", \"found\": false}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 486, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 23, "total_tokens": 509}}
+2026-09-25 10:38:43,665 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:38:43,666 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:38:43,666 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:38:43,666 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:38:43,675 INFO   user: Your reply could not be used: field "source" is "secret_notes.txt#4", not one of the supplied chunk ids or "none". Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:38:51,745 INFO INCOMING HTTP 200
+2026-09-25 10:38:51,745 INFO   assistant: {"answer": "The loading stage reads PDF and HTML files from a folder and converts each one into a single plain-text string.", "source": "long_report.txt#1", "found": true}
+2026-09-25 10:38:51,746 INFO   usage: {"prompt_tokens": 502, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 42, "total_tokens": 544}
+2026-09-25 10:38:51,746 DEBUG   raw response: {"id": "chatcmpl-586", "object": "chat.completion", "created": 1790312931, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"The loading stage reads PDF and HTML files from a folder and converts each one into a single plain-text string.\", \"source\": \"long_report.txt#1\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 502, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 42, "total_tokens": 544}}
+2026-09-25 10:39:16,335 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:39:16,336 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:16,336 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:39:22,839 INFO INCOMING HTTP 200
+2026-09-25 10:39:22,840 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:39:22,840 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}
+2026-09-25 10:39:22,841 DEBUG   raw response: {"id": "chatcmpl-499", "object": "chat.completion", "created": 1790312962, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}}
+2026-09-25 10:39:22,846 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:39:22,846 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:22,847 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: Which company funds this project?
+2026-09-25 10:39:28,172 INFO INCOMING HTTP 200
+2026-09-25 10:39:28,173 INFO   assistant: {
+  "answer": "The provided context does not say.",
+  "source": "none",
+  "found": false
+}
+2026-09-25 10:39:28,173 INFO   usage: {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}
+2026-09-25 10:39:28,174 DEBUG   raw response: {"id": "chatcmpl-995", "object": "chat.completion", "created": 1790312968, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The provided context does not say.\",\n  \"source\": \"none\",\n  \"found\": false\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}}
+2026-09-25 10:39:28,175 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:39:28,175 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:28,178 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What does the cleaning stage remove?
+2026-09-25 10:39:36,463 INFO INCOMING HTTP 200
+2026-09-25 10:39:36,463 INFO   assistant: ```json
+{
+  "answer": "The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.",
+  "source": "long_report.txt#2",
+  "found": true
+}
+```
+2026-09-25 10:39:36,463 INFO   usage: {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}
+2026-09-25 10:39:36,464 DEBUG   raw response: {"id": "chatcmpl-820", "object": "chat.completion", "created": 1790312976, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "```json\n{\n  \"answer\": \"The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.\",\n  \"source\": \"long_report.txt#2\",\n  \"found\": true\n}\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}}
+2026-09-25 10:39:36,466 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 12, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:39:36,466 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:36,467 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:39:40,179 INFO INCOMING HTTP 200
+2026-09-25 10:39:40,180 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:39:40,180 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}
+2026-09-25 10:39:40,180 DEBUG   raw response: {"id": "chatcmpl-138", "object": "chat.completion", "created": 1790312980, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF,"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}}
+2026-09-25 10:39:40,181 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:39:40,181 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:40,181 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:39:40,182 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:39:40,182 INFO   user: Your reply could not be used: invalid JSON: Unterminated string starting at (line 2, column 13). Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:39:53,414 INFO INCOMING HTTP 200
+2026-09-25 10:39:53,415 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:39:53,415 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}
+2026-09-25 10:39:53,415 DEBUG   raw response: {"id": "chatcmpl-795", "object": "chat.completion", "created": 1790312993, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}}
+2026-09-25 10:39:53,417 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:39:53,417 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:39:53,417 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:39:53,418 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files."}
+2026-09-25 10:39:53,418 INFO   user: Your reply could not be used: missing required field "source"; missing required field "found". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:40:00,366 INFO INCOMING HTTP 200
+2026-09-25 10:40:00,366 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files.", "source": "long_report.txt#1", "found": true}
+2026-09-25 10:40:00,367 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}
+2026-09-25 10:40:00,367 DEBUG   raw response: {"id": "chatcmpl-533", "object": "chat.completion", "created": 1790313000, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"It reads PDF, plain text, Markdown, and HTML files.\", \"source\": \"long_report.txt#1\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}}
+2026-09-25 10:40:00,369 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:00,369 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:00,369 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:40:00,369 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:40:00,370 INFO   user: Your reply could not be used: field "source" is "secret_notes.txt#4", not one of the supplied chunk ids or "none". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:40:07,338 INFO INCOMING HTTP 200
+2026-09-25 10:40:07,339 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:40:07,339 INFO   usage: {"prompt_tokens": 529, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 553}
+2026-09-25 10:40:07,340 DEBUG   raw response: {"id": "chatcmpl-377", "object": "chat.completion", "created": 1790313007, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"PDF and HTML.\", \"source\": \"secret_notes.txt#4\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 529, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 553}}
+2026-09-25 10:40:17,737 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:17,737 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:17,738 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:40:23,144 INFO INCOMING HTTP 200
+2026-09-25 10:40:23,144 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:40:23,145 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}
+2026-09-25 10:40:23,145 DEBUG   raw response: {"id": "chatcmpl-107", "object": "chat.completion", "created": 1790313023, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}}
+2026-09-25 10:40:23,146 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:23,147 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:23,147 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: Which company funds this project?
+2026-09-25 10:40:27,448 INFO INCOMING HTTP 200
+2026-09-25 10:40:27,449 INFO   assistant: {
+  "answer": "The provided context does not say.",
+  "source": "none",
+  "found": false
+}
+2026-09-25 10:40:27,449 INFO   usage: {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}
+2026-09-25 10:40:27,449 DEBUG   raw response: {"id": "chatcmpl-182", "object": "chat.completion", "created": 1790313027, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The provided context does not say.\",\n  \"source\": \"none\",\n  \"found\": false\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}}
+2026-09-25 10:40:27,450 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:40:27,451 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:27,451 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What does the cleaning stage remove?
+2026-09-25 10:40:34,311 INFO INCOMING HTTP 200
+2026-09-25 10:40:34,312 INFO   assistant: ```json
+{
+  "answer": "The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.",
+  "source": "long_report.txt#2",
+  "found": true
+}
+```
+2026-09-25 10:40:34,312 INFO   usage: {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}
+2026-09-25 10:40:34,312 DEBUG   raw response: {"id": "chatcmpl-215", "object": "chat.completion", "created": 1790313034, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "```json\n{\n  \"answer\": \"The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.\",\n  \"source\": \"long_report.txt#2\",\n  \"found\": true\n}\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}}
+2026-09-25 10:40:34,321 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 12, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:34,327 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:34,328 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:40:38,035 INFO INCOMING HTTP 200
+2026-09-25 10:40:38,036 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:40:38,036 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}
+2026-09-25 10:40:38,036 DEBUG   raw response: {"id": "chatcmpl-294", "object": "chat.completion", "created": 1790313038, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF,"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}}
+2026-09-25 10:40:38,037 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:38,038 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:38,038 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:40:38,038 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:40:38,038 INFO   user: Your reply could not be used: invalid JSON: Unterminated string starting at (line 2, column 13). Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:40:54,523 INFO INCOMING HTTP 200
+2026-09-25 10:40:54,524 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:40:54,524 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}
+2026-09-25 10:40:54,524 DEBUG   raw response: {"id": "chatcmpl-578", "object": "chat.completion", "created": 1790313054, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}}
+2026-09-25 10:40:54,527 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:40:54,528 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:40:54,528 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:40:54,528 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files."}
+2026-09-25 10:40:54,528 INFO   user: Your reply could not be used: missing required field "source"; missing required field "found". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:41:02,580 INFO INCOMING HTTP 200
+2026-09-25 10:41:02,581 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files.", "source": "long_report.txt#1", "found": true}
+2026-09-25 10:41:02,581 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}
+2026-09-25 10:41:02,581 DEBUG   raw response: {"id": "chatcmpl-637", "object": "chat.completion", "created": 1790313062, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"It reads PDF, plain text, Markdown, and HTML files.\", \"source\": \"long_report.txt#1\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}}
+2026-09-25 10:41:02,583 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:41:02,583 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:41:02,583 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:41:02,583 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:41:02,583 INFO   user: Your reply could not be used: field "source" is "secret_notes.txt#4", not one of the supplied chunk ids or "none". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:41:10,553 INFO INCOMING HTTP 200
+2026-09-25 10:41:10,554 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:41:10,554 INFO   usage: {"prompt_tokens": 529, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 553}
+2026-09-25 10:41:10,554 DEBUG   raw response: {"id": "chatcmpl-971", "object": "chat.completion", "created": 1790313070, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"PDF and HTML.\", \"source\": \"secret_notes.txt#4\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 529, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 553}}
+2026-09-25 10:41:59,097 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:41:59,098 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:41:59,099 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:42:05,086 INFO INCOMING HTTP 200
+2026-09-25 10:42:05,087 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:42:05,087 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}
+2026-09-25 10:42:05,087 DEBUG   raw response: {"id": "chatcmpl-938", "object": "chat.completion", "created": 1790313125, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}}
+2026-09-25 10:42:05,088 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:42:05,089 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:05,089 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: Which company funds this project?
+2026-09-25 10:42:09,395 INFO INCOMING HTTP 200
+2026-09-25 10:42:09,396 INFO   assistant: {
+  "answer": "The provided context does not say.",
+  "source": "none",
+  "found": false
+}
+2026-09-25 10:42:09,396 INFO   usage: {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}
+2026-09-25 10:42:09,396 DEBUG   raw response: {"id": "chatcmpl-514", "object": "chat.completion", "created": 1790313129, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The provided context does not say.\",\n  \"source\": \"none\",\n  \"found\": false\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}}
+2026-09-25 10:42:09,397 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:42:09,397 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:09,398 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What does the cleaning stage remove?
+2026-09-25 10:42:17,222 INFO INCOMING HTTP 200
+2026-09-25 10:42:17,222 INFO   assistant: ```json
+{
+  "answer": "The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.",
+  "source": "long_report.txt#2",
+  "found": true
+}
+```
+2026-09-25 10:42:17,223 INFO   usage: {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}
+2026-09-25 10:42:17,223 DEBUG   raw response: {"id": "chatcmpl-875", "object": "chat.completion", "created": 1790313137, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "```json\n{\n  \"answer\": \"The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.\",\n  \"source\": \"long_report.txt#2\",\n  \"found\": true\n}\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}}
+2026-09-25 10:42:17,227 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 12, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:42:17,227 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:17,228 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:42:20,680 INFO INCOMING HTTP 200
+2026-09-25 10:42:20,681 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:42:20,681 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}
+2026-09-25 10:42:20,681 DEBUG   raw response: {"id": "chatcmpl-620", "object": "chat.completion", "created": 1790313140, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF,"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}}
+2026-09-25 10:42:20,682 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:42:20,682 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:20,683 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:42:20,683 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:42:20,683 INFO   user: Your reply could not be used: invalid JSON: Unterminated string starting at (line 2, column 13). Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:42:35,594 INFO INCOMING HTTP 200
+2026-09-25 10:42:35,594 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:42:35,595 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}
+2026-09-25 10:42:35,595 DEBUG   raw response: {"id": "chatcmpl-560", "object": "chat.completion", "created": 1790313155, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}}
+2026-09-25 10:42:35,597 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:42:35,597 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:35,598 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:42:35,598 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files."}
+2026-09-25 10:42:35,598 INFO   user: Your reply could not be used: missing required field "source"; missing required field "found". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:42:43,136 INFO INCOMING HTTP 200
+2026-09-25 10:42:43,136 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files.", "source": "long_report.txt#1", "found": true}
+2026-09-25 10:42:43,136 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}
+2026-09-25 10:42:43,137 DEBUG   raw response: {"id": "chatcmpl-489", "object": "chat.completion", "created": 1790313163, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"It reads PDF, plain text, Markdown, and HTML files.\", \"source\": \"long_report.txt#1\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}}
+2026-09-25 10:42:43,138 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:42:43,138 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:42:43,139 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:42:43,139 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:42:43,139 INFO   user: Your reply could not be used: field "source" is "secret_notes.txt#4", which was not supplied; it must be one of "long_report.txt#1", "long_report.txt#2", "readme.md#0", "none". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:42:50,598 INFO INCOMING HTTP 200
+2026-09-25 10:42:50,599 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:42:50,599 INFO   usage: {"prompt_tokens": 552, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 576}
+2026-09-25 10:42:50,599 DEBUG   raw response: {"id": "chatcmpl-985", "object": "chat.completion", "created": 1790313170, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"PDF and HTML.\", \"source\": \"secret_notes.txt#4\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 552, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 576}}
+2026-09-25 10:43:01,109 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:01,110 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:01,110 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:43:06,942 INFO INCOMING HTTP 200
+2026-09-25 10:43:06,942 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:43:06,942 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}
+2026-09-25 10:43:06,943 DEBUG   raw response: {"id": "chatcmpl-131", "object": "chat.completion", "created": 1790313186, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 425}, "completion_tokens": 43, "total_tokens": 469}}
+2026-09-25 10:43:06,944 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:06,944 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:06,945 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: Which company funds this project?
+2026-09-25 10:43:11,792 INFO INCOMING HTTP 200
+2026-09-25 10:43:11,793 INFO   assistant: {
+  "answer": "The provided context does not say.",
+  "source": "none",
+  "found": false
+}
+2026-09-25 10:43:11,794 INFO   usage: {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}
+2026-09-25 10:43:11,794 DEBUG   raw response: {"id": "chatcmpl-483", "object": "chat.completion", "created": 1790313191, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The provided context does not say.\",\n  \"source\": \"none\",\n  \"found\": false\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 423, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 28, "total_tokens": 451}}
+2026-09-25 10:43:11,796 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:43:11,796 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:11,797 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What does the cleaning stage remove?
+2026-09-25 10:43:18,700 INFO INCOMING HTTP 200
+2026-09-25 10:43:18,701 INFO   assistant: ```json
+{
+  "answer": "The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.",
+  "source": "long_report.txt#2",
+  "found": true
+}
+```
+2026-09-25 10:43:18,701 INFO   usage: {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}
+2026-09-25 10:43:18,701 DEBUG   raw response: {"id": "chatcmpl-390", "object": "chat.completion", "created": 1790313198, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "```json\n{\n  \"answer\": \"The cleaning stage removes repeated running headers and footers, such as page counters, so they do not pollute every chunk with the same boilerplate line.\",\n  \"source\": \"long_report.txt#2\",\n  \"found\": true\n}\n```"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 424, "prompt_tokens_details": {"cached_tokens": 412}, "completion_tokens": 60, "total_tokens": 484}}
+2026-09-25 10:43:18,704 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 12, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:18,704 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:18,704 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:43:22,065 INFO INCOMING HTTP 200
+2026-09-25 10:43:22,065 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:43:22,065 INFO   usage: {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}
+2026-09-25 10:43:22,066 DEBUG   raw response: {"id": "chatcmpl-54", "object": "chat.completion", "created": 1790313202, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF,"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 426, "prompt_tokens_details": {"cached_tokens": 413}, "completion_tokens": 12, "total_tokens": 438}}
+2026-09-25 10:43:22,067 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:22,067 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:22,068 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:43:22,068 INFO   assistant: {
+  "answer": "The loading stage reads PDF,
+2026-09-25 10:43:22,068 INFO   user: Your reply could not be used: invalid JSON: Unterminated string starting at (line 2, column 13). Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:43:35,427 INFO INCOMING HTTP 200
+2026-09-25 10:43:35,427 INFO   assistant: {
+  "answer": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.",
+  "source": "long_report.txt#1",
+  "found": true
+}
+2026-09-25 10:43:35,428 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}
+2026-09-25 10:43:35,428 DEBUG   raw response: {"id": "chatcmpl-564", "object": "chat.completion", "created": 1790313215, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\n  \"answer\": \"The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.\",\n  \"source\": \"long_report.txt#1\",\n  \"found\": true\n}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 437}, "completion_tokens": 112, "total_tokens": 625}}
+2026-09-25 10:43:35,430 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:35,431 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:35,431 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:43:35,432 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files."}
+2026-09-25 10:43:35,432 INFO   user: Your reply could not be used: missing required field "source"; missing required field "found". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:43:43,038 INFO INCOMING HTTP 200
+2026-09-25 10:43:43,039 INFO   assistant: {"answer": "It reads PDF, plain text, Markdown, and HTML files.", "source": "long_report.txt#1", "found": true}
+2026-09-25 10:43:43,039 INFO   usage: {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}
+2026-09-25 10:43:43,039 DEBUG   raw response: {"id": "chatcmpl-286", "object": "chat.completion", "created": 1790313223, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"It reads PDF, plain text, Markdown, and HTML files.\", \"source\": \"long_report.txt#1\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 513, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 34, "total_tokens": 547}}
+2026-09-25 10:43:43,041 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'response_format': {'type': 'json_schema', 'json_schema': {'name': 'grounded_answer', 'schema': {'type': 'object', 'properties': {'answer': {'type': 'string'}, 'source': {'type': 'string'}, 'found': {'type': 'boolean'}}, 'required': ['answer', 'source', 'found'], 'additionalProperties': False}, 'strict': True}}})
+2026-09-25 10:43:43,041 INFO   system: You answer questions using only the context chunks provided. Each chunk is labelled with its id.
+Reply with a single JSON object and nothing else, exactly this shape:
+{"answer": string, "source": string, "found": boolean}
+- "answer": one or two sentences answering the question from the context.
+- "source": the id of the chunk the answer comes from, one of: long_report.txt#1, long_report.txt#2, readme.md#0.
+- "found": true if the context answers the question.
+If the context does not answer the question, reply with {"answer": "The provided context does not say.", "source": "none", "found": false}.
+2026-09-25 10:43:43,041 INFO   user: Context:
+[long_report.txt#1]
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[long_report.txt#2]
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[readme.md#0]
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+Question: What file formats does the loading stage read?
+2026-09-25 10:43:43,041 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:43:43,042 INFO   user: Your reply could not be used: field "source" is "secret_notes.txt#4", which was not supplied; it must be one of "long_report.txt#1", "long_report.txt#2", "readme.md#0", "none". Fix only those problems. Keep any answer text that the context supports, and take "source" from the chunk that answer came from. Reply again with only the corrected JSON object in the required shape.
+2026-09-25 10:43:50,752 INFO INCOMING HTTP 200
+2026-09-25 10:43:50,753 INFO   assistant: {"answer": "PDF and HTML.", "source": "secret_notes.txt#4", "found": true}
+2026-09-25 10:43:50,753 INFO   usage: {"prompt_tokens": 552, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 576}
+2026-09-25 10:43:50,753 DEBUG   raw response: {"id": "chatcmpl-120", "object": "chat.completion", "created": 1790313230, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "{\"answer\": \"PDF and HTML.\", \"source\": \"secret_notes.txt#4\", \"found\": true}"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 552, "prompt_tokens_details": {"cached_tokens": 430}, "completion_tokens": 24, "total_tokens": 576}}
