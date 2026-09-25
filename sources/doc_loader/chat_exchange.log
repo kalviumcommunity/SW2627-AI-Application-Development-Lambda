@@ -3414,3 +3414,1328 @@ Question: Which company funds this project?
 2026-09-25 14:52:03,791 INFO   assistant: The provided context does not say.
 2026-09-25 14:52:03,792 INFO   usage: {"prompt_tokens": 371, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 8, "total_tokens": 379}
 2026-09-25 14:52:03,792 DEBUG   raw response: {"id": "chatcmpl-428", "object": "chat.completion", "created": 1790328123, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The provided context does not say."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 371, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 8, "total_tokens": 379}}
+2026-09-25 15:03:09,369 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:03:09,369 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#4, long_report.txt#8, long_report.txt#11.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:03:09,370 INFO   user: Context:
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+Question: What two chunking strategies does the design report compare?
+2026-09-25 15:03:21,809 INFO INCOMING HTTP 200
+2026-09-25 15:03:21,809 INFO   assistant: The design report compares two chunking strategies: fixed-size windows measured in characters with a small overlap between consecutive windows, and paragraph-based chunking.
+2026-09-25 15:03:21,810 INFO   usage: {"prompt_tokens": 342, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 30, "total_tokens": 372}
+2026-09-25 15:03:21,810 DEBUG   raw response: {"id": "chatcmpl-277", "object": "chat.completion", "created": 1790328801, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The design report compares two chunking strategies: fixed-size windows measured in characters with a small overlap between consecutive windows, and paragraph-based chunking."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 342, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 30, "total_tokens": 372}}
+2026-09-25 15:03:21,812 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:03:21,812 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:03:21,812 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows measured in characters with a small overlap between consecutive windows, and paragraph-based chunking.
+Latest question: Why is the second one the better default?
+Rewritten:
+2026-09-25 15:03:26,015 INFO INCOMING HTTP 200
+2026-09-25 15:03:26,016 INFO   assistant: Why is paragraph-based chunking the better default?
+2026-09-25 15:03:26,016 INFO   usage: {"prompt_tokens": 303, "prompt_tokens_details": {"cached_tokens": 254}, "completion_tokens": 11, "total_tokens": 314}
+2026-09-25 15:03:26,016 DEBUG   raw response: {"id": "chatcmpl-643", "object": "chat.completion", "created": 1790328806, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Why is paragraph-based chunking the better default?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 303, "prompt_tokens_details": {"cached_tokens": 254}, "completion_tokens": 11, "total_tokens": 314}}
+2026-09-25 15:03:28,231 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:03:28,231 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#8, long_report.txt#10, long_report.txt#6.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:03:28,231 INFO   user: Context:
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+Question: Why is paragraph-based chunking the better default?
+2026-09-25 15:03:38,462 INFO INCOMING HTTP 200
+2026-09-25 15:03:38,462 INFO   assistant: The provided context does not say.
+2026-09-25 15:03:38,463 INFO   usage: {"prompt_tokens": 319, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 8, "total_tokens": 327}
+2026-09-25 15:03:38,463 DEBUG   raw response: {"id": "chatcmpl-781", "object": "chat.completion", "created": 1790328818, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The provided context does not say."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 319, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 8, "total_tokens": 327}}
+2026-09-25 15:03:40,652 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:03:40,653 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#10, long_report.txt#2, long_report.txt#5.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:03:40,653 INFO   user: Context:
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#5] (section: Retrieval System Design Notes)
+The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own.
+
+Question: Why is the second one the better default?
+2026-09-25 15:03:54,654 INFO INCOMING HTTP 200
+2026-09-25 15:03:54,654 INFO   assistant: The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. This approach benefits retrieval quality more from semantically coherent chunks than from perfectly uniform chunk sizes.
+2026-09-25 15:03:54,654 INFO   usage: {"prompt_tokens": 357, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 63, "total_tokens": 420}
+2026-09-25 15:03:54,654 DEBUG   raw response: {"id": "chatcmpl-354", "object": "chat.completion", "created": 1790328834, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. This approach benefits retrieval quality more from semantically coherent chunks than from perfectly uniform chunk sizes."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 357, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 63, "total_tokens": 420}}
+2026-09-25 15:03:54,657 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:03:54,657 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:03:54,657 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows measured in characters with a small overlap between consecutive windows, and paragraph-based chunking.
+user: Why is paragraph-based chunking the better default?
+assistant: The provided context does not say.
+Latest question: And when is the first one still worth using?
+Rewritten:
+2026-09-25 15:03:58,950 INFO INCOMING HTTP 200
+2026-09-25 15:03:58,951 INFO   assistant: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:03:58,951 INFO   usage: {"prompt_tokens": 325, "prompt_tokens_details": {"cached_tokens": 283}, "completion_tokens": 14, "total_tokens": 339}
+2026-09-25 15:03:58,951 DEBUG   raw response: {"id": "chatcmpl-93", "object": "chat.completion", "created": 1790328838, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "When is the fixed-size window chunking strategy still worth using?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 325, "prompt_tokens_details": {"cached_tokens": 283}, "completion_tokens": 14, "total_tokens": 339}}
+2026-09-25 15:04:01,136 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:04:01,137 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#11, long_report.txt#6, long_report.txt#4.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:04:01,137 INFO   user: Context:
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+Question: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:04:14,914 INFO INCOMING HTTP 200
+2026-09-25 15:04:14,914 INFO   assistant: The fixed-size window chunking strategy is still worth using when the document has little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+2026-09-25 15:04:14,915 INFO   usage: {"prompt_tokens": 352, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 46, "total_tokens": 398}
+2026-09-25 15:04:14,915 DEBUG   raw response: {"id": "chatcmpl-205", "object": "chat.completion", "created": 1790328854, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The fixed-size window chunking strategy is still worth using when the document has little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 352, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 46, "total_tokens": 398}}
+2026-09-25 15:04:17,160 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:04:17,160 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: noisy.txt#0, long_report.txt#2, long_report.txt#0.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:04:17,161 INFO   user: Context:
+[noisy.txt#0] (section: Quarterly Retrieval Report)
+Quarterly Retrieval Report
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users don’t need to reformat anything by hand; the loader handles it.
+
+Section 2: Cleaning Rules
+Cleaning removes noise while keeping numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+Section 3: Summary
+This closes the report with a final note about owners’ responsibilities.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: And when is the first one still worth using?
+2026-09-25 15:04:28,957 INFO INCOMING HTTP 200
+2026-09-25 15:04:28,958 INFO   assistant: The provided context does not say.
+2026-09-25 15:04:28,958 INFO   usage: {"prompt_tokens": 438, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 8, "total_tokens": 446}
+2026-09-25 15:04:28,958 DEBUG   raw response: {"id": "chatcmpl-255", "object": "chat.completion", "created": 1790328868, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The provided context does not say."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 438, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 8, "total_tokens": 446}}
+2026-09-25 15:04:28,960 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:04:28,960 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:04:28,960 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows measured in characters with a small overlap between consecutive windows, and paragraph-based chunking.
+user: Why is paragraph-based chunking the better default?
+assistant: The provided context does not say.
+user: When is the fixed-size window chunking strategy still worth using?
+assistant: The fixed-size window chunking strategy is still worth using when the document has little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+Latest question: What does the cleaning stage do to line endings?
+Rewritten:
+2026-09-25 15:04:34,077 INFO INCOMING HTTP 200
+2026-09-25 15:04:34,078 INFO   assistant: What does the cleaning stage do to line endings?
+2026-09-25 15:04:34,078 INFO   usage: {"prompt_tokens": 387, "prompt_tokens_details": {"cached_tokens": 304}, "completion_tokens": 11, "total_tokens": 398}
+2026-09-25 15:04:34,078 DEBUG   raw response: {"id": "chatcmpl-617", "object": "chat.completion", "created": 1790328874, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "What does the cleaning stage do to line endings?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 387, "prompt_tokens_details": {"cached_tokens": 304}, "completion_tokens": 11, "total_tokens": 398}}
+2026-09-25 15:04:36,247 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:04:36,247 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#2, long_report.txt#4, long_report.txt#3.
+If the context does not answer the question, reply exactly: The provided context does not say.
+2026-09-25 15:04:36,247 INFO   user: Context:
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#3] (section: Retrieval System Design Notes)
+Runs of blank lines and repeated spaces are also collapsed down to a single blank line or a single space, which keeps chunk boundaries from landing on meaningless whitespace.
+
+Question: What does the cleaning stage do to line endings?
+2026-09-25 15:04:48,986 INFO INCOMING HTTP 200
+2026-09-25 15:04:48,986 INFO   assistant: The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix.
+2026-09-25 15:04:48,986 INFO   usage: {"prompt_tokens": 370, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 25, "total_tokens": 395}
+2026-09-25 15:04:48,986 DEBUG   raw response: {"id": "chatcmpl-970", "object": "chat.completion", "created": 1790328888, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 370, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 25, "total_tokens": 395}}
+2026-09-25 15:14:01,855 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:14:01,857 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#4, long_report.txt#8, long_report.txt#11.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:14:01,857 INFO   user: Context:
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+Question: What two chunking strategies does the design report compare?
+2026-09-25 15:14:15,855 INFO INCOMING HTTP 200
+2026-09-25 15:14:15,855 INFO   assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+2026-09-25 15:14:15,856 INFO   usage: {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 26, "total_tokens": 453}
+2026-09-25 15:14:15,856 DEBUG   raw response: {"id": "chatcmpl-475", "object": "chat.completion", "created": 1790329455, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 26, "total_tokens": 453}}
+2026-09-25 15:14:15,860 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:14:15,860 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:14:15,861 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+Latest question: Why is the second one the better default?
+Rewritten:
+2026-09-25 15:14:20,175 INFO INCOMING HTTP 200
+2026-09-25 15:14:20,176 INFO   assistant: Why is paragraph-based chunking the better default?
+2026-09-25 15:14:20,176 INFO   usage: {"prompt_tokens": 299, "prompt_tokens_details": {"cached_tokens": 266}, "completion_tokens": 11, "total_tokens": 310}
+2026-09-25 15:14:20,176 DEBUG   raw response: {"id": "chatcmpl-655", "object": "chat.completion", "created": 1790329460, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Why is paragraph-based chunking the better default?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 299, "prompt_tokens_details": {"cached_tokens": 266}, "completion_tokens": 11, "total_tokens": 310}}
+2026-09-25 15:14:22,408 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:14:22,409 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#8, long_report.txt#10, long_report.txt#6.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:14:22,410 INFO   user: Context:
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+Question: Why is paragraph-based chunking the better default?
+2026-09-25 15:14:28,403 INFO INCOMING HTTP 200
+2026-09-25 15:14:28,403 INFO   assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+2026-09-25 15:14:28,404 INFO   usage: {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}
+2026-09-25 15:14:28,404 DEBUG   raw response: {"id": "chatcmpl-372", "object": "chat.completion", "created": 1790329468, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}}
+2026-09-25 15:14:30,611 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:14:30,612 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#10, long_report.txt#2, long_report.txt#5.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:14:30,612 INFO   user: Context:
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#5] (section: Retrieval System Design Notes)
+The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own.
+
+Question: Why is the second one the better default?
+2026-09-25 15:14:46,963 INFO INCOMING HTTP 200
+2026-09-25 15:14:46,964 INFO   assistant: The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]
+2026-09-25 15:14:46,964 INFO   usage: {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 52, "total_tokens": 494}
+2026-09-25 15:14:46,964 DEBUG   raw response: {"id": "chatcmpl-181", "object": "chat.completion", "created": 1790329486, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 52, "total_tokens": 494}}
+2026-09-25 15:14:46,968 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:14:46,968 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:14:46,968 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+Latest question: And when is the first one still worth using?
+Rewritten:
+2026-09-25 15:14:52,190 INFO INCOMING HTTP 200
+2026-09-25 15:14:52,191 INFO   assistant: When is paragraph-based chunking still worth using?
+2026-09-25 15:14:52,191 INFO   usage: {"prompt_tokens": 347, "prompt_tokens_details": {"cached_tokens": 279}, "completion_tokens": 11, "total_tokens": 358}
+2026-09-25 15:14:52,191 DEBUG   raw response: {"id": "chatcmpl-39", "object": "chat.completion", "created": 1790329492, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "When is paragraph-based chunking still worth using?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 347, "prompt_tokens_details": {"cached_tokens": 279}, "completion_tokens": 11, "total_tokens": 358}}
+2026-09-25 15:14:54,399 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:14:54,400 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#11, long_report.txt#8, long_report.txt#10.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:14:54,400 INFO   user: Context:
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+Question: When is paragraph-based chunking still worth using?
+2026-09-25 15:15:10,788 INFO INCOMING HTTP 200
+2026-09-25 15:15:10,788 INFO   assistant: Paragraph-based chunking is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#10]
+2026-09-25 15:15:10,788 INFO   usage: {"prompt_tokens": 401, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 28, "total_tokens": 429}
+2026-09-25 15:15:10,788 DEBUG   raw response: {"id": "chatcmpl-89", "object": "chat.completion", "created": 1790329510, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paragraph-based chunking is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#10]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 401, "prompt_tokens_details": {"cached_tokens": 4}, "completion_tokens": 28, "total_tokens": 429}}
+2026-09-25 15:15:13,023 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:15:13,023 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: noisy.txt#0, long_report.txt#2, long_report.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:15:13,023 INFO   user: Context:
+[noisy.txt#0] (section: Quarterly Retrieval Report)
+Quarterly Retrieval Report
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users don’t need to reformat anything by hand; the loader handles it.
+
+Section 2: Cleaning Rules
+Cleaning removes noise while keeping numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+Section 3: Summary
+This closes the report with a final note about owners’ responsibilities.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: And when is the first one still worth using?
+2026-09-25 15:15:29,340 INFO INCOMING HTTP 200
+2026-09-25 15:15:29,341 INFO   assistant: The first one still worth using is when it is still worth using. [long_report.txt#0]
+2026-09-25 15:15:29,341 INFO   usage: {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 22, "total_tokens": 545}
+2026-09-25 15:15:29,341 DEBUG   raw response: {"id": "chatcmpl-92", "object": "chat.completion", "created": 1790329529, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The first one still worth using is when it is still worth using. [long_report.txt#0]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 22, "total_tokens": 545}}
+2026-09-25 15:15:29,345 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:15:29,345 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+2026-09-25 15:15:29,346 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+user: When is paragraph-based chunking still worth using?
+assistant: Paragraph-based chunking is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#10]
+Latest question: What does the cleaning stage do to line endings?
+Rewritten:
+2026-09-25 15:15:34,162 INFO INCOMING HTTP 200
+2026-09-25 15:15:34,162 INFO   assistant: What does the cleaning stage do to line endings?
+2026-09-25 15:15:34,162 INFO   usage: {"prompt_tokens": 388, "prompt_tokens_details": {"cached_tokens": 326}, "completion_tokens": 11, "total_tokens": 399}
+2026-09-25 15:15:34,163 DEBUG   raw response: {"id": "chatcmpl-2", "object": "chat.completion", "created": 1790329534, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "What does the cleaning stage do to line endings?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 388, "prompt_tokens_details": {"cached_tokens": 326}, "completion_tokens": 11, "total_tokens": 399}}
+2026-09-25 15:15:36,812 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:15:36,813 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#2, long_report.txt#4, long_report.txt#3.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:15:36,813 INFO   user: Context:
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#3] (section: Retrieval System Design Notes)
+Runs of blank lines and repeated spaces are also collapsed down to a single blank line or a single space, which keeps chunk boundaries from landing on meaningless whitespace.
+
+Question: What does the cleaning stage do to line endings?
+2026-09-25 15:15:42,046 INFO INCOMING HTTP 200
+2026-09-25 15:15:42,046 INFO   assistant: The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]
+2026-09-25 15:15:42,047 INFO   usage: {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}
+2026-09-25 15:15:42,047 DEBUG   raw response: {"id": "chatcmpl-470", "object": "chat.completion", "created": 1790329542, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}}
+2026-09-25 15:15:57,641 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:15:57,642 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 2 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#1, readme.md#0, page.html#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:15:57,642 INFO   user: Context:
+[long_report.txt#1] (section: Retrieval System Design Notes)
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[readme.md#0] (section: Sample Corpus)
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+[page.html#0] (section: none)
+Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage
+before they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed
+
+Question: What file formats does the loading stage read?
+2026-09-25 15:16:12,415 INFO INCOMING HTTP 200
+2026-09-25 15:16:12,416 INFO   assistant: The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]
+2026-09-25 15:16:12,417 INFO   usage: {"prompt_tokens": 436, "prompt_tokens_details": {"cached_tokens": 42}, "completion_tokens": 26, "total_tokens": 462}
+2026-09-25 15:16:12,417 DEBUG   raw response: {"id": "chatcmpl-206", "object": "chat.completion", "created": 1790329572, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 436, "prompt_tokens_details": {"cached_tokens": 42}, "completion_tokens": 26, "total_tokens": 462}}
+2026-09-25 15:16:15,015 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:16:15,016 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 2 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#10, long_report.txt#8, long_report.txt#11.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:16:15,016 INFO   user: Context:
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+Question: Why is paragraph-based chunking recommended for prose documents?
+2026-09-25 15:16:30,146 INFO INCOMING HTTP 200
+2026-09-25 15:16:30,146 INFO   assistant: Paragraph-based chunking is recommended for prose documents because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets. [long_report.txt#8]
+2026-09-25 15:16:30,147 INFO   usage: {"prompt_tokens": 402, "prompt_tokens_details": {"cached_tokens": 69}, "completion_tokens": 49, "total_tokens": 451}
+2026-09-25 15:16:30,147 DEBUG   raw response: {"id": "chatcmpl-377", "object": "chat.completion", "created": 1790329590, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paragraph-based chunking is recommended for prose documents because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets. [long_report.txt#8]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 402, "prompt_tokens_details": {"cached_tokens": 69}, "completion_tokens": 49, "total_tokens": 451}}
+2026-09-25 15:16:32,389 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:16:32,390 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 2 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#0, report.pdf#0, noisy.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:16:32,390 INFO   user: Context:
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+[report.pdf#0] (section: Retrieval Pipeline Status Report)
+Retrieval Pipeline Status Report
+This report summarizes ingestion coverage across formats.
+PDF extraction is verified using pypdf in this sample corpus.
+
+[noisy.txt#0] (section: Quarterly Retrieval Report)
+Quarterly Retrieval Report
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users don’t need to reformat anything by hand; the loader handles it.
+
+Section 2: Cleaning Rules
+Cleaning removes noise while keeping numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+Section 3: Summary
+This closes the report with a final note about owners’ responsibilities.
+
+Question: Which company funds this project?
+2026-09-25 15:16:45,084 INFO INCOMING HTTP 200
+2026-09-25 15:16:45,084 INFO   assistant: The provided context does not say.
+2026-09-25 15:16:45,084 INFO   usage: {"prompt_tokens": 456, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 8, "total_tokens": 464}
+2026-09-25 15:16:45,085 DEBUG   raw response: {"id": "chatcmpl-639", "object": "chat.completion", "created": 1790329605, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The provided context does not say."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 456, "prompt_tokens_details": {"cached_tokens": 68}, "completion_tokens": 8, "total_tokens": 464}}
+2026-09-25 15:17:44,657 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:17:44,658 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#4, long_report.txt#8, long_report.txt#11.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:17:44,658 INFO   user: Context:
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+Question: What two chunking strategies does the design report compare?
+2026-09-25 15:17:49,936 INFO INCOMING HTTP 200
+2026-09-25 15:17:49,936 INFO   assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+2026-09-25 15:17:49,937 INFO   usage: {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 26, "total_tokens": 453}
+2026-09-25 15:17:49,938 DEBUG   raw response: {"id": "chatcmpl-795", "object": "chat.completion", "created": 1790329669, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 26, "total_tokens": 453}}
+2026-09-25 15:17:49,942 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:17:49,942 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:17:49,943 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+Latest question: Why is the second one the better default?
+Rewritten:
+2026-09-25 15:17:57,394 INFO INCOMING HTTP 200
+2026-09-25 15:17:57,395 INFO   assistant: Why is paragraph-based chunking the better default?
+2026-09-25 15:17:57,395 INFO   usage: {"prompt_tokens": 396, "prompt_tokens_details": {"cached_tokens": 231}, "completion_tokens": 11, "total_tokens": 407}
+2026-09-25 15:17:57,396 DEBUG   raw response: {"id": "chatcmpl-2", "object": "chat.completion", "created": 1790329677, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Why is paragraph-based chunking the better default?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 396, "prompt_tokens_details": {"cached_tokens": 231}, "completion_tokens": 11, "total_tokens": 407}}
+2026-09-25 15:17:59,597 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:17:59,598 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#8, long_report.txt#10, long_report.txt#6.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:17:59,598 INFO   user: Context:
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+Question: Why is paragraph-based chunking the better default?
+2026-09-25 15:18:04,804 INFO INCOMING HTTP 200
+2026-09-25 15:18:04,804 INFO   assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+2026-09-25 15:18:04,804 INFO   usage: {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}
+2026-09-25 15:18:04,805 DEBUG   raw response: {"id": "chatcmpl-337", "object": "chat.completion", "created": 1790329684, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}}
+2026-09-25 15:18:06,995 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:18:06,996 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#10, long_report.txt#2, long_report.txt#5.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:18:06,996 INFO   user: Context:
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#5] (section: Retrieval System Design Notes)
+The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own.
+
+Question: Why is the second one the better default?
+2026-09-25 15:18:13,750 INFO INCOMING HTTP 200
+2026-09-25 15:18:13,751 INFO   assistant: The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]
+2026-09-25 15:18:13,751 INFO   usage: {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 441}, "completion_tokens": 52, "total_tokens": 494}
+2026-09-25 15:18:13,752 DEBUG   raw response: {"id": "chatcmpl-63", "object": "chat.completion", "created": 1790329693, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 441}, "completion_tokens": 52, "total_tokens": 494}}
+2026-09-25 15:18:13,754 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:18:13,755 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:18:13,755 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+Latest question: And when is the first one still worth using?
+Rewritten:
+2026-09-25 15:18:19,113 INFO INCOMING HTTP 200
+2026-09-25 15:18:19,113 INFO   assistant: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:18:19,114 INFO   usage: {"prompt_tokens": 444, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 14, "total_tokens": 458}
+2026-09-25 15:18:19,114 DEBUG   raw response: {"id": "chatcmpl-501", "object": "chat.completion", "created": 1790329699, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "When is the fixed-size window chunking strategy still worth using?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 444, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 14, "total_tokens": 458}}
+2026-09-25 15:18:21,515 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:18:21,515 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#11, long_report.txt#6, long_report.txt#4.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:18:21,516 INFO   user: Context:
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+Question: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:18:26,229 INFO INCOMING HTTP 200
+2026-09-25 15:18:26,229 INFO   assistant: The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]
+2026-09-25 15:18:26,230 INFO   usage: {"prompt_tokens": 437, "prompt_tokens_details": {"cached_tokens": 436}, "completion_tokens": 30, "total_tokens": 467}
+2026-09-25 15:18:26,230 DEBUG   raw response: {"id": "chatcmpl-29", "object": "chat.completion", "created": 1790329706, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 437, "prompt_tokens_details": {"cached_tokens": 436}, "completion_tokens": 30, "total_tokens": 467}}
+2026-09-25 15:18:28,614 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:18:28,615 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: noisy.txt#0, long_report.txt#2, long_report.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:18:28,615 INFO   user: Context:
+[noisy.txt#0] (section: Quarterly Retrieval Report)
+Quarterly Retrieval Report
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users don’t need to reformat anything by hand; the loader handles it.
+
+Section 2: Cleaning Rules
+Cleaning removes noise while keeping numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+Section 3: Summary
+This closes the report with a final note about owners’ responsibilities.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: And when is the first one still worth using?
+2026-09-25 15:18:32,909 INFO INCOMING HTTP 200
+2026-09-25 15:18:32,909 INFO   assistant: The first one still worth using is when it is still worth using. [long_report.txt#0]
+2026-09-25 15:18:32,910 INFO   usage: {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 522}, "completion_tokens": 22, "total_tokens": 545}
+2026-09-25 15:18:32,910 DEBUG   raw response: {"id": "chatcmpl-200", "object": "chat.completion", "created": 1790329712, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The first one still worth using is when it is still worth using. [long_report.txt#0]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 522}, "completion_tokens": 22, "total_tokens": 545}}
+2026-09-25 15:18:32,913 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:18:32,913 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:18:32,914 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+user: When is the fixed-size window chunking strategy still worth using?
+assistant: The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]
+Latest question: What does the cleaning stage do to line endings?
+Rewritten:
+2026-09-25 15:18:37,925 INFO INCOMING HTTP 200
+2026-09-25 15:18:37,925 INFO   assistant: What does the cleaning stage do to line endings?
+2026-09-25 15:18:37,925 INFO   usage: {"prompt_tokens": 490, "prompt_tokens_details": {"cached_tokens": 423}, "completion_tokens": 11, "total_tokens": 501}
+2026-09-25 15:18:37,926 DEBUG   raw response: {"id": "chatcmpl-820", "object": "chat.completion", "created": 1790329717, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "What does the cleaning stage do to line endings?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 490, "prompt_tokens_details": {"cached_tokens": 423}, "completion_tokens": 11, "total_tokens": 501}}
+2026-09-25 15:18:40,155 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:18:40,155 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#2, long_report.txt#4, long_report.txt#3.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:18:40,155 INFO   user: Context:
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#3] (section: Retrieval System Design Notes)
+Runs of blank lines and repeated spaces are also collapsed down to a single blank line or a single space, which keeps chunk boundaries from landing on meaningless whitespace.
+
+Question: What does the cleaning stage do to line endings?
+2026-09-25 15:18:45,253 INFO INCOMING HTTP 200
+2026-09-25 15:18:45,254 INFO   assistant: The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]
+2026-09-25 15:18:45,254 INFO   usage: {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}
+2026-09-25 15:18:45,254 DEBUG   raw response: {"id": "chatcmpl-418", "object": "chat.completion", "created": 1790329725, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}}
+2026-09-25 15:18:58,873 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:18:58,874 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#4, long_report.txt#8, long_report.txt#11.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:18:58,875 INFO   user: Context:
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+Question: What two chunking strategies does the design report compare?
+2026-09-25 15:19:03,420 INFO INCOMING HTTP 200
+2026-09-25 15:19:03,421 INFO   assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+2026-09-25 15:19:03,421 INFO   usage: {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 26, "total_tokens": 453}
+2026-09-25 15:19:03,422 DEBUG   raw response: {"id": "chatcmpl-652", "object": "chat.completion", "created": 1790329743, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 427, "prompt_tokens_details": {"cached_tokens": 426}, "completion_tokens": 26, "total_tokens": 453}}
+2026-09-25 15:19:03,425 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:19:03,426 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:19:03,426 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+Latest question: Why is the second one the better default?
+Rewritten:
+2026-09-25 15:19:06,922 INFO INCOMING HTTP 200
+2026-09-25 15:19:06,923 INFO   assistant: Why is paragraph-based chunking the better default?
+2026-09-25 15:19:06,923 INFO   usage: {"prompt_tokens": 396, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 11, "total_tokens": 407}
+2026-09-25 15:19:06,923 DEBUG   raw response: {"id": "chatcmpl-183", "object": "chat.completion", "created": 1790329746, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Why is paragraph-based chunking the better default?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 396, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 11, "total_tokens": 407}}
+2026-09-25 15:19:09,137 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:19:09,137 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#8, long_report.txt#10, long_report.txt#6.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:19:09,137 INFO   user: Context:
+[long_report.txt#8] (section: Retrieval System Design Notes)
+Paragraph-based chunking is attractive for the opposite reason: because it respects the author's own structure, each chunk tends to correspond to one coherent idea, which usually improves both embedding quality and the readability of retrieved snippets.
+
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+Question: Why is paragraph-based chunking the better default?
+2026-09-25 15:19:14,160 INFO INCOMING HTTP 200
+2026-09-25 15:19:14,161 INFO   assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+2026-09-25 15:19:14,161 INFO   usage: {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}
+2026-09-25 15:19:14,161 DEBUG   raw response: {"id": "chatcmpl-939", "object": "chat.completion", "created": 1790329754, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 404, "prompt_tokens_details": {"cached_tokens": 403}, "completion_tokens": 34, "total_tokens": 438}}
+2026-09-25 15:19:16,377 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:19:16,377 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#10, long_report.txt#2, long_report.txt#5.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:19:16,378 INFO   user: Context:
+[long_report.txt#10] (section: Retrieval System Design Notes)
+For a real corpus made up of normal prose documents with visible paragraph structure, such as reports, articles, and documentation pages, paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#5] (section: Retrieval System Design Notes)
+The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own.
+
+Question: Why is the second one the better default?
+2026-09-25 15:19:23,199 INFO INCOMING HTTP 200
+2026-09-25 15:19:23,199 INFO   assistant: The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]
+2026-09-25 15:19:23,200 INFO   usage: {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 441}, "completion_tokens": 52, "total_tokens": 494}
+2026-09-25 15:19:23,200 DEBUG   raw response: {"id": "chatcmpl-618", "object": "chat.completion", "created": 1790329763, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The second strategy respects the paragraph structure of the document, grouping whole paragraphs together up to a size limit, and only falling back to splitting a paragraph by sentence when a single paragraph is larger than that limit on its own. [long_report.txt#5]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 442, "prompt_tokens_details": {"cached_tokens": 441}, "completion_tokens": 52, "total_tokens": 494}}
+2026-09-25 15:19:23,202 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:19:23,203 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:19:23,203 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+Latest question: And when is the first one still worth using?
+Rewritten:
+2026-09-25 15:19:28,392 INFO INCOMING HTTP 200
+2026-09-25 15:19:28,393 INFO   assistant: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:19:28,393 INFO   usage: {"prompt_tokens": 444, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 14, "total_tokens": 458}
+2026-09-25 15:19:28,393 DEBUG   raw response: {"id": "chatcmpl-101", "object": "chat.completion", "created": 1790329768, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "When is the fixed-size window chunking strategy still worth using?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 444, "prompt_tokens_details": {"cached_tokens": 376}, "completion_tokens": 14, "total_tokens": 458}}
+2026-09-25 15:19:30,651 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:19:30,654 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#11, long_report.txt#6, long_report.txt#4.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:19:30,655 INFO   user: Context:
+[long_report.txt#11] (section: Retrieval System Design Notes)
+Fixed-size chunking remains useful as a fallback for the minority of documents that have little or no paragraph structure to lean on, or as a safety net inside the paragraph strategy itself when an individual paragraph turns out to be unusually long.
+
+[long_report.txt#6] (section: Retrieval System Design Notes)
+Fixed-size chunking is attractive because it is trivial to implement, its output sizes are extremely predictable, and it works even on text that has no discernible paragraph structure at all, such as a wall of OCR output or a transcript with no line breaks.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+Question: When is the fixed-size window chunking strategy still worth using?
+2026-09-25 15:19:36,355 INFO INCOMING HTTP 200
+2026-09-25 15:19:36,355 INFO   assistant: The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]
+2026-09-25 15:19:36,355 INFO   usage: {"prompt_tokens": 437, "prompt_tokens_details": {"cached_tokens": 436}, "completion_tokens": 30, "total_tokens": 467}
+2026-09-25 15:19:36,356 DEBUG   raw response: {"id": "chatcmpl-380", "object": "chat.completion", "created": 1790329776, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 437, "prompt_tokens_details": {"cached_tokens": 436}, "completion_tokens": 30, "total_tokens": 467}}
+2026-09-25 15:19:38,551 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:19:38,551 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: noisy.txt#0, long_report.txt#2, long_report.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:19:38,552 INFO   user: Context:
+[noisy.txt#0] (section: Quarterly Retrieval Report)
+Quarterly Retrieval Report
+
+Section 1: Overview
+The pipeline ingests documents and normalizes them before indexing.
+Users don’t need to reformat anything by hand; the loader handles it.
+
+Section 2: Cleaning Rules
+Cleaning removes noise while keeping numbers like 42 and 3.14 intact.
+Headings such as Section 2 must survive cleaning unchanged.
+
+Section 3: Summary
+This closes the report with a final note about owners’ responsibilities.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: And when is the first one still worth using?
+2026-09-25 15:19:42,857 INFO INCOMING HTTP 200
+2026-09-25 15:19:42,857 INFO   assistant: The first one still worth using is when it is still worth using. [long_report.txt#0]
+2026-09-25 15:19:42,858 INFO   usage: {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 522}, "completion_tokens": 22, "total_tokens": 545}
+2026-09-25 15:19:42,858 DEBUG   raw response: {"id": "chatcmpl-408", "object": "chat.completion", "created": 1790329782, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The first one still worth using is when it is still worth using. [long_report.txt#0]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 523, "prompt_tokens_details": {"cached_tokens": 522}, "completion_tokens": 22, "total_tokens": 545}}
+2026-09-25 15:19:42,860 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 60})
+2026-09-25 15:19:42,861 INFO   system: You rewrite the user's latest question so it can be understood without the conversation.
+Replace words like "it", "that", "the first one", "the second one", "the other one" with the exact thing they refer to in the conversation.
+Keep the meaning and keep it one short question. Do not answer it.
+If the question is already clear on its own, return it unchanged.
+Reply with only the rewritten question.
+
+Example 1
+Conversation:
+user: Which two databases did we compare?
+assistant: We compared PostgreSQL and SQLite.
+Latest question: Which one is faster for writes?
+Rewritten: Is PostgreSQL or SQLite faster for writes?
+
+Example 2
+Conversation:
+user: What are the three steps of the backup process?
+assistant: The steps are snapshot, compress, and upload.
+Latest question: Why is the second one needed?
+Rewritten: Why is the compress step needed in the backup process?
+
+Example 3
+Conversation:
+user: What does the parser do?
+assistant: It converts raw logs into structured records.
+Latest question: How are HTTP status codes stored?
+Rewritten: How are HTTP status codes stored?
+
+Example 4 (an ordinal refers to a list from an earlier turn, not to the latest topic)
+Conversation:
+user: Which two caching layers does the service use?
+assistant: It uses an in-memory cache first and a Redis cache second.
+user: Why is the Redis cache shared between servers?
+assistant: The Redis cache is shared so every server sees the same entries.
+Latest question: And when is the first one cleared?
+Rewritten: When is the in-memory cache cleared?
+2026-09-25 15:19:42,861 INFO   user: Conversation:
+user: What two chunking strategies does the design report compare?
+assistant: The design report compares two chunking strategies: fixed-size windows and paragraph-based chunking. [long_report.txt#4]
+user: Why is paragraph-based chunking the better default?
+assistant: Paragraph-based chunking is the better default because retrieval quality benefits more from semantically coherent chunks than from perfectly uniform chunk sizes. [long_report.txt#10]
+user: When is the fixed-size window chunking strategy still worth using?
+assistant: The fixed-size window chunking strategy is still worth using when an individual paragraph turns out to be unusually long. [long_report.txt#4]
+Latest question: What does the cleaning stage do to line endings?
+Rewritten:
+2026-09-25 15:19:48,071 INFO INCOMING HTTP 200
+2026-09-25 15:19:48,071 INFO   assistant: What does the cleaning stage do to line endings?
+2026-09-25 15:19:48,072 INFO   usage: {"prompt_tokens": 490, "prompt_tokens_details": {"cached_tokens": 423}, "completion_tokens": 11, "total_tokens": 501}
+2026-09-25 15:19:48,072 DEBUG   raw response: {"id": "chatcmpl-925", "object": "chat.completion", "created": 1790329788, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "What does the cleaning stage do to line endings?"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 490, "prompt_tokens_details": {"cached_tokens": 423}, "completion_tokens": 11, "total_tokens": 501}}
+2026-09-25 15:19:50,320 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:19:50,321 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#2, long_report.txt#4, long_report.txt#3.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:19:50,321 INFO   user: Context:
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#4] (section: Retrieval System Design Notes)
+The chunking stage is where the cleaned text gets cut into pieces small enough to embed and retrieve individually. Two different strategies are implemented here so their trade-offs can be compared directly on the same input. The first strategy cuts the text into fixed-size windows measured in characters, with a small overlap between consecutive windows so that a sentence sitting on a boundary is not lost entirely from either chunk.
+
+[long_report.txt#3] (section: Retrieval System Design Notes)
+Runs of blank lines and repeated spaces are also collapsed down to a single blank line or a single space, which keeps chunk boundaries from landing on meaningless whitespace.
+
+Question: What does the cleaning stage do to line endings?
+2026-09-25 15:19:55,435 INFO INCOMING HTTP 200
+2026-09-25 15:19:55,435 INFO   assistant: The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]
+2026-09-25 15:19:55,436 INFO   usage: {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}
+2026-09-25 15:19:55,436 DEBUG   raw response: {"id": "chatcmpl-882", "object": "chat.completion", "created": 1790329795, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}}
