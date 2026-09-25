@@ -1643,3 +1643,305 @@ Summary of the earlier conversation: To remove repeated page footers before chun
 2026-09-25 10:15:26,654 INFO   assistant: Your project is called Lambda Search. You specified a chunk size of 300 tokens and an overlap of 60 tokens.
 2026-09-25 10:15:26,655 INFO   usage: {"prompt_tokens": 241, "prompt_tokens_details": {"cached_tokens": 125}, "completion_tokens": 28, "total_tokens": 269}
 2026-09-25 10:15:26,655 DEBUG   raw response: {"id": "chatcmpl-662", "object": "chat.completion", "created": 1790311526, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Your project is called Lambda Search. You specified a chunk size of 300 tokens and an overlap of 60 tokens."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 241, "prompt_tokens_details": {"cached_tokens": 125}, "completion_tokens": 28, "total_tokens": 269}}
+2026-09-25 10:26:24,064 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:26:24,064 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:24,064 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:36,310 INFO INCOMING HTTP 200
+2026-09-25 10:26:36,311 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:26:36,311 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 0}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:26:36,311 DEBUG   raw response: {"id": "chatcmpl-379", "object": "chat.completion", "created": 1790312196, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 0}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:26:36,312 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:26:36,312 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:36,312 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:40,607 INFO INCOMING HTTP 200
+2026-09-25 10:26:40,608 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:26:40,608 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:26:40,608 DEBUG   raw response: {"id": "chatcmpl-63", "object": "chat.completion", "created": 1790312200, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:26:40,608 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:26:40,609 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:40,609 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:44,965 INFO INCOMING HTTP 200
+2026-09-25 10:26:44,965 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:26:44,965 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:26:44,966 DEBUG   raw response: {"id": "chatcmpl-255", "object": "chat.completion", "created": 1790312204, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:26:44,974 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:26:44,975 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:44,975 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:49,176 INFO INCOMING HTTP 200
+2026-09-25 10:26:49,176 INFO   assistant: A vector database is used to store and retrieve large amounts of data in a way that allows for efficient querying and retrieval of information based on specific features or attributes.
+2026-09-25 10:26:49,177 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 33, "total_tokens": 73}
+2026-09-25 10:26:49,177 DEBUG   raw response: {"id": "chatcmpl-557", "object": "chat.completion", "created": 1790312209, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of data in a way that allows for efficient querying and retrieval of information based on specific features or attributes."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 33, "total_tokens": 73}}
+2026-09-25 10:26:49,177 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:26:49,177 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:49,178 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:52,809 INFO INCOMING HTTP 200
+2026-09-25 10:26:52,810 INFO   assistant: A vector database is used to store and retrieve data in a structured format, allowing for efficient search and retrieval of information.
+2026-09-25 10:26:52,810 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}
+2026-09-25 10:26:52,810 DEBUG   raw response: {"id": "chatcmpl-108", "object": "chat.completion", "created": 1790312212, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve data in a structured format, allowing for efficient search and retrieval of information."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}}
+2026-09-25 10:26:52,811 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:26:52,811 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:52,811 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:26:59,450 INFO INCOMING HTTP 200
+2026-09-25 10:26:59,451 INFO   assistant: A vector database is a specialized database designed to efficiently store and retrieve high-dimensional data, such as text, images, or videos, by converting this data into a set of numerical vectors. This allows for quick and accurate search queries, making it useful in applications like information retrieval, recommendation systems, and natural language processing.
+2026-09-25 10:26:59,451 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 64, "total_tokens": 104}
+2026-09-25 10:26:59,451 DEBUG   raw response: {"id": "chatcmpl-633", "object": "chat.completion", "created": 1790312219, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is a specialized database designed to efficiently store and retrieve high-dimensional data, such as text, images, or videos, by converting this data into a set of numerical vectors. This allows for quick and accurate search queries, making it useful in applications like information retrieval, recommendation systems, and natural language processing."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 64, "total_tokens": 104}}
+2026-09-25 10:26:59,453 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:26:59,453 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:26:59,453 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:27:03,942 INFO INCOMING HTTP 200
+2026-09-25 10:27:03,942 INFO   assistant: A vector database is a data structure specialized for storing, searching, analyzing, and generating representations of various kinds of objects using mathematical constructs.
+2026-09-25 10:27:03,943 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 28, "total_tokens": 68}
+2026-09-25 10:27:03,943 DEBUG   raw response: {"id": "chatcmpl-906", "object": "chat.completion", "created": 1790312223, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is a data structure specialized for storing, searching, analyzing, and generating representations of various kinds of objects using mathematical constructs."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 28, "total_tokens": 68}}
+2026-09-25 10:27:03,944 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:27:03,944 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:03,944 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:27:08,519 INFO INCOMING HTTP 200
+2026-09-25 10:27:08,519 INFO   assistant: A vector database is used for similarity search, organizing stored data points in a way that enables efficient retrieval and matching across large volumes of textual or binary content.
+2026-09-25 10:27:08,519 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}
+2026-09-25 10:27:08,520 DEBUG   raw response: {"id": "chatcmpl-558", "object": "chat.completion", "created": 1790312228, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used for similarity search, organizing stored data points in a way that enables efficient retrieval and matching across large volumes of textual or binary content."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}}
+2026-09-25 10:27:08,520 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:27:08,521 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:08,521 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:27:12,281 INFO INCOMING HTTP 200
+2026-09-25 10:27:12,282 INFO   assistant: A vector database is used to store and organize large volumes of unstructured data like web pages for quick retrieval and search.
+2026-09-25 10:27:12,282 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}
+2026-09-25 10:27:12,282 DEBUG   raw response: {"id": "chatcmpl-494", "object": "chat.completion", "created": 1790312232, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and organize large volumes of unstructured data like web pages for quick retrieval and search."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}}
+2026-09-25 10:27:12,284 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:27:12,284 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:12,284 INFO   user: Explain why documents are split into chunks before they are embedded.
+2026-09-25 10:27:37,006 INFO INCOMING HTTP 200
+2026-09-25 10:27:37,007 INFO   assistant: Documents are split into chunks before they are embedded for several reasons:
+
+1. **Efficiency**: Splitting documents into smaller chunks allows for more efficient processing. Each chunk can be processed independently, which can significantly reduce the time required to embed the entire document. This is particularly useful when dealing with large documents that would otherwise take a long time to process.
+
+2. **Scalability**: Splitting documents into smaller chunks makes it easier to scale the embedding process. As the size of the document increases, it becomes more difficult to embed the entire document at once. By splitting the document into smaller chunks, the embedding process can be scaled up more easily, allowing for the embedding of larger documents.
+
+3. **Consistency**: Splitting documents into smaller chunks ensures that the embedding process is consistent across different documents. This is important because the embedding process should produce the same results for the same document, regardless of its size. By splitting the document into smaller chunks, the embedding process can be made more consistent.
+
+4. **Memory Efficiency**: Splitting documents into smaller chunks can help to reduce memory usage. Each chunk can be processed independently, which can help to reduce the amount of memory required to store the entire document. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of memory.
+
+5. **Processing Speed**: Splitting documents into smaller chunks can help to improve processing speed. Each chunk can be processed independently, which can help to improve the overall processing speed of the embedding process. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of processing time.
+2026-09-25 10:27:37,007 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 324, "total_tokens": 364}
+2026-09-25 10:27:37,007 DEBUG   raw response: {"id": "chatcmpl-259", "object": "chat.completion", "created": 1790312257, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Documents are split into chunks before they are embedded for several reasons:\n\n1. **Efficiency**: Splitting documents into smaller chunks allows for more efficient processing. Each chunk can be processed independently, which can significantly reduce the time required to embed the entire document. This is particularly useful when dealing with large documents that would otherwise take a long time to process.\n\n2. **Scalability**: Splitting documents into smaller chunks makes it easier to scale the embedding process. As the size of the document increases, it becomes more difficult to embed the entire document at once. By splitting the document into smaller chunks, the embedding process can be scaled up more easily, allowing for the embedding of larger documents.\n\n3. **Consistency**: Splitting documents into smaller chunks ensures that the embedding process is consistent across different documents. This is important because the embedding process should produce the same results for the same document, regardless of its size. By splitting the document into smaller chunks, the embedding process can be made more consistent.\n\n4. **Memory Efficiency**: Splitting documents into smaller chunks can help to reduce memory usage. Each chunk can be processed independently, which can help to reduce the amount of memory required to store the entire document. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of memory.\n\n5. **Processing Speed**: Splitting documents into smaller chunks can help to improve processing speed. Each chunk can be processed independently, which can help to improve the overall processing speed of the embedding process. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of processing time."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 324, "total_tokens": 364}}
+2026-09-25 10:27:37,008 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 25})
+2026-09-25 10:27:37,009 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:37,009 INFO   user: Explain why documents are split into chunks before they are embedded.
+2026-09-25 10:27:40,890 INFO INCOMING HTTP 200
+2026-09-25 10:27:40,890 INFO   assistant: Documents are split into chunks before they are embedded for several reasons:
+
+1. **Efficiency**: Splitting documents into smaller chunks
+2026-09-25 10:27:40,891 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}
+2026-09-25 10:27:40,891 DEBUG   raw response: {"id": "chatcmpl-366", "object": "chat.completion", "created": 1790312260, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Documents are split into chunks before they are embedded for several reasons:\n\n1. **Efficiency**: Splitting documents into smaller chunks"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}}
+2026-09-25 10:27:40,894 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:27:40,895 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:40,895 INFO   user: List the 5 main stages of a document retrieval pipeline as a numbered list, one line each.
+2026-09-25 10:27:45,301 INFO INCOMING HTTP 200
+2026-09-25 10:27:45,301 INFO   assistant: 1. Data Collection
+2. Preprocessing
+3. Indexing
+4. Query Processing
+5. Retrieval
+2026-09-25 10:27:45,302 INFO   usage: {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 25, "total_tokens": 72}
+2026-09-25 10:27:45,302 DEBUG   raw response: {"id": "chatcmpl-873", "object": "chat.completion", "created": 1790312265, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "1. Data Collection\n2. Preprocessing\n3. Indexing\n4. Query Processing\n5. Retrieval"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 25, "total_tokens": 72}}
+2026-09-25 10:27:45,303 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'stop': ['\n4.']})
+2026-09-25 10:27:45,303 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:45,304 INFO   user: List the 5 main stages of a document retrieval pipeline as a numbered list, one line each.
+2026-09-25 10:27:48,490 INFO INCOMING HTTP 200
+2026-09-25 10:27:48,491 INFO   assistant: 1. Data Collection
+2. Preprocessing
+3. Indexing
+2026-09-25 10:27:48,491 INFO   usage: {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 17, "total_tokens": 64}
+2026-09-25 10:27:48,491 DEBUG   raw response: {"id": "chatcmpl-23", "object": "chat.completion", "created": 1790312268, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "1. Data Collection\n2. Preprocessing\n3. Indexing"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 17, "total_tokens": 64}}
+2026-09-25 10:27:48,493 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:27:48,493 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:48,493 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:27:52,985 INFO INCOMING HTTP 200
+2026-09-25 10:27:52,986 INFO   assistant: Vector databases are used to store, search and retrieve similar data in large volumes. They can accelerate search and reduce storage requirements for complex data analysis tasks.
+2026-09-25 10:27:52,986 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 31, "total_tokens": 71}
+2026-09-25 10:27:52,986 DEBUG   raw response: {"id": "chatcmpl-562", "object": "chat.completion", "created": 1790312272, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Vector databases are used to store, search and retrieve similar data in large volumes. They can accelerate search and reduce storage requirements for complex data analysis tasks."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 31, "total_tokens": 71}}
+2026-09-25 10:27:52,987 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:27:52,987 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:27:52,988 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:00,888 INFO INCOMING HTTP 200
+2026-09-25 10:28:00,889 INFO   assistant: Vector databases are used to efficiently perform searches on high-dimensional data, such as images, text, audio, and video, by converting this data into a set of embeddings that use a large, symmetric, positive-only matrix. This transform transforms any amount of data into a manageable format without retaining redundancies. The vectors help to retrieve the relevant entity or match more accurately in a large dataset.
+2026-09-25 10:28:00,889 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 78, "total_tokens": 118}
+2026-09-25 10:28:00,889 DEBUG   raw response: {"id": "chatcmpl-99", "object": "chat.completion", "created": 1790312280, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Vector databases are used to efficiently perform searches on high-dimensional data, such as images, text, audio, and video, by converting this data into a set of embeddings that use a large, symmetric, positive-only matrix. This transform transforms any amount of data into a manageable format without retaining redundancies. The vectors help to retrieve the relevant entity or match more accurately in a large dataset."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 78, "total_tokens": 118}}
+2026-09-25 10:28:00,890 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:28:00,890 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:00,890 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:05,326 INFO INCOMING HTTP 200
+2026-09-25 10:28:05,327 INFO   assistant: Vector databases are used to efficiently store, query and retrieve complex, multidimensional data in the form of numerical vectors or arrays, leveraging vector-oriented search techniques.
+2026-09-25 10:28:05,327 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}
+2026-09-25 10:28:05,327 DEBUG   raw response: {"id": "chatcmpl-697", "object": "chat.completion", "created": 1790312285, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Vector databases are used to efficiently store, query and retrieve complex, multidimensional data in the form of numerical vectors or arrays, leveraging vector-oriented search techniques."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}}
+2026-09-25 10:28:05,329 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:28:05,329 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:05,330 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:10,255 INFO INCOMING HTTP 200
+2026-09-25 10:28:10,255 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:10,256 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:10,256 DEBUG   raw response: {"id": "chatcmpl-716", "object": "chat.completion", "created": 1790312290, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:10,256 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:28:10,257 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:10,257 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:14,977 INFO INCOMING HTTP 200
+2026-09-25 10:28:14,977 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:14,978 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:14,978 DEBUG   raw response: {"id": "chatcmpl-514", "object": "chat.completion", "created": 1790312294, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:14,978 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:28:14,979 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:14,979 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:19,596 INFO INCOMING HTTP 200
+2026-09-25 10:28:19,596 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:19,596 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:19,597 DEBUG   raw response: {"id": "chatcmpl-783", "object": "chat.completion", "created": 1790312299, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:42,986 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:28:42,986 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:42,986 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:47,360 INFO INCOMING HTTP 200
+2026-09-25 10:28:47,361 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:47,361 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:47,361 DEBUG   raw response: {"id": "chatcmpl-789", "object": "chat.completion", "created": 1790312327, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:47,362 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:28:47,363 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:47,363 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:51,682 INFO INCOMING HTTP 200
+2026-09-25 10:28:51,683 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:51,683 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:51,683 DEBUG   raw response: {"id": "chatcmpl-577", "object": "chat.completion", "created": 1790312331, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:51,684 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.0})
+2026-09-25 10:28:51,684 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:51,684 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:28:55,945 INFO INCOMING HTTP 200
+2026-09-25 10:28:55,946 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:28:55,946 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:28:55,946 DEBUG   raw response: {"id": "chatcmpl-200", "object": "chat.completion", "created": 1790312335, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:28:55,948 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:28:55,949 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:28:55,949 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:00,120 INFO INCOMING HTTP 200
+2026-09-25 10:29:00,120 INFO   assistant: A vector database is a type of database designed to store and retrieve large amounts of numerical data, often for similarity search and recommendation purposes, using techniques like cosine similarity.
+2026-09-25 10:29:00,120 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 34, "total_tokens": 74}
+2026-09-25 10:29:00,121 DEBUG   raw response: {"id": "chatcmpl-108", "object": "chat.completion", "created": 1790312340, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is a type of database designed to store and retrieve large amounts of numerical data, often for similarity search and recommendation purposes, using techniques like cosine similarity."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 34, "total_tokens": 74}}
+2026-09-25 10:29:00,121 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:29:00,122 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:00,122 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:03,726 INFO INCOMING HTTP 200
+2026-09-25 10:29:03,726 INFO   assistant: A vector database is used to store and retrieve large amounts of structured data in a highly efficient manner for information retrieval tasks.
+2026-09-25 10:29:03,726 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}
+2026-09-25 10:29:03,727 DEBUG   raw response: {"id": "chatcmpl-15", "object": "chat.completion", "created": 1790312343, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of structured data in a highly efficient manner for information retrieval tasks."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}}
+2026-09-25 10:29:03,727 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0.7})
+2026-09-25 10:29:03,728 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:03,728 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:06,947 INFO INCOMING HTTP 200
+2026-09-25 10:29:06,947 INFO   assistant: A vector database is used for storing and querying large amounts of multidimensional data efficiently.
+2026-09-25 10:29:06,948 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 18, "total_tokens": 58}
+2026-09-25 10:29:06,948 DEBUG   raw response: {"id": "chatcmpl-964", "object": "chat.completion", "created": 1790312346, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used for storing and querying large amounts of multidimensional data efficiently."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 18, "total_tokens": 58}}
+2026-09-25 10:29:06,949 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:29:06,949 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:06,950 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:10,238 INFO INCOMING HTTP 200
+2026-09-25 10:29:10,238 INFO   assistant: A vector database is used to store and index textual data to enable efficient retrieval and search.
+2026-09-25 10:29:10,239 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 19, "total_tokens": 59}
+2026-09-25 10:29:10,239 DEBUG   raw response: {"id": "chatcmpl-732", "object": "chat.completion", "created": 1790312350, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and index textual data to enable efficient retrieval and search."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 19, "total_tokens": 59}}
+2026-09-25 10:29:10,240 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:29:10,240 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:10,240 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:15,123 INFO INCOMING HTTP 200
+2026-09-25 10:29:15,124 INFO   assistant: At a high level, a vector database functions as the backbone of the retrieval process. It encapsulates documents and features them as a set of dense numerical vectors so that algorithms like cosine similarity rank matching entities based on these vectors.
+2026-09-25 10:29:15,124 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 46, "total_tokens": 86}
+2026-09-25 10:29:15,124 DEBUG   raw response: {"id": "chatcmpl-690", "object": "chat.completion", "created": 1790312355, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "At a high level, a vector database functions as the backbone of the retrieval process. It encapsulates documents and features them as a set of dense numerical vectors so that algorithms like cosine similarity rank matching entities based on these vectors."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 46, "total_tokens": 86}}
+2026-09-25 10:29:15,125 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5})
+2026-09-25 10:29:15,125 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:15,125 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:29:18,968 INFO INCOMING HTTP 200
+2026-09-25 10:29:18,968 INFO   assistant: A vector database is a scalable and distributed system for storing and efficiently querying large sets of information, where data points are represented as numerical vectors.
+2026-09-25 10:29:18,969 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 29, "total_tokens": 69}
+2026-09-25 10:29:18,969 DEBUG   raw response: {"id": "chatcmpl-754", "object": "chat.completion", "created": 1790312358, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is a scalable and distributed system for storing and efficiently querying large sets of information, where data points are represented as numerical vectors."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 29, "total_tokens": 69}}
+2026-09-25 10:29:18,970 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:29:18,971 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:18,971 INFO   user: Explain why documents are split into chunks before they are embedded.
+2026-09-25 10:29:45,207 INFO INCOMING HTTP 200
+2026-09-25 10:29:45,207 INFO   assistant: Documents are split into chunks before they are embedded for several reasons:
+
+1. **Efficiency**: Splitting documents into smaller chunks allows for more efficient processing. Each chunk can be processed independently, which can significantly reduce the time required to embed the entire document. This is particularly useful when dealing with large documents that would otherwise take a long time to process.
+
+2. **Scalability**: Splitting documents into smaller chunks makes it easier to scale the embedding process. As the size of the document increases, it becomes more difficult to embed the entire document at once. By splitting the document into smaller chunks, the embedding process can be scaled up more easily, allowing for the embedding of larger documents.
+
+3. **Consistency**: Splitting documents into smaller chunks ensures that the embedding process is consistent across different documents. This is important because the embedding process should produce the same results for the same document, regardless of its size. By splitting the document into smaller chunks, the embedding process can be made more consistent.
+
+4. **Memory Efficiency**: Splitting documents into smaller chunks can help to reduce memory usage. Each chunk can be processed independently, which can help to reduce the amount of memory required to store the entire document. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of memory.
+
+5. **Processing Speed**: Splitting documents into smaller chunks can help to improve processing speed. Each chunk can be processed independently, which can help to improve the overall processing speed of the embedding process. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of processing time.
+2026-09-25 10:29:45,208 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 324, "total_tokens": 364}
+2026-09-25 10:29:45,208 DEBUG   raw response: {"id": "chatcmpl-702", "object": "chat.completion", "created": 1790312385, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Documents are split into chunks before they are embedded for several reasons:\n\n1. **Efficiency**: Splitting documents into smaller chunks allows for more efficient processing. Each chunk can be processed independently, which can significantly reduce the time required to embed the entire document. This is particularly useful when dealing with large documents that would otherwise take a long time to process.\n\n2. **Scalability**: Splitting documents into smaller chunks makes it easier to scale the embedding process. As the size of the document increases, it becomes more difficult to embed the entire document at once. By splitting the document into smaller chunks, the embedding process can be scaled up more easily, allowing for the embedding of larger documents.\n\n3. **Consistency**: Splitting documents into smaller chunks ensures that the embedding process is consistent across different documents. This is important because the embedding process should produce the same results for the same document, regardless of its size. By splitting the document into smaller chunks, the embedding process can be made more consistent.\n\n4. **Memory Efficiency**: Splitting documents into smaller chunks can help to reduce memory usage. Each chunk can be processed independently, which can help to reduce the amount of memory required to store the entire document. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of memory.\n\n5. **Processing Speed**: Splitting documents into smaller chunks can help to improve processing speed. Each chunk can be processed independently, which can help to improve the overall processing speed of the embedding process. This is particularly useful when dealing with very large documents that would otherwise require a significant amount of processing time."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 22}, "completion_tokens": 324, "total_tokens": 364}}
+2026-09-25 10:29:45,209 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 25})
+2026-09-25 10:29:45,209 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:45,209 INFO   user: Explain why documents are split into chunks before they are embedded.
+2026-09-25 10:29:49,473 INFO INCOMING HTTP 200
+2026-09-25 10:29:49,474 INFO   assistant: Documents are split into chunks before they are embedded for several reasons:
+
+1. **Efficiency**: Splitting documents into smaller chunks
+2026-09-25 10:29:49,474 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}
+2026-09-25 10:29:49,474 DEBUG   raw response: {"id": "chatcmpl-599", "object": "chat.completion", "created": 1790312389, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Documents are split into chunks before they are embedded for several reasons:\n\n1. **Efficiency**: Splitting documents into smaller chunks"}, "finish_reason": "length"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 25, "total_tokens": 65}}
+2026-09-25 10:29:49,479 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0})
+2026-09-25 10:29:49,479 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:49,480 INFO   user: List the 5 main stages of a document retrieval pipeline as a numbered list, one line each.
+2026-09-25 10:29:53,422 INFO INCOMING HTTP 200
+2026-09-25 10:29:53,422 INFO   assistant: 1. Data Collection
+2. Preprocessing
+3. Indexing
+4. Query Processing
+5. Retrieval
+2026-09-25 10:29:53,423 INFO   usage: {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 25, "total_tokens": 72}
+2026-09-25 10:29:53,423 DEBUG   raw response: {"id": "chatcmpl-249", "object": "chat.completion", "created": 1790312393, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "1. Data Collection\n2. Preprocessing\n3. Indexing\n4. Query Processing\n5. Retrieval"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 25, "total_tokens": 72}}
+2026-09-25 10:29:53,424 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'stop': ['\n4.']})
+2026-09-25 10:29:53,424 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:53,424 INFO   user: List the 5 main stages of a document retrieval pipeline as a numbered list, one line each.
+2026-09-25 10:29:56,746 INFO INCOMING HTTP 200
+2026-09-25 10:29:56,746 INFO   assistant: 1. Data Collection
+2. Preprocessing
+3. Indexing
+2026-09-25 10:29:56,747 INFO   usage: {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 17, "total_tokens": 64}
+2026-09-25 10:29:56,747 DEBUG   raw response: {"id": "chatcmpl-483", "object": "chat.completion", "created": 1790312396, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "1. Data Collection\n2. Preprocessing\n3. Indexing"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 47, "prompt_tokens_details": {"cached_tokens": 46}, "completion_tokens": 17, "total_tokens": 64}}
+2026-09-25 10:29:56,748 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:29:56,749 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:29:56,749 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:00,554 INFO INCOMING HTTP 200
+2026-09-25 10:30:00,554 INFO   assistant: A vector database is used for efficient fast and comprehensive retrieval of similar items stored in complex high-dimensional space datasets using mathematical queries as vectors.
+2026-09-25 10:30:00,554 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 28, "total_tokens": 68}
+2026-09-25 10:30:00,555 DEBUG   raw response: {"id": "chatcmpl-358", "object": "chat.completion", "created": 1790312400, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used for efficient fast and comprehensive retrieval of similar items stored in complex high-dimensional space datasets using mathematical queries as vectors."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 28, "total_tokens": 68}}
+2026-09-25 10:30:00,555 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:30:00,556 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:30:00,556 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:04,973 INFO INCOMING HTTP 200
+2026-09-25 10:30:04,974 INFO   assistant: A vector database is primarily used for storing and efficiently querying large volumes of spatial, text, or numerical data in vector space for applications where proximity or semantic similarity relationships are essential.
+2026-09-25 10:30:04,974 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 36, "total_tokens": 76}
+2026-09-25 10:30:04,974 DEBUG   raw response: {"id": "chatcmpl-319", "object": "chat.completion", "created": 1790312404, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is primarily used for storing and efficiently querying large volumes of spatial, text, or numerical data in vector space for applications where proximity or semantic similarity relationships are essential."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 36, "total_tokens": 76}}
+2026-09-25 10:30:04,975 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 1.0})
+2026-09-25 10:30:04,975 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:30:04,975 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:09,023 INFO INCOMING HTTP 200
+2026-09-25 10:30:09,024 INFO   assistant: A vector database provides a convenient, efficient way to store and efficiently query high dimensional datasets, leveraging similarity measures from various vector space metrics to handle sparse data.
+2026-09-25 10:30:09,024 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}
+2026-09-25 10:30:09,024 DEBUG   raw response: {"id": "chatcmpl-857", "object": "chat.completion", "created": 1790312409, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database provides a convenient, efficient way to store and efficiently query high dimensional datasets, leveraging similarity measures from various vector space metrics to handle sparse data."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 32, "total_tokens": 72}}
+2026-09-25 10:30:09,026 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:30:09,026 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:30:09,026 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:13,461 INFO INCOMING HTTP 200
+2026-09-25 10:30:13,462 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:30:13,462 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:30:13,462 DEBUG   raw response: {"id": "chatcmpl-459", "object": "chat.completion", "created": 1790312413, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:30:13,463 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:30:13,463 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:30:13,463 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:17,885 INFO INCOMING HTTP 200
+2026-09-25 10:30:17,886 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:30:17,886 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:30:17,886 DEBUG   raw response: {"id": "chatcmpl-806", "object": "chat.completion", "created": 1790312417, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
+2026-09-25 10:30:17,887 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 1.5, 'top_p': 0.1})
+2026-09-25 10:30:17,887 INFO   system: You are a helpful assistant for a team building a document retrieval pipeline.
+2026-09-25 10:30:17,887 INFO   user: In one sentence, describe what a vector database is used for.
+2026-09-25 10:30:22,416 INFO INCOMING HTTP 200
+2026-09-25 10:30:22,416 INFO   assistant: A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval.
+2026-09-25 10:30:22,416 INFO   usage: {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}
+2026-09-25 10:30:22,417 DEBUG   raw response: {"id": "chatcmpl-47", "object": "chat.completion", "created": 1790312422, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "A vector database is used to store and retrieve large amounts of numerical data, such as images, videos, and text, in a way that allows for efficient similarity searches and retrieval."}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 40, "prompt_tokens_details": {"cached_tokens": 39}, "completion_tokens": 37, "total_tokens": 77}}
