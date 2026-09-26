@@ -4739,3 +4739,199 @@ Question: What does the cleaning stage do to line endings?
 2026-09-25 15:19:55,435 INFO   assistant: The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]
 2026-09-25 15:19:55,436 INFO   usage: {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}
 2026-09-25 15:19:55,436 DEBUG   raw response: {"id": "chatcmpl-882", "object": "chat.completion", "created": 1790329795, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The cleaning stage normalizes line endings so downstream code never has to branch on whether a file came from Windows or Unix. [long_report.txt#3]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 455, "prompt_tokens_details": {"cached_tokens": 454}, "completion_tokens": 32, "total_tokens": 487}}
+2026-09-25 15:33:03,864 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:33:03,865 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#1, readme.md#0, page.html#0, long_report.txt#2, notes.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:33:03,865 INFO   user: Context:
+[long_report.txt#1] (section: Retrieval System Design Notes)
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[readme.md#0] (section: Sample Corpus)
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+[page.html#0] (section: none)
+Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage
+before they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[notes.txt#0] (section: none)
+Quarterly retrieval pipeline notes.
+
+The intake step normalizes every document to plain text before anything
+gets embedded or indexed. This keeps the downstream chunking logic simple
+because it never has to know whether a document originally came from a
+PDF, a web page, or a markdown file.
+
+Question: What file formats does the loading stage read?
+2026-09-25 15:33:29,850 INFO INCOMING HTTP 200
+2026-09-25 15:33:29,850 INFO   assistant: The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]
+2026-09-25 15:33:29,850 INFO   usage: {"prompt_tokens": 621, "prompt_tokens_details": {"cached_tokens": 0}, "completion_tokens": 26, "total_tokens": 647}
+2026-09-25 15:33:29,851 DEBUG   raw response: {"id": "chatcmpl-856", "object": "chat.completion", "created": 1790330609, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 621, "prompt_tokens_details": {"cached_tokens": 0}, "completion_tokens": 26, "total_tokens": 647}}
+2026-09-25 15:33:34,191 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:33:34,191 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: page.html#0, notes.txt#0, report.pdf#0, long_report.txt#2, long_report.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:33:34,193 INFO   user: Context:
+[page.html#0] (section: none)
+Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage
+before they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed
+
+[notes.txt#0] (section: none)
+Quarterly retrieval pipeline notes.
+
+The intake step normalizes every document to plain text before anything
+gets embedded or indexed. This keeps the downstream chunking logic simple
+because it never has to know whether a document originally came from a
+PDF, a web page, or a markdown file.
+
+[report.pdf#0] (section: Retrieval Pipeline Status Report)
+Retrieval Pipeline Status Report
+This report summarizes ingestion coverage across formats.
+PDF extraction is verified using pypdf in this sample corpus.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: How does the pipeline handle scanned images with OCR?
+2026-09-25 15:33:56,619 INFO INCOMING HTTP 200
+2026-09-25 15:33:56,620 INFO   assistant: The pipeline handles scanned images with OCR by normalizing the raw text before embedding or indexing. This keeps the downstream chunking logic simple because it never has to know whether a document originally came from a PDF, a web page, or a markdown file. [notes.txt#0]
+2026-09-25 15:33:56,620 INFO   usage: {"prompt_tokens": 585, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 57, "total_tokens": 642}
+2026-09-25 15:33:56,620 DEBUG   raw response: {"id": "chatcmpl-146", "object": "chat.completion", "created": 1790330636, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The pipeline handles scanned images with OCR by normalizing the raw text before embedding or indexing. This keeps the downstream chunking logic simple because it never has to know whether a document originally came from a PDF, a web page, or a markdown file. [notes.txt#0]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 585, "prompt_tokens_details": {"cached_tokens": 64}, "completion_tokens": 57, "total_tokens": 642}}
+2026-09-25 15:39:55,731 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:39:55,733 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: long_report.txt#1, readme.md#0, page.html#0, long_report.txt#2, notes.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:39:55,734 INFO   user: Context:
+[long_report.txt#1] (section: Retrieval System Design Notes)
+The loading stage reads PDF, plain text, Markdown, and HTML files from a folder and converts each one into a single plain-text string. PDF pages are extracted one at a time and joined with newlines. HTML files have their script and style tags removed before the remaining visible text is pulled out. Plain text and Markdown files are read directly without any reformatting, since their content is already close to what the retrieval system needs.
+
+[readme.md#0] (section: Sample Corpus)
+# Sample Corpus
+
+This folder holds a handful of small documents used to exercise the
+document loader end-to-end.
+
+## Contents
+
+- A plain text file
+- This markdown file
+- An HTML page
+- A small PDF report
+
+Each file is short on purpose so the printed text samples stay readable.
+
+[page.html#0] (section: none)
+Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage
+before they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[notes.txt#0] (section: none)
+Quarterly retrieval pipeline notes.
+
+The intake step normalizes every document to plain text before anything
+gets embedded or indexed. This keeps the downstream chunking logic simple
+because it never has to know whether a document originally came from a
+PDF, a web page, or a markdown file.
+
+Question: What file formats does the loading stage read?
+2026-09-25 15:40:00,448 INFO INCOMING HTTP 200
+2026-09-25 15:40:00,448 INFO   assistant: The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]
+2026-09-25 15:40:00,449 INFO   usage: {"prompt_tokens": 621, "prompt_tokens_details": {"cached_tokens": 620}, "completion_tokens": 26, "total_tokens": 647}
+2026-09-25 15:40:00,450 DEBUG   raw response: {"id": "chatcmpl-402", "object": "chat.completion", "created": 1790331000, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The loading stage reads PDF, plain text, Markdown, and HTML files from a folder. [long_report.txt#1]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 621, "prompt_tokens_details": {"cached_tokens": 620}, "completion_tokens": 26, "total_tokens": 647}}
+2026-09-25 15:40:04,961 INFO OUTGOING POST http://localhost:11434/v1/chat/completions (model=qwen2.5-coder:1.5b, key=****lder, options={'temperature': 0, 'max_tokens': 200})
+2026-09-25 15:40:04,961 INFO   system: You are a technical advisor for a team building a document retrieval pipeline.
+Answer only from the context chunks provided. Each chunk starts with its id in square brackets.
+Keep the answer to at most 3 sentences.
+End the answer with the id of the chunk you used, in square brackets, chosen from: page.html#0, notes.txt#0, report.pdf#0, long_report.txt#2, long_report.txt#0.
+Read every chunk first; most questions are answered by at least one chunk.
+Only if none of the chunks is about the question, reply exactly: The provided context does not say.
+
+Example
+Context:
+[notes.md#3] (section: Storage)
+We keep backups for 30 days because audits can reach back one month.
+Question: Why are backups kept for 30 days?
+Answer: Backups are kept for 30 days because audits can reach back one month. [notes.md#3]
+2026-09-25 15:40:04,962 INFO   user: Context:
+[page.html#0] (section: none)
+Retrieval Pipeline Overview Retrieval Pipeline Overview This page describes how documents move through the ingestion stage
+before they are embedded and stored for search. Load the raw file Extract plain text Chunk and embed
+
+[notes.txt#0] (section: none)
+Quarterly retrieval pipeline notes.
+
+The intake step normalizes every document to plain text before anything
+gets embedded or indexed. This keeps the downstream chunking logic simple
+because it never has to know whether a document originally came from a
+PDF, a web page, or a markdown file.
+
+[report.pdf#0] (section: Retrieval Pipeline Status Report)
+Retrieval Pipeline Status Report
+This report summarizes ingestion coverage across formats.
+PDF extraction is verified using pypdf in this sample corpus.
+
+[long_report.txt#2] (section: Retrieval System Design Notes)
+The cleaning stage takes that raw text and makes it consistent across every source format. It normalizes Unicode so visually identical characters compare equal, repairs a handful of common encoding artifacts, and unifies line endings so downstream code never has to branch on whether a file came from Windows or Unix. Repeated running headers and footers, such as page counters, are detected and removed so they do not pollute every chunk with the same boilerplate line.
+
+[long_report.txt#0] (section: Retrieval System Design Notes)
+Retrieval System Design Notes
+
+This report walks through the design of the ingestion and retrieval pipeline built for the document search project. It covers the loading stage, the cleaning stage, and the chunking stage, and explains the reasoning behind each choice. The goal throughout has been to keep every stage simple, inspectable, and free of hidden network dependencies so the whole pipeline can run offline during development and testing.
+
+Question: How does the pipeline handle scanned images with OCR?
+2026-09-25 15:40:09,669 INFO INCOMING HTTP 200
+2026-09-25 15:40:09,670 INFO   assistant: The pipeline handles scanned images with OCR by normalizing the text using pypdf in the sample corpus. [report.pdf#0]
+2026-09-25 15:40:09,670 INFO   usage: {"prompt_tokens": 585, "prompt_tokens_details": {"cached_tokens": 584}, "completion_tokens": 28, "total_tokens": 613}
+2026-09-25 15:40:09,671 DEBUG   raw response: {"id": "chatcmpl-863", "object": "chat.completion", "created": 1790331009, "model": "qwen2.5-coder:1.5b", "system_fingerprint": "fp_ollama", "choices": [{"index": 0, "message": {"role": "assistant", "content": "The pipeline handles scanned images with OCR by normalizing the text using pypdf in the sample corpus. [report.pdf#0]"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 585, "prompt_tokens_details": {"cached_tokens": 584}, "completion_tokens": 28, "total_tokens": 613}}
