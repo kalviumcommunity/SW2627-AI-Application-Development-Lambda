@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import sys
 from pathlib import Path
@@ -11,6 +12,13 @@ from lambda_agent import LambdaAgent
 from shared.models import QueryRequest, QueryResponse
 
 app = FastAPI(title="Lambda Agent API", version="1.0.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 agent = LambdaAgent()
 

@@ -1,6 +1,7 @@
 export const incidents = [
   {
     id: 'INC-1042',
+    client_id: '09631350-d657-4852-a175-36cb951e4f30',
     description: 'Payment API returning 5xx errors',
     client: 'Acme Financial Services',
     assignment: 'Platform Support',
@@ -11,6 +12,7 @@ export const incidents = [
   },
   {
     id: 'INC-1041',
+    client_id: 'e65088f3-59a5-4db1-b08e-ec04ad001758',
     description: 'Database connection timeouts',
     client: 'TechCorp Industries',
     assignment: 'Database Team',
@@ -21,6 +23,7 @@ export const incidents = [
   },
   {
     id: 'INC-1040',
+    client_id: 'e5ffd3bd-6d2f-4931-8e4d-3f0526713984',
     description: 'Email service delivery delays',
     client: 'StartupXYZ',
     assignment: 'Messaging Team',
@@ -31,6 +34,7 @@ export const incidents = [
   },
   {
     id: 'INC-1039',
+    client_id: '140a1c5b-76d4-4eb2-afc3-7ee581c3cbbf',
     description: 'Authentication service intermittent failures',
     client: 'Global Logistics',
     assignment: 'Security Team',
@@ -41,6 +45,7 @@ export const incidents = [
   },
   {
     id: 'INC-1038',
+    client_id: 'caee08e1-51c5-4162-b0de-30f5fab22d41',
     description: 'File upload processing errors',
     client: 'MediaStream Inc',
     assignment: 'Platform Support',
@@ -51,6 +56,7 @@ export const incidents = [
   },
   {
     id: 'INC-1037',
+    client_id: '6f402815-5552-4e87-b41a-8f5e42582d55',
     description: 'API rate limiting issues',
     client: 'CloudScale Solutions',
     assignment: 'API Team',
@@ -61,6 +67,7 @@ export const incidents = [
   },
   {
     id: 'INC-1036',
+    client_id: '928d6346-2d32-4982-aa3b-4b5a18fecaba',
     description: 'Memory leak in payment service',
     client: 'FinTech Pro',
     assignment: 'Platform Support',
@@ -71,6 +78,7 @@ export const incidents = [
   },
   {
     id: 'INC-1035',
+    client_id: '5c7a61d4-5181-4d16-aebe-486a43d21c74',
     description: 'SSL certificate expiration warnings',
     client: 'SecureNet Corp',
     assignment: 'Infrastructure Team',

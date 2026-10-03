@@ -27,8 +27,8 @@ class LambdaAgent:
         )
         
         self.model = init_chat_model(
-            "gemini-3.6-flash",
-            model_provider="google_genai",
+            "openai/gpt-oss-20b",
+            model_provider="groq",
             temperature=0,
         )
         
@@ -37,15 +37,19 @@ class LambdaAgent:
         self.checkpointer = InMemorySaver()
         
         # Define tools as standalone functions to avoid self parameter issues
-        def get_slas(client_id: str):
-            """Retrieve SLA information for a specific client from the API."""
+        def get_client_context(client_id: str, priority: str = None):
+            """Retrieve complete client context (SLAs, priority targets, special instructions, contacts, services) for a specific client."""
             try:
-                api_url = f"http://localhost:5001/api/slas/client/{client_id}"
-                response = requests.get(api_url)
+                api_url = f"http://localhost:5001/api/context/client/{client_id}"
+                params = {}
+                if priority:
+                    params["priority"] = priority
+                response = requests.get(api_url, params=params)
                 response.raise_for_status()
                 return response.json()
             except requests.exceptions.RequestException as e:
-                return f"Error fetching SLAs: {str(e)}"
+                return f"Error fetching client context: {str(e)}"
+
         
         def get_runbooks_and_client_specific_info(client_id: str, query_context: str):
             """Retrieve relevant knowledge chunks and client-specific information."""
@@ -75,15 +79,16 @@ class LambdaAgent:
                 return f"Error retrieving information: {str(e)}"
         
         # Create tools with the decorator
-        self.get_slas_tool = tool(get_slas)
+        self.get_client_context_tool = tool(get_client_context)
         self.get_runbooks_tool = tool(get_runbooks_and_client_specific_info)
         
         self.agent = create_agent(
             model=self.model,
-            tools=[self.get_slas_tool, self.get_runbooks_tool],
+            tools=[self.get_client_context_tool, self.get_runbooks_tool],
             system_prompt=self.system_prompt,
             checkpointer=self.checkpointer,
         )
+
     
     def process_query(self, request: QueryRequest, thread_id: str = None) -> tuple:
         user_content = request.query

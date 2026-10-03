@@ -6,7 +6,8 @@ import { useChat } from '../../context/ChatContext'
 function Layout() {
   const { isChatOpen, chatContext, closeChat } = useChat()
 
-  const sidebarWidth = chatContext.showContext ? '500px' : '400px'
+  const sidebarWidth = '50vw'
+
 
   return (
     <div className="min-h-screen flex flex-col bg-[#ffffff] relative overflow-x-hidden">
