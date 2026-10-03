@@ -62,6 +62,93 @@ def runbook(runbook_reference):
         runbook=runbook_data
     )
 
+
+@app.route("/sla/<sla_id>")
+def sla(sla_id):
+    response = supabase.table("slas") \
+        .select("""
+            *,
+            sla_priorities (*)
+        """) \
+        .eq("id", sla_id) \
+        .execute()
+
+    if not response.data:
+        return "SLA not found", 404
+    sla_data = response.data[0]
+    return render_template(
+        "sla.html",
+        sla=sla_data
+    )
+
+
+@app.route("/service/<service_id>")
+def service(service_id):
+    response = supabase.table("services") \
+        .select("*") \
+        .eq("id", service_id) \
+        .execute()
+
+    if not response.data:
+        return "Service not found", 404
+
+    service_data = response.data[0]
+    return render_template(
+        "service.html",
+        service=service_data
+    )
+
+
+@app.route("/critical-system/<system_id>")
+def critical_system(system_id):
+    response = supabase.table("critical_systems") \
+        .select("*") \
+        .eq("id", system_id) \
+        .execute()
+
+    if not response.data:
+        return "Critical system not found", 404
+
+    system_data = response.data[0]
+    return render_template(
+        "critical_system.html",
+        system=system_data
+    )
+
+
+@app.route("/contact/<contact_id>")
+def contact(contact_id):
+    response = supabase.table("contacts") \
+        .select("*") \
+        .eq("id", contact_id) \
+        .execute()
+
+    if not response.data:
+        return "Contact not found", 404
+
+    contact_data = response.data[0]
+    return render_template(
+        "contact.html",
+        contact=contact_data
+    )
+
+
+@app.route("/special-instruction/<instruction_id>")
+def special_instruction(instruction_id):
+    response = supabase.table("special_instructions") \
+        .select("*") \
+        .eq("id", instruction_id) \
+        .execute()
+
+    if not response.data:
+        return "Special instruction not found", 404
+
+    instruction_data = response.data[0]
+    return render_template(
+        "special_instruction.html",
+        instruction=instruction_data
+    )
+
 @app.route("/api/runbook")
 def get_runbooks_api():
     response = supabase.table("runbook_references") \

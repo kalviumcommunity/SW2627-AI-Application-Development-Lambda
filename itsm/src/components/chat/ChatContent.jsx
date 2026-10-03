@@ -2,8 +2,27 @@ import { useRef, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useChat } from "../../context/ChatContext";
-import { FiUser, FiCopy, FiCheck } from "react-icons/fi";
+import { FiUser, FiCopy, FiCheck, FiDownload } from "react-icons/fi";
 import { TbLambda } from "react-icons/tb";
+import { pdf, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+    padding: 40,
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+    color: '#1c1c1c',
+  },
+  content: {
+    fontSize: 12,
+    lineHeight: 1.6,
+    color: '#1c1c1c',
+  },
+});
 
 function ChatContent({
   placeholderText = "Start a conversation to get assistance with this incident",
@@ -11,6 +30,7 @@ function ChatContent({
   const { messages, isLoadingContext, isBotLoading } = useChat();
   const messagesEndRef = useRef(null);
   const [copiedIndex, setCopiedIndex] = useState(null);
+  const [expandedResources, setExpandedResources] = useState({});
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -27,6 +47,27 @@ function ChatContent({
     setTimeout(() => {
       setCopiedIndex(null);
     }, 2000);
+  };
+
+  const handleDownload = async (message, index) => {
+    const content = message.message;
+
+    const MyDocument = () => (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <Text style={styles.content}>{content}</Text>
+        </Page>
+      </Document>
+    );
+
+    try {
+      const blob = await pdf(<MyDocument />).toBlob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF');
+    }
   };
 
   return (
@@ -67,7 +108,7 @@ function ChatContent({
             const isBot = message.role === "bot";
 
             const resourceList = Array.isArray(message.resources)
-              ? message.resources.slice(0, 3)
+              ? message.resources
               : [];
 
             return (
@@ -92,13 +133,13 @@ function ChatContent({
                 </div>
 
                 <div
-                  className={`group relative max-w-[90%] py-2.5 px-3.5 rounded-xl text-sm leading-relaxed overflow-x-auto ${
+                  className={`group relative max-w-[75%] py-2.5 px-3.5 rounded-xl text-sm leading-relaxed ${
                     isUser
                       ? "bg-[#1c1c1c] text-white rounded-tr-none"
                       : "bg-[#f5f5f5] text-[#1c1c1c] border border-[#e8e8e8] rounded-tl-none"
                   }`}
                 >
-                  <div className="markdown-body">
+                  <div className="markdown-body overflow-hidden break-words">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{
@@ -217,129 +258,99 @@ function ChatContent({
                   </div>
 
                   {isBot && resourceList.length > 0 && (
-                    <div className="mt-2.5 flex flex-wrap gap-2">
-                      {resourceList.map((resource, resourceIndex) => {
-                        const shortenedTitle =
-                          resource.title && resource.title.length > 18
-                            ? `${resource.title.slice(0, 18)}...`
-                            : resource.title || "Resource";
+                    <div className="mt-2.5">
+                      <button
+                        type="button"
+                        onClick={() => setExpandedResources(prev => ({
+                          ...prev,
+                          [index]: !prev[index]
+                        }))}
+                        className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#666] hover:text-[#1c1c1c] transition-colors"
+                      >
+                        <span>Sources</span>
+                        <span className="px-1.5 py-0.5 rounded-full bg-[#e8e8e8] text-[10px] font-medium text-[#1c1c1c]">
+                          {resourceList.length}
+                        </span>
+                        <svg
+                          className={`w-3 h-3 transition-transform ${expandedResources[index] ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
 
-                        const shortenedId =
-                          resource.id && resource.id.length > 18
-                            ? `${resource.id.slice(0, 18)}...`
-                            : resource.id || "N/A";
+                      {expandedResources[index] && (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {resourceList.map((resource, resourceIndex) => {
+                            const resourceName = resource.name || "Resource";
+                            const shortenedName =
+                              resourceName.length > 18
+                                ? `${resourceName.slice(0, 18)}...`
+                                : resourceName;
 
-                        const popupTitle =
-                          resource.title && resource.title.length > 32
-                            ? `${resource.title.slice(0, 32)}...`
-                            : resource.title || "Resource";
+                            const resourceLink = resource.resource_link || "#";
 
-                        return (
-                          <div
-                            key={`${resource.id || resourceIndex}-resource`}
-                            className="relative"
-                          >
-                            {/* Resource button */}
-                            <button
-                              type="button"
-                              className="peer px-2.5 py-1.5 rounded-full border border-[#d8d8d8] bg-white/80 text-[11px] font-medium text-[#1c1c1c] shadow-sm transition-colors hover:bg-white"
-                            >
-                              {shortenedTitle}
-                            </button>
-
-                            {/* Popup belongs only to this resource */}
-                            <div
-                              className="
-                                pointer-events-none
-                                absolute
-                                bottom-full
-                                left-1/2
-                                z-50
-                                mb-2
-                                w-56
-                                -translate-x-1/2
-                                rounded-lg
-                                border
-                                border-[#e8e8e8]
-                                bg-white
-                                p-2.5
-                                text-left
-                                shadow-lg
-                                opacity-0
-                                invisible
-                                transition-all
-                                duration-150
-                                peer-hover:opacity-100
-                                peer-hover:visible
-                              "
-                            >
-                              <div className="mb-1 border-b border-[#f0f0f0] pb-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#666]">
-                                Resource
-                              </div>
-
-                              <div className="space-y-1 text-[10px] text-[#1c1c1c]">
-                                <div className="flex items-start gap-2">
-                                  <span className="min-w-[2.5rem] font-medium text-[#666]">
-                                    id:
-                                  </span>
-
-                                  <span
-                                    className="break-all"
-                                    title={resource.id || "N/A"}
-                                  >
-                                    {shortenedId}
-                                  </span>
-                                </div>
-
-                                <div className="flex items-start gap-2">
-                                  <span className="min-w-[2.5rem] font-medium text-[#666]">
-                                    title:
-                                  </span>
-
-                                  <span
-                                    className="break-words"
-                                    title={resource.title || "N/A"}
-                                  >
-                                    {popupTitle}
-                                  </span>
-                                </div>
-
-                                <div className="flex items-start gap-2">
-                                  <span className="min-w-[2.5rem] font-medium text-[#666]">
-                                    type:
-                                  </span>
-
-                                  <span
-                                    className="break-all"
-                                    title={resource.type || "N/A"}
-                                  >
-                                    {resource.type || "N/A"}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                            return (
+                              <a
+                                key={resourceIndex}
+                                href={resourceLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block px-2.5 py-1.5 rounded-full border border-[#d8d8d8] bg-white/80 text-[11px] font-medium text-[#1c1c1c] shadow-sm transition-colors hover:bg-white hover:border-[#1c1c1c]"
+                                title={resourceName}
+                              >
+                                {shortenedName}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   )}
 
-                  <button
-                    onClick={() => handleCopy(message.message, index)}
-                    className={`absolute top-2 ${
+                  <div
+                    className={`absolute top-2 flex flex-col gap-1 ${
                       isUser
-                        ? "-left-7 text-gray-400 hover:text-white"
-                        : "-right-7 text-[#666] hover:text-[#1c1c1c]"
-                    } opacity-0 group-hover:opacity-100 transition-opacity p-1`}
-                    title="Copy message"
-                    aria-label="Copy message"
+                        ? "-left-9"
+                        : "-right-9"
+                    } opacity-0 group-hover:opacity-100 transition-opacity`}
                   >
-                    {copiedIndex === index ? (
-                      <FiCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    ) : (
-                      <FiCopy className="w-3.5 h-3.5" />
-                    )}
-                  </button>
+                    <button
+                      onClick={() => handleCopy(message.message, index)}
+                      className={`p-1 ${
+                        isUser
+                          ? "text-gray-400 hover:text-white"
+                          : "text-[#666] hover:text-[#1c1c1c]"
+                      }`}
+                      title="Copy message"
+                      aria-label="Copy message"
+                    >
+                      {copiedIndex === index ? (
+                        <FiCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      ) : (
+                        <FiCopy className="w-3.5 h-3.5" />
+                      )}
+                    </button>
+                    <button
+                      onClick={() => handleDownload(message, index)}
+                      className={`p-1 ${
+                        isUser
+                          ? "text-gray-400 hover:text-white"
+                          : "text-[#666] hover:text-[#1c1c1c]"
+                      }`}
+                      title="Download as file"
+                      aria-label="Download as file"
+                    >
+                      <FiDownload className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
