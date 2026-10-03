@@ -1,11 +1,21 @@
+import { useEffect } from 'react'
 import ChatHeader from './ChatHeader'
 import ChatContent from './ChatContent'
 import ChatInput from './ChatInput'
-import ContextSection from './ContextSection'
 import ChatSuggestions from './ChatSuggestions'
 
 function ChatSidebar({ isOpen, onClose, showContext = false, showSuggestions = false, showUser = false, placeholder = 'Ask about incidents...', placeholderText = 'Start a conversation to get assistance' }) {
-  const sidebarWidth = showContext ? '500px' : '400px'
+  const sidebarWidth = '50vw'
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   return (
     <div 
@@ -16,7 +26,6 @@ function ChatSidebar({ isOpen, onClose, showContext = false, showSuggestions = f
       }}
     >
       <ChatHeader onClose={onClose} showUser={showUser} />
-      {showContext && <ContextSection />}
       <ChatContent placeholderText={placeholderText} />
       {showSuggestions && <ChatSuggestions />}
       <ChatInput placeholder={placeholder} />

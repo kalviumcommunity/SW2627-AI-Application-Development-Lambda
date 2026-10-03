@@ -4,6 +4,7 @@ import json
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from supabase import create_client, Client
+from flask_cors import CORS
 
 
 load_dotenv()
@@ -24,6 +25,7 @@ supabase: Client = create_client(
 BUCKET_NAME = "runbooks"
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
@@ -107,14 +109,95 @@ def get_runbooks_by_client_id(client_id):
     return response.data
 
 
+from flask import request
+
 @app.route("/api/slas/client/<client_id>")
 def get_slas_by_client_id(client_id):
-    response = supabase.table("slas") \
+    priority = request.args.get("priority")
+    
+    query = supabase.table("slas") \
+        .select("""
+            *,
+            sla_priorities (*)
+        """) \
+        .eq("client_id", client_id)
+    
+    response = query.execute()
+    slas = response.data
+
+    if priority:
+        priority_clean = priority.strip().upper()
+        # Filter priorities within each SLA, or filter SLAs that match priority
+        filtered_slas = []
+        for sla in slas:
+            matching_priorities = [
+                p for p in sla.get("sla_priorities", [])
+                if p.get("priority_level", "").upper() == priority_clean
+                   or priority_clean in p.get("priority_name", "").upper()
+            ]
+            if matching_priorities:
+                sla_copy = dict(sla)
+                sla_copy["sla_priorities"] = matching_priorities
+                filtered_slas.append(sla_copy)
+        return filtered_slas
+
+    return slas
+
+
+@app.route("/api/special_instructions/client/<client_id>")
+def get_special_instructions_by_client_id(client_id):
+    response = supabase.table("special_instructions") \
         .select("*") \
         .eq("client_id", client_id) \
         .execute()
     return response.data
 
 
+@app.route("/api/contacts/client/<client_id>")
+def get_contacts_by_client_id(client_id):
+    response = supabase.table("contacts") \
+        .select("*") \
+        .eq("client_id", client_id) \
+        .execute()
+    return response.data
+
+
+@app.route("/api/services/client/<client_id>")
+def get_services_by_client_id(client_id):
+    response = supabase.table("services") \
+        .select("*") \
+        .eq("client_id", client_id) \
+        .execute()
+    return response.data
+
+
+@app.route("/api/critical_systems/client/<client_id>")
+def get_critical_systems_by_client_id(client_id):
+    response = supabase.table("critical_systems") \
+        .select("*") \
+        .eq("client_id", client_id) \
+        .execute()
+    return response.data
+
+
+@app.route("/api/context/client/<client_id>")
+def get_unified_client_context(client_id):
+    priority = request.args.get("priority")
+    slas = get_slas_by_client_id(client_id)
+    instructions = supabase.table("special_instructions").select("*").eq("client_id", client_id).execute().data
+    contacts = supabase.table("contacts").select("*").eq("client_id", client_id).execute().data
+    services = supabase.table("services").select("*").eq("client_id", client_id).execute().data
+
+    return {
+        "client_id": client_id,
+        "slas": slas,
+        "special_instructions": instructions,
+        "contacts": contacts,
+        "services": services
+    }
+
+
+
 if __name__ == "__main__":
     app.run(port="5001")
+
