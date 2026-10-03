@@ -1,8 +1,9 @@
 import os
 import requests
-import warnings
+import json
 import sys
 import uuid
+import logging
 from pathlib import Path
 from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
@@ -10,6 +11,12 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langchain.tools import tool
 from dotenv import load_dotenv
 from supabase import create_client
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger("lambda_agent")
 
 sys.path.append(str(Path(__file__).parent.parent))
 sys.path.append(str(Path(__file__).parent))
@@ -20,6 +27,7 @@ from shared.models import QueryRequest
 class LambdaAgent:    
     def __init__(self, system_prompt_path: str = "system_prompt.txt"):
         load_dotenv()
+        logger.info("Initializing LambdaAgent")
         
         self.supabase = create_client(
             os.getenv("SUPABASE_URL"),
@@ -37,22 +45,156 @@ class LambdaAgent:
         self.checkpointer = InMemorySaver()
         
         # Define tools as standalone functions to avoid self parameter issues
-        def get_client_context(client_id: str, priority: str = None):
-            """Retrieve complete client context (SLAs, priority targets, special instructions, contacts, services) for a specific client."""
+        def get_slas_by_client(client_id: str, priority: str = None):
+            """Retrieve SLA requirements and priority-specific response targets for a client.
+
+            Example usage:
+                get_slas_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651", priority="P1")
+            """
+            logger.info("Tool call: get_slas_by_client | client_id=%s priority=%s", client_id, priority)
             try:
-                api_url = f"http://localhost:5001/api/context/client/{client_id}"
+                api_url = f"http://localhost:5001/api/slas/client/{client_id}"
                 params = {}
                 if priority:
                     params["priority"] = priority
-                response = requests.get(api_url, params=params)
+                response = requests.get(api_url, params=params, timeout=20)
                 response.raise_for_status()
-                return response.json()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_slas_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
             except requests.exceptions.RequestException as e:
-                return f"Error fetching client context: {str(e)}"
+                logger.exception("Tool error: get_slas_by_client | client_id=%s", client_id)
+                return f"Error fetching SLA data: {str(e)}"
 
-        
+        def get_special_instructions_by_client(client_id: str):
+            """Retrieve client special handling instructions, escalation notes, or operational constraints.
+
+            Example usage:
+                get_special_instructions_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
+            """
+            logger.info("Tool call: get_special_instructions_by_client | client_id=%s", client_id)
+            try:
+                response = requests.get(f"http://localhost:5001/api/special_instructions/client/{client_id}", timeout=20)
+                response.raise_for_status()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_special_instructions_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
+            except requests.exceptions.RequestException as e:
+                logger.exception("Tool error: get_special_instructions_by_client | client_id=%s", client_id)
+                return f"Error fetching special instructions: {str(e)}"
+
+        def get_contacts_by_client(client_id: str):
+            """Retrieve contact records for a client, including primary support contacts and escalation channels.
+
+            Example usage:
+                get_contacts_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
+            """
+            logger.info("Tool call: get_contacts_by_client | client_id=%s", client_id)
+            try:
+                response = requests.get(f"http://localhost:5001/api/contacts/client/{client_id}", timeout=20)
+                response.raise_for_status()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_contacts_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
+            except requests.exceptions.RequestException as e:
+                logger.exception("Tool error: get_contacts_by_client | client_id=%s", client_id)
+                return f"Error fetching contacts: {str(e)}"
+
+        def get_services_by_client(client_id: str):
+            """Retrieve services and supported environment details configured for the client.
+
+            Example usage:
+                get_services_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
+            """
+            logger.info("Tool call: get_services_by_client | client_id=%s", client_id)
+            try:
+                response = requests.get(f"http://localhost:5001/api/services/client/{client_id}", timeout=20)
+                response.raise_for_status()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_services_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
+            except requests.exceptions.RequestException as e:
+                logger.exception("Tool error: get_services_by_client | client_id=%s", client_id)
+                return f"Error fetching services: {str(e)}"
+
+        def get_critical_systems_by_client(client_id: str):
+            """Retrieve critical systems or business dependencies for a client.
+
+            Example usage:
+                get_critical_systems_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
+            """
+            logger.info("Tool call: get_critical_systems_by_client | client_id=%s", client_id)
+            try:
+                response = requests.get(f"http://localhost:5001/api/critical_systems/client/{client_id}", timeout=20)
+                response.raise_for_status()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_critical_systems_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
+            except requests.exceptions.RequestException as e:
+                logger.exception("Tool error: get_critical_systems_by_client | client_id=%s", client_id)
+                return f"Error fetching critical systems: {str(e)}"
+
+        def get_runbooks_by_client(client_id: str):
+            """Retrieve client-specific runbook references and metadata for a client.
+
+            Example usage:
+                get_runbooks_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
+            """
+            logger.info("Tool call: get_runbooks_by_client | client_id=%s", client_id)
+            try:
+                response = requests.get(f"http://localhost:5001/api/runbooks/client/{client_id}", timeout=20)
+                response.raise_for_status()
+                payload = response.json()
+                logger.info(
+                    "Tool result: get_runbooks_by_client | client_id=%s status=%s count=%s",
+                    client_id,
+                    response.status_code,
+                    len(payload) if isinstance(payload, list) else "n/a",
+                )
+                return payload
+            except requests.exceptions.RequestException as e:
+                logger.exception("Tool error: get_runbooks_by_client | client_id=%s", client_id)
+                return f"Error fetching runbooks: {str(e)}"
+
         def get_runbooks_and_client_specific_info(client_id: str, query_context: str):
-            """Retrieve relevant knowledge chunks and client-specific information."""
+            """Retrieve relevant knowledge chunks and client-specific information.
+
+            Example usage:
+                get_runbooks_and_client_specific_info(
+                    client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651",
+                    query_context="P1 outage on StayEase PMS with database timeouts after RDS maintenance"
+                )
+            """
+            logger.info(
+                "Tool call: get_runbooks_and_client_specific_info | client_id=%s query_context_length=%s",
+                client_id,
+                len(query_context or ""),
+            )
             try:
                 chunks = retrieve_knowledge_chunks(
                     query=query_context,
@@ -63,28 +205,52 @@ class LambdaAgent:
                 )
                 
                 if not chunks:
+                    logger.info("Tool result: get_runbooks_and_client_specific_info | client_id=%s matches=0", client_id)
                     return "No relevant information found for this query context."
                 
                 formatted_results = []
                 for chunk in chunks:
+                    metadata = chunk.get("metadata") or {}
+
                     formatted_results.append({
-                        "similarity": chunk.get('similarity', 0),
-                        "document_type": chunk.get('doc_type', 'unknown'),
-                        "content": chunk.get('chunk_text', ''),
-                        "metadata": chunk.get('metadata', {})
+                        "id": str(chunk.get("document_id")),
+                        "title": chunk.get("title", "Untitled document"),
+                        "type": chunk.get("doc_type", "unknown"),
+                        "similarity": chunk.get("similarity", 0),
+                        "content": chunk.get("chunk_text", ""),
+                        "metadata": metadata
                     })
                 
+                logger.info(
+                    "Tool result: get_runbooks_and_client_specific_info | client_id=%s matches=%s",
+                    client_id,
+                    len(formatted_results),
+                )
                 return formatted_results
             except Exception as e:
+                logger.exception("Tool error: get_runbooks_and_client_specific_info | client_id=%s", client_id)
                 return f"Error retrieving information: {str(e)}"
         
         # Create tools with the decorator
-        self.get_client_context_tool = tool(get_client_context)
+        self.get_slas_tool = tool(get_slas_by_client)
+        self.get_special_instructions_tool = tool(get_special_instructions_by_client)
+        self.get_contacts_tool = tool(get_contacts_by_client)
+        self.get_services_tool = tool(get_services_by_client)
+        self.get_critical_systems_tool = tool(get_critical_systems_by_client)
+        self.get_runbooks_by_client_tool = tool(get_runbooks_by_client)
         self.get_runbooks_tool = tool(get_runbooks_and_client_specific_info)
         
         self.agent = create_agent(
             model=self.model,
-            tools=[self.get_client_context_tool, self.get_runbooks_tool],
+            tools=[
+                self.get_slas_tool,
+                self.get_special_instructions_tool,
+                self.get_contacts_tool,
+                self.get_services_tool,
+                self.get_critical_systems_tool,
+                self.get_runbooks_by_client_tool,
+                self.get_runbooks_tool,
+            ],
             system_prompt=self.system_prompt,
             checkpointer=self.checkpointer,
         )
@@ -92,47 +258,81 @@ class LambdaAgent:
     
     def process_query(self, request: QueryRequest, thread_id: str = None) -> tuple:
         user_content = request.query
-        
-        # Add client ID and metadata to the message if provided
+        logger.info(
+            "Processing query | client_id=%s thread_id=%s query_prefix=%s",
+            request.client_id,
+            thread_id,
+            request.query[:80],
+        )
+
         context_info = []
+
         if request.client_id:
             context_info.append(f"Client ID: {request.client_id}")
+
         if request.metadata:
             context_info.append(f"Metadata: {request.metadata}")
-        
+    
         if context_info:
-            user_content = f"{request.query}\n\n[Context: {', '.join(context_info)}]"
-        
-        # Create new thread_id if not provided
+            user_content = (
+                f"{request.query}\n\n"
+                f"[Context: {', '.join(context_info)}]"
+            )
+    
         if thread_id is None:
             thread_id = str(uuid.uuid4())
-        
+            logger.info("Created new thread_id=%s", thread_id)
+    
         config = {
             "configurable": {
                 "thread_id": thread_id
             }
         }
-        
-        result = self.agent.invoke({
-            "messages": [
-                {"role": "user", "content": user_content}
-            ]
-        }, config=config)
-        
-        # Extract the actual text content from the response
+    
+        result = self.agent.invoke(
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": user_content,
+                    }
+                ]
+            },
+            config=config,
+        )
+    
         last_message = result["messages"][-1]
         content = last_message.content
-        
-        # Handle different response formats
+
         if isinstance(content, list) and len(content) > 0:
             if isinstance(content[0], dict) and "text" in content[0]:
-                text_content = content[0]["text"]
+                content = content[0]["text"]
             else:
-                text_content = str(content[0])
-        else:
-            text_content = str(content)
-        
-        return text_content, thread_id
+                content = str(content[0])
+    
+        if not isinstance(content, str):
+            content = str(content)
+    
+        try:
+            response = json.loads(content)
+        except json.JSONDecodeError as e:
+            logger.exception("Agent returned invalid JSON for thread_id=%s", thread_id)
+            raise ValueError(
+                f"Agent returned invalid JSON: {e}\n"
+                f"Raw response: {content}"
+            )
+    
+        # Validate the expected structure
+        if not isinstance(response, dict):
+            logger.error("Agent response is not a JSON object for thread_id=%s | type=%s", thread_id, type(response).__name__)
+            raise ValueError(
+                f"Agent response must be a JSON object, got: {type(response).__name__}"
+            )
+    
+        response.setdefault("message", "")
+        response.setdefault("resources", [])
+        logger.info("Completed query for thread_id=%s | response_fields=%s", thread_id, sorted(response.keys()))
+        return response, thread_id
 
 
 if __name__ == "__main__":
@@ -150,7 +350,8 @@ Environment Details:
 - Recent Changes: AWS RDS maintenance window completed 2 hours ago
 - Business Impact: Guests waiting in lobby, revenue loss from delayed check-ins
 
-Please create a proper guidance document for the support engineer to get started with resolving this incident."""
+Load the context for this incident. Review the client context and applicable SLA/priority requirements, and summarize the key information I should know before investigating the incident. Do not troubleshoot yet or make assumptions beyond the retrieved information.
+"""
     
     query_request = QueryRequest(
         query=simple_query,
@@ -158,17 +359,15 @@ Please create a proper guidance document for the support engineer to get started
         metadata={"severity": "P1", "affected_system": "StayEase PMS"}
     )
     
-    # First query - creates new thread
     guidance, thread_id = agent.process_query(query_request)
     
-    print("=" * 80)
-    print("INCIDENT GUIDANCE DOCUMENT")
-    print(f"Thread ID: {thread_id}")
-    print("=" * 80)
-    print(guidance)
-    print("=" * 80)
+    logger.info("=%s", "=" * 80)
+    logger.info("INCIDENT GUIDANCE DOCUMENT")
+    logger.info("Thread ID: %s", thread_id)
+    logger.info("=%s", "=" * 80)
+    logger.info("%s", guidance)
+    logger.info("=%s", "=" * 80)
     
-    # Follow-up query using the same thread_id
     follow_up_request = QueryRequest(
         query="What are the specific steps to flush the connection pools?",
         client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651"
@@ -176,9 +375,9 @@ Please create a proper guidance document for the support engineer to get started
     
     follow_up_guidance, same_thread_id = agent.process_query(follow_up_request, thread_id)
     
-    print("\n" + "=" * 80)
-    print("FOLLOW-UP RESPONSE")
-    print(f"Thread ID: {same_thread_id}")
-    print("=" * 80)
-    print(follow_up_guidance)
-    print("=" * 80)
+    logger.info("\n%s", "=" * 80)
+    logger.info("FOLLOW-UP RESPONSE")
+    logger.info("Thread ID: %s", same_thread_id)
+    logger.info("=%s", "=" * 80)
+    logger.info("%s", follow_up_guidance)
+    logger.info("=%s", "=" * 80)
