@@ -9,6 +9,7 @@ class QueryRequest(BaseModel):
     metadata: Optional[Dict[str, Any]] = None
 
 class QueryResponse(BaseModel):
-    response: str
+    message: str
+    resources: list[dict[str, Any]] = []
     success: bool
-    thread_id: Optional[str] = None
+    thread_id: str

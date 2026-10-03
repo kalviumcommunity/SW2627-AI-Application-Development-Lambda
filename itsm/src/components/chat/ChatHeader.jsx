@@ -28,9 +28,7 @@ function ChatHeader({ onClose, showUser = false }) {
       return;
     }
 
-    const url = new URL(
-      `http://localhost:5001/api/context/client/${clientId}`
-    );
+    const url = new URL(`http://localhost:5001/api/context/client/${clientId}`);
 
     if (priorityCode) {
       url.searchParams.set("priority", priorityCode);
@@ -40,7 +38,7 @@ function ChatHeader({ onClose, showUser = false }) {
 
     fetch(url.toString())
       .then((r) =>
-        r.ok ? r.json() : Promise.reject(new Error("Failed to load context"))
+        r.ok ? r.json() : Promise.reject(new Error("Failed to load context")),
       )
       .then((data) => {
         setContextData({
@@ -62,11 +60,11 @@ function ChatHeader({ onClose, showUser = false }) {
   }, [clientId, priorityCode]);
 
   const priorities = contextData.slas.flatMap(
-    (sla) => sla.sla_priorities || []
+    (sla) => sla.sla_priorities || [],
   );
 
   return (
-    <div className="border-b border-[#e8e8e8]">
+    <div>
       <div className="flex items-center gap-3 px-4 py-2.5">
         <div className="w-7 h-7 rounded bg-[#1c1c1c] flex items-center justify-center flex-shrink-0">
           <TbLambda className="w-4 h-4 text-white" />
@@ -98,9 +96,7 @@ function ChatHeader({ onClose, showUser = false }) {
             ) : priorities.length > 0 ? (
               <div className="flex items-center gap-4 ml-5">
                 {priorities.map((p, idx) => (
-                  <div
-                    key={p.id || idx}
-                  >
+                  <div key={p.id || idx}>
                     <div>
                       <span className="text-[14px] font-bold text-[#1c1c1c]">
                         {p.priority_level} | {p.priority_name}
