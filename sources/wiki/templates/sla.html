@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ sla.sla_id }} | LambdaITSM Wiki</title>
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <a href="/" class="back-link">
+            ← Back to Runbooks
+        </a>
+        <h1>{{ sla.sla_id }}</h1>
+        <p>
+            Service Level Agreement
+        </p>
+    </header>
+    <section class="runbook-meta">
+
+        <div class="meta-item">
+            <span class="meta-label">SLA ID</span>
+            <span>{{ sla.sla_id }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Client ID</span>
+            <span>{{ sla.client_id }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Support Model</span>
+            <span>{{ sla.support_model }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">SLA Clock</span>
+            <span>{{ sla.sla_clock }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Availability Target</span>
+            <span>{{ sla.availability_target_percent }}%</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Effective Date</span>
+            <span>{{ sla.effective_date }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Review Date</span>
+            <span>{{ sla.review_date }}</span>
+        </div>
+
+        <div class="meta-item">
+            <span class="meta-label">Created At</span>
+            <span>{{ sla.created_at }}</span>
+        </div>
+
+        {% if sla.updated_at %}
+        <div class="meta-item">
+            <span class="meta-label">Updated At</span>
+            <span>{{ sla.updated_at }}</span>
+        </div>
+        {% endif %}
+
+    </section>
+
+    {% if sla.sla_priorities %}
+    <section class="runbook-section">
+        <h2>Priority Levels</h2>
+        <table class="sla-table">
+            <thead>
+                <tr>
+                    <th>Priority</th>
+                    <th>Name</th>
+                    <th>Definition</th>
+                    <th>Response Time</th>
+                    <th>Restore Target</th>
+                    <th>Update Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for priority in sla.sla_priorities %}
+                <tr>
+                    <td>
+                        <span class="priority-badge priority-{{ priority.priority_level|lower }}">
+                            {{ priority.priority_level }}
+                        </span>
+                    </td>
+                    <td>{{ priority.priority_name }}</td>
+                    <td>{{ priority.definition }}</td>
+                    <td>
+                        {% if priority.response_target_minutes %}
+                            {{ priority.response_target_minutes }} min
+                        {% elif priority.response_target_business_hours %}
+                            {{ priority.response_target_business_hours }} business hours
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if priority.restore_target_hours %}
+                            {{ priority.restore_target_hours }} hours
+                        {% elif priority.resolution_target_business_days %}
+                            {{ priority.resolution_target_business_days }} business days
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if priority.update_frequency_minutes %}
+                            {{ priority.update_frequency_minutes }} min
+                        {% elif priority.update_frequency_hours %}
+                            {{ priority.update_frequency_hours }} hours
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% endif %}
+
+</div>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

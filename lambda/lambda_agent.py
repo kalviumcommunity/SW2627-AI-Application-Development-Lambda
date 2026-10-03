@@ -73,6 +73,7 @@ class LambdaAgent:
 
         def get_special_instructions_by_client(client_id: str):
             """Retrieve client special handling instructions, escalation notes, or operational constraints.
+Returns special instruction data with resource type "special_instruction" containing id and instruction fields.
 
             Example usage:
                 get_special_instructions_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
@@ -95,6 +96,7 @@ class LambdaAgent:
 
         def get_contacts_by_client(client_id: str):
             """Retrieve contact records for a client, including primary support contacts and escalation channels.
+Returns contact data with resource type "contact" containing id, service_manager, and other contact fields.
 
             Example usage:
                 get_contacts_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
@@ -117,6 +119,7 @@ class LambdaAgent:
 
         def get_services_by_client(client_id: str):
             """Retrieve services and supported environment details configured for the client.
+Returns service data with resource type "service" containing id and service_name fields.
 
             Example usage:
                 get_services_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
@@ -139,6 +142,7 @@ class LambdaAgent:
 
         def get_critical_systems_by_client(client_id: str):
             """Retrieve critical systems or business dependencies for a client.
+Returns critical system data with resource type "critical_system" containing id and system_name fields.
 
             Example usage:
                 get_critical_systems_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
@@ -160,7 +164,8 @@ class LambdaAgent:
                 return f"Error fetching critical systems: {str(e)}"
 
         def get_runbooks_by_client(client_id: str):
-            """Retrieve client-specific runbook references and metadata for a client.
+            """Retrieve client-specific runbook references and metadata.
+Returns runbook data with resource type "runbook" containing id and runbook_reference fields.
 
             Example usage:
                 get_runbooks_by_client(client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651")
@@ -181,17 +186,21 @@ class LambdaAgent:
                 logger.exception("Tool error: get_runbooks_by_client | client_id=%s", client_id)
                 return f"Error fetching runbooks: {str(e)}"
 
-        def get_runbooks_and_client_specific_info(client_id: str, query_context: str):
-            """Retrieve relevant knowledge chunks and client-specific information.
+        def get_cod_documents(client_id: str, query_context: str):
+            """Retrieve relevant COD (Client-onboarding documents) knowledge chunks for a client.
+
+            This tool searches the knowledge base for COD documents only, which contain
+            operational procedures, standard operating procedures, and institutional knowledge.
+            Returns COD document data with resource type "cod" containing document_id (for Google Drive URL) and title fields.
 
             Example usage:
-                get_runbooks_and_client_specific_info(
+                get_cod_documents(
                     client_id="dd23437f-7ea7-4c46-8beb-4e2b4e555651",
                     query_context="P1 outage on StayEase PMS with database timeouts after RDS maintenance"
                 )
             """
             logger.info(
-                "Tool call: get_runbooks_and_client_specific_info | client_id=%s query_context_length=%s",
+                "Tool call: get_cod_documents | client_id=%s query_context_length=%s",
                 client_id,
                 len(query_context or ""),
             )
@@ -199,15 +208,15 @@ class LambdaAgent:
                 chunks = retrieve_knowledge_chunks(
                     query=query_context,
                     client_id=client_id,
-                    doc_types=["cod", "runbook"],
+                    doc_types=["cod"],
                     match_threshold=0.5,
                     match_count=5
                 )
                 
                 if not chunks:
-                    logger.info("Tool result: get_runbooks_and_client_specific_info | client_id=%s matches=0", client_id)
+                    logger.info("Tool result: get_cod_documents | client_id=%s matches=0", client_id)
                     return "No relevant information found for this query context."
-                
+
                 formatted_results = []
                 for chunk in chunks:
                     metadata = chunk.get("metadata") or {}
@@ -220,15 +229,15 @@ class LambdaAgent:
                         "content": chunk.get("chunk_text", ""),
                         "metadata": metadata
                     })
-                
+
                 logger.info(
-                    "Tool result: get_runbooks_and_client_specific_info | client_id=%s matches=%s",
+                    "Tool result: get_cod_documents | client_id=%s matches=%s",
                     client_id,
                     len(formatted_results),
                 )
                 return formatted_results
             except Exception as e:
-                logger.exception("Tool error: get_runbooks_and_client_specific_info | client_id=%s", client_id)
+                logger.exception("Tool error: get_cod_documents | client_id=%s", client_id)
                 return f"Error retrieving information: {str(e)}"
         
         # Create tools with the decorator
@@ -238,7 +247,7 @@ class LambdaAgent:
         self.get_services_tool = tool(get_services_by_client)
         self.get_critical_systems_tool = tool(get_critical_systems_by_client)
         self.get_runbooks_by_client_tool = tool(get_runbooks_by_client)
-        self.get_runbooks_tool = tool(get_runbooks_and_client_specific_info)
+        self.get_cod_documents_tool = tool(get_cod_documents)
         
         self.agent = create_agent(
             model=self.model,
@@ -249,7 +258,7 @@ class LambdaAgent:
                 self.get_services_tool,
                 self.get_critical_systems_tool,
                 self.get_runbooks_by_client_tool,
-                self.get_runbooks_tool,
+                self.get_cod_documents_tool,
             ],
             system_prompt=self.system_prompt,
             checkpointer=self.checkpointer,
@@ -304,19 +313,25 @@ class LambdaAgent:
         last_message = result["messages"][-1]
         content = last_message.content
 
+        logger.info("Raw content type: %s", type(content))
+        logger.info("Raw content length: %s", len(str(content)) if content else 0)
+
         if isinstance(content, list) and len(content) > 0:
             if isinstance(content[0], dict) and "text" in content[0]:
                 content = content[0]["text"]
             else:
                 content = str(content[0])
-    
+
         if not isinstance(content, str):
             content = str(content)
-    
+
+        logger.info("Content before JSON parse: %s", content[:500] if len(content) > 500 else content)
+
         try:
             response = json.loads(content)
         except json.JSONDecodeError as e:
             logger.exception("Agent returned invalid JSON for thread_id=%s", thread_id)
+            logger.error("Full content that failed to parse: %s", content)
             raise ValueError(
                 f"Agent returned invalid JSON: {e}\n"
                 f"Raw response: {content}"
