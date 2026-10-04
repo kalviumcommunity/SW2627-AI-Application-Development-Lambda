@@ -67,6 +67,7 @@ export function ChatProvider({ children }) {
   const [messages, setMessages] = useState([]);
   const [isLoadingContext, setIsLoadingContext] = useState(false);
   const [isBotLoading, setIsBotLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const loadIncidentContext = async (
     incidentContext,
@@ -100,7 +101,7 @@ export function ChatProvider({ children }) {
         },
         body: JSON.stringify({
           query:
-            "Load the context for this incident. Review the client context and applicable SLA/priority requirements, and summarize the key information I should know before investigating the incident. Do not troubleshoot yet or make assumptions beyond the retrieved information.",
+            "Load the context for this incident. Retrieve the client context, SLAs, and relevant information. Do not troubleshoot or summarize. Just return: 'I have reviewed the incident, all set.'",
           client_id,
           metadata,
         }),
@@ -132,6 +133,7 @@ export function ChatProvider({ children }) {
       return newThreadId;
     } catch (error) {
       console.error("Failed to load incident context:", error);
+      setError("Failed to load incident context. Please try again.");
       return existingThreadId;
     } finally {
       setIsLoadingContext(false);
@@ -175,6 +177,60 @@ export function ChatProvider({ children }) {
     setIsChatOpen(false);
   };
 
+  const startNewThread = async () => {
+    const incidentId = chatContext.incidentContext?.id;
+    const currentThreadId = threadId;
+
+    if (incidentId) {
+      const mapping = getIncidentThreadMapping();
+      delete mapping[incidentId];
+      localStorage.setItem(INCIDENT_THREAD_MAPPING_KEY, JSON.stringify(mapping));
+    }
+
+    if (currentThreadId) {
+      localStorage.removeItem(`chat-thread-${currentThreadId}`);
+    }
+
+    setThreadId(null);
+    setMessages([]);
+
+    // Reload incident context for the new thread
+    if (incidentId) {
+      try {
+        await loadIncidentContext(chatContext.incidentContext);
+      } catch (error) {
+        console.error("Failed to load incident context for new thread:", error);
+      }
+    }
+  };
+
+  const pruneLocalStorage = () => {
+    const incidentId = chatContext.incidentContext?.id;
+    const currentThreadId = threadId;
+
+    const mapping = getIncidentThreadMapping();
+    const currentIncidentThreadId = incidentId ? mapping[incidentId] : null;
+
+    Object.keys(mapping).forEach((key) => {
+      if (key !== incidentId) {
+        const threadIdToDelete = mapping[key];
+        if (threadIdToDelete) {
+          localStorage.removeItem(`chat-thread-${threadIdToDelete}`);
+        }
+        delete mapping[key];
+      }
+    });
+
+    localStorage.setItem(INCIDENT_THREAD_MAPPING_KEY, JSON.stringify(mapping));
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("chat-thread-") && key !== `chat-thread-${currentThreadId}`) {
+        localStorage.removeItem(key);
+      }
+    }
+  };
+
   const sendQuery = async () => {
     const trimmedQuery = query.trim();
 
@@ -189,6 +245,8 @@ export function ChatProvider({ children }) {
       console.warn("Cannot send query without an incident ID");
       return;
     }
+
+    setError(null);
 
     const userMessage = {
       role: "user",
@@ -250,6 +308,15 @@ export function ChatProvider({ children }) {
       });
     } catch (error) {
       console.error("An error occurred:", error);
+      setError("Failed to send message. Please check your connection and try again.");
+      setMessages((prevMessages) => {
+        const errorMessage = {
+          role: "bot",
+          message: "Sorry, I encountered an error. Please try again.",
+          resources: [],
+        };
+        return [...prevMessages, errorMessage];
+      });
     } finally {
       setIsBotLoading(false);
     }
@@ -265,10 +332,13 @@ export function ChatProvider({ children }) {
         threadId,
         isLoadingContext,
         isBotLoading,
+        error,
         openChat,
         closeChat,
         setQuery,
         sendQuery,
+        startNewThread,
+        pruneLocalStorage,
       }}
     >
       {children}

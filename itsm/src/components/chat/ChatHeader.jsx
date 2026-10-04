@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { FiX } from "react-icons/fi";
+import { FiPlus, FiX, FiTrash } from "react-icons/fi";
 import { TbLambda } from "react-icons/tb";
 import Avatar from "../shared/Avatar";
 import { useChat } from "../../context/ChatContext";
 
 function ChatHeader({ onClose, showUser = false }) {
-  const { chatContext } = useChat();
+  const { chatContext, startNewThread, pruneLocalStorage } = useChat();
 
   const incidentContext = chatContext.incidentContext || {};
   const clientId = incidentContext.client_id;
@@ -131,8 +131,22 @@ function ChatHeader({ onClose, showUser = false }) {
 
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
+            onClick={startNewThread}
+            className="w-7 h-7 flex items-center justify-center rounded bg-[#f0f0f0] hover:bg-[#e8e8e8] transition-colors"
+            title="Start new thread"
+          >
+            <FiPlus className="w-3.5 h-3.5 text-[#1c1c1c]" />
+          </button>
+          <button
+            onClick={pruneLocalStorage}
+            className="w-7 h-7 flex items-center justify-center rounded bg-[#f0f0f0] hover:bg-[#e8e8e8] transition-colors"
+            title="Prune local storage"
+          >
+            <FiTrash className="w-3.5 h-3.5 text-[#1c1c1c]" />
+          </button>
+          <button
             onClick={onClose}
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-[#f0f0f0] hover:bg-[#e8e8e8] transition-colors"
+            className="w-7 h-7 flex items-center justify-center rounded bg-[#f0f0f0] hover:bg-[#e8e8e8] transition-colors"
             aria-label="Close chat (Esc)"
             title="Close (Esc)"
           >

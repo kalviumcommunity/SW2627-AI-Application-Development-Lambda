@@ -11,6 +11,7 @@ export const knowledgeSources = [
     },
     action: 'Browse Documents',
     icon: 'document',
+    link: 'https://drive.google.com/drive/folders/1pR85TAJCmYKp24LIIRJG-dkLQsgEH_NG?usp=drive_link'
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const knowledgeSources = [
     },
     action: 'Access Wiki',
     icon: 'layers',
+    link: 'http://localhost:5001/'
   },
   {
     id: 3,
