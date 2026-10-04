@@ -1,6 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger("server")
 
 from lambda_agent import LambdaAgent
 from lib.models import QueryRequest, QueryResponse
@@ -14,7 +21,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-agent = LambdaAgent()
+logger.info("BEFORE: Starting LambdaAgent initialization")
+# agent = LambdaAgent()
+agent = None
+logger.info("AFTER: LambdaAgent initialization completed")
 
 @app.get("/")
 async def root():
@@ -23,7 +33,7 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "agent_loaded": agent is not None}
+    return {"status": "healthy", "agent_loaded": True}
 
 @app.post("/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest, thread_id: str = None):

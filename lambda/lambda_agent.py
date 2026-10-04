@@ -23,29 +23,37 @@ from lib.models import QueryRequest
 class LambdaAgent:
     def __init__(self, system_prompt_path: str = "system_prompt.txt", max_history_messages: int = 10):
         load_dotenv()
-        logger.info("Initializing LambdaAgent")
 
+        logger.info("STEP 1: LambdaAgent initialization started")
+
+        logger.info("STEP 2: Creating Supabase client")
         self.supabase = create_client(
             os.getenv("SUPABASE_URL"),
             os.getenv("SUPABASE_SERVICE_KEY")
         )
+        logger.info("STEP 2 DONE: Supabase client created")
 
+        logger.info("STEP 3: Initializing Groq model")
         self.model = init_chat_model(
             "openai/gpt-oss-20b",
             model_provider="groq",
             temperature=0,
         )
+        logger.info("STEP 3 DONE: Groq model initialized")
 
+        logger.info("STEP 4: Loading system prompt")
         wiki_api_url = os.getenv("WIKI_API_URL", "http://localhost:5001").rstrip("/")
         raw_prompt = Path(system_prompt_path).read_text(encoding="utf-8")
         self.system_prompt = raw_prompt.replace("{WIKI_API_URL}", wiki_api_url).replace("http://localhost:5001", wiki_api_url)
+        logger.info("STEP 4 DONE: System prompt loaded")
 
+        logger.info("STEP 5: Creating checkpointer")
         self.checkpointer = InMemorySaver()
         self.max_history_messages = max_history_messages
-        
-        # Persistent context storage per thread
         self.thread_context = {}  # thread_id -> {"client_context": dict, "summary": str, "priority": str}
-        
+        logger.info("STEP 5 DONE: Checkpointer created")
+
+        logger.info("STEP 6: Defining tools")
         # Define tools as standalone functions to avoid self parameter issues
         def get_client_context(client_id: str, priority: str = None, include_slas: bool = True, include_instructions: bool = True, include_contacts: bool = False, include_services: bool = True, include_critical_systems: bool = False, include_runbooks: bool = False):
             """Retrieve client context data selectively. Only fetch what you need to minimize token usage.
@@ -163,11 +171,13 @@ class LambdaAgent:
             except Exception as e:
                 logger.exception("Tool error: get_cod_documents | client_id=%s", client_id)
                 return f"Error retrieving information: {str(e)}"
-        
+
         # Create tools with the decorator
         self.get_client_context_tool = tool(get_client_context)
         self.get_cod_documents_tool = tool(get_cod_documents)
+        logger.info("STEP 6 DONE: Tools defined")
 
+        logger.info("STEP 7: Creating agent")
         self.agent = create_agent(
             model=self.model,
             tools=[
@@ -177,6 +187,8 @@ class LambdaAgent:
             system_prompt=self.system_prompt,
             checkpointer=self.checkpointer,
         )
+        logger.info("STEP 7 DONE: Agent created")
+        logger.info("LambdaAgent initialization COMPLETE")
 
     def _trim_conversation_history(self, thread_id: str):
         """Trim conversation history to keep only the last N messages to reduce token usage."""
