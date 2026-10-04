@@ -194,7 +194,7 @@ body {
 }
 
 .main-content.shifted {
-  margin-right: 500px;
+  margin-right: 30vw;
 }
 
 .incident-detail {
@@ -558,35 +558,43 @@ body {
   color: #1c1c1c;
 }
 
-/* Key Information */
+/* Key Information - Modern Card Design */
 .key-info {
   display: flex;
-  align-items: center;
-  gap: 32px;
+  gap: 16px;
   margin-bottom: 32px;
-  padding: 20px 24px;
-  background-color: #fafafa;
-  border-radius: 8px;
 }
 
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.info-card {
+  flex: 1;
+  padding: 24px;
+  background-color: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.info-card:hover {
+  background-color: #f5f5f5;
+  border-color: #1c1c1c;
+  transform: translateY(-2px);
 }
 
 .info-label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
-  color: #666;
+  color: #1c1c1c;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
 .info-value {
-  font-size: 16px;
+  font-size: 14px;
   color: #1c1c1c;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 /* Description Section */
@@ -717,8 +725,7 @@ body {
   width: 400px;
   height: 100vh;
   background-color: #ffffff;
-  border-left: 1px solid #e8e8e8;
-  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  border-left: 2px solid #e8e8e8;
   transition: right 0.3s ease, width 0.3s ease;
   z-index: 1000;
   display: flex;
@@ -973,29 +980,34 @@ body {
 
 .chat-suggestions {
   display: flex;
-  gap: 8px;
-  padding: 12px 20px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 16px;
   border-top: 1px solid #e8e8e8;
   background-color: #ffffff;
-  flex-wrap: wrap;
 }
 
 .suggestion-btn {
-  padding: 8px 12px;
-  border: 1px solid #e8e8e8;
+  padding: 6px 10px;
+  border: none;
   border-radius: 6px;
-  background-color: #ffffff;
-  font-size: 12px;
+  background-color: #fafafa/30;
   color: #666;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
 }
 
 .suggestion-btn:hover {
-  background-color: #f5f5f5;
-  border-color: #1c1c1c;
+  background-color: #fafafa/60;
   color: #1c1c1c;
+  transform: translateX(4px);
 }
 
 .chat-placeholder {

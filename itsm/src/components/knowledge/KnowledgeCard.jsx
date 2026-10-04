@@ -54,7 +54,7 @@ function KnowledgeCard({ source }) {
         </div>
       </div>
       <div className="card-footer">
-        <button className="card-action-btn">{source.action}</button>
+        <button className="card-action-btn" onClick={() => window.open(source.link, '_blank')}>{source.action}</button>
       </div>
     </div>
   )

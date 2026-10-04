@@ -5,7 +5,7 @@ import ChatInput from './ChatInput'
 import ChatSuggestions from './ChatSuggestions'
 
 function ChatSidebar({ isOpen, onClose, showContext = false, showSuggestions = false, showUser = false, placeholder = 'Ask about incidents...', placeholderText = 'Start a conversation to get assistance' }) {
-  const sidebarWidth = '50vw'
+  const sidebarWidth = '30vw'
 
   useEffect(() => {
     const handleKeyDown = (e) => {

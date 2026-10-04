@@ -6,7 +6,7 @@ import { useChat } from '../../context/ChatContext'
 function Layout() {
   const { isChatOpen, chatContext, closeChat } = useChat()
 
-  const sidebarWidth = '50vw'
+  const sidebarWidth = '30vw'
 
 
   return (

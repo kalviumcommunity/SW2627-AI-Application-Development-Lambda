@@ -31,7 +31,7 @@ function KnowledgePage() {
 
       <div className="knowledge-grid">
         {knowledgeSources.map((source) => (
-          <KnowledgeCard key={source.id} source={source} />
+          <KnowledgeCard key={source.id} source={source}/>
         ))}
       </div>
 
