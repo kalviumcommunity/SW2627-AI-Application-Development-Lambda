@@ -85,7 +85,8 @@ export function ChatProvider({ children }) {
 
     setIsLoadingContext(true);
 
-    const url = new URL("http://localhost:8000/query");
+    const agentApiUrl = import.meta.env.VITE_LAMBDA_AGENT_API_URL || "http://localhost:8000";
+    const url = new URL(`${agentApiUrl}/query`);
 
     if (existingThreadId != null) {
       url.searchParams.set("thread_id", existingThreadId);
@@ -259,7 +260,8 @@ export function ChatProvider({ children }) {
     setIsBotLoading(true);
 
     try {
-      const url = new URL("http://localhost:8000/query");
+      const agentApiUrl = import.meta.env.VITE_LAMBDA_AGENT_API_URL || "http://localhost:8000";
+      const url = new URL(`${agentApiUrl}/query`);
 
       if (threadId != null) {
         url.searchParams.set("thread_id", threadId);

@@ -1,7 +1,6 @@
 import os
 import requests
 import json
-import sys
 import uuid
 import logging
 from pathlib import Path
@@ -18,11 +17,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("lambda_agent")
 
-sys.path.append(str(Path(__file__).parent.parent))
-sys.path.append(str(Path(__file__).parent))
-
 from retrieval import retrieve_knowledge_chunks
-from shared.models import QueryRequest
+from lib.models import QueryRequest
 
 class LambdaAgent:
     def __init__(self, system_prompt_path: str = "system_prompt.txt", max_history_messages: int = 10):
@@ -40,7 +36,9 @@ class LambdaAgent:
             temperature=0,
         )
 
-        self.system_prompt = Path(system_prompt_path).read_text(encoding="utf-8")
+        wiki_api_url = os.getenv("WIKI_API_URL", "http://localhost:5001").rstrip("/")
+        raw_prompt = Path(system_prompt_path).read_text(encoding="utf-8")
+        self.system_prompt = raw_prompt.replace("{WIKI_API_URL}", wiki_api_url).replace("http://localhost:5001", wiki_api_url)
 
         self.checkpointer = InMemorySaver()
         self.max_history_messages = max_history_messages
@@ -72,7 +70,7 @@ class LambdaAgent:
 
                 # Only fetch what's requested
                 if include_slas or include_instructions or include_contacts or include_services:
-                    api_url = f"http://localhost:5001/api/context/client/{client_id}"
+                    api_url = f"{wiki_api_url}/api/context/client/{client_id}"
                     params = {}
                     if priority:
                         params["priority"] = priority
@@ -90,11 +88,11 @@ class LambdaAgent:
                         payload["services"] = context_data.get("services", [])
 
                 if include_critical_systems:
-                    critical_systems = requests.get(f"http://localhost:5001/api/critical_systems/client/{client_id}", timeout=20).json()
+                    critical_systems = requests.get(f"{wiki_api_url}/api/critical_systems/client/{client_id}", timeout=20).json()
                     payload["critical_systems"] = critical_systems
 
                 if include_runbooks:
-                    runbooks = requests.get(f"http://localhost:5001/api/runbooks/client/{client_id}", timeout=20).json()
+                    runbooks = requests.get(f"{wiki_api_url}/api/runbooks/client/{client_id}", timeout=20).json()
                     payload["runbooks"] = runbooks
 
                 logger.info(
