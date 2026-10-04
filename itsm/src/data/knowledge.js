@@ -25,7 +25,7 @@ export const knowledgeSources = [
     },
     action: 'Access Wiki',
     icon: 'layers',
-    link: 'http://localhost:5001/'
+    link: `${import.meta.env.VITE_CONTEXT_API_URL || 'http://localhost:5001'}/`
   },
   {
     id: 3,

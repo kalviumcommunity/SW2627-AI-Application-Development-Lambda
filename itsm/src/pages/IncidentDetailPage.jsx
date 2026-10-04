@@ -9,7 +9,7 @@ import { useChat } from "../context/ChatContext";
 
 function IncidentDetailPage() {
   const { id } = useParams();
-  const { incidents, activities } = useIncidents();
+  const { incidents, activities, addActivity } = useIncidents();
   const { openChat } = useChat();
 
   const incident = incidents.find((inc) => inc.id === id);
@@ -42,13 +42,17 @@ function IncidentDetailPage() {
     });
   };
 
+  const handleAddUpdate = (messageText) => {
+    addActivity(id, messageText);
+  };
+
   return (
     <main className="main-content incident-detail">
       <BackNav to="/" text="Back to incidents" />
       <IncidentHeader incident={incident} onSparkleClick={handleSparkleClick} />
       <KeyInfo incident={incident} />
       <Description text={incident.description} />
-      <ActivityThread activities={incidentActivities} />
+      <ActivityThread activities={incidentActivities} onAddUpdate={handleAddUpdate} />
     </main>
   );
 }

@@ -1,15 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-import sys
-from pathlib import Path
-
-# Add parent directory to path to import shared models and lambda_agent
-sys.path.append(str(Path(__file__).parent.parent))
-sys.path.append(str(Path(__file__).parent))
 
 from lambda_agent import LambdaAgent
-from shared.models import QueryRequest, QueryResponse
+from lib.models import QueryRequest, QueryResponse
 
 app = FastAPI(title="Lambda Agent API", version="1.0.0")
 app.add_middleware(
@@ -61,5 +55,12 @@ async def process_query(request: QueryRequest, thread_id: str = None):
             detail=f"Error processing query: {str(e)}",
         )
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", os.getenv("LAMBDA_AGENT_PORT", "8000")))
+    uvicorn.run(app, host=host, port=port)

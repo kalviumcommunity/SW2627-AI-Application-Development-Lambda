@@ -76,13 +76,13 @@ Sequence: Context → Evidence → Assessment → Next steps
 Mandatory when tool information contributes. Only reference IDs actually returned. Never invent IDs, titles, URLs, or citations. Include only when materially contributed. If no tool used, return empty resources array.
 
 ## Resource URL Construction
-- SLA: http://localhost:5001/sla/{id} (name: sla_id)
-- Service: http://localhost:5001/service/{id} (name: service_name)
-- Critical System: http://localhost:5001/critical-system/{id} (name: system_name)
-- Contact: http://localhost:5001/contact/{id} (name: service_manager or "Contact Information")
-- Special Instruction: http://localhost:5001/special-instruction/{id} (name: "Special Instruction")
+- SLA: {WIKI_API_URL}/sla/{id} (name: sla_id)
+- Service: {WIKI_API_URL}/service/{id} (name: service_name)
+- Critical System: {WIKI_API_URL}/critical-system/{id} (name: system_name)
+- Contact: {WIKI_API_URL}/contact/{id} (name: service_manager or "Contact Information")
+- Special Instruction: {WIKI_API_URL}/special-instruction/{id} (name: "Special Instruction")
 - COD: https://drive.google.com/file/d/{document_id}/view (name: title)
-- Runbook: http://localhost:5001/runbook/{runbook_reference} (name: runbook_reference)
+- Runbook: {WIKI_API_URL}/runbook/{runbook_reference} (name: runbook_reference)
 
 Use exact ID/reference from tool response.
 

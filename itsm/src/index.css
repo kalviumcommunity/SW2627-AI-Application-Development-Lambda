@@ -721,8 +721,8 @@ body {
 .chat-sidebar {
   position: fixed;
   top: 0;
-  right: -400px;
-  width: 400px;
+  right: -30vw;
+  width: 30vw;
   height: 100vh;
   background-color: #ffffff;
   border-left: 2px solid #e8e8e8;
@@ -732,9 +732,48 @@ body {
   flex-direction: column;
 }
 
+.chat-sidebar.resizing {
+  transition: none !important;
+  user-select: none;
+}
+
 .chat-sidebar.open {
   right: 0;
 }
+
+/* Resize Handle on Left Edge */
+.resize-handle-left {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 10px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resize-handle-left:hover,
+.chat-sidebar.resizing .resize-handle-left {
+  background-color: rgba(28, 28, 28, 0.08);
+}
+
+.resize-handle-indicator {
+  width: 2px;
+  height: 36px;
+  background-color: #cccccc;
+  border-radius: 1px;
+  transition: background-color 0.15s ease, height 0.15s ease;
+}
+
+.resize-handle-left:hover .resize-handle-indicator,
+.chat-sidebar.resizing .resize-handle-indicator {
+  background-color: #1c1c1c;
+  height: 48px;
+}
+
 
 .chat-header {
   display: flex;
