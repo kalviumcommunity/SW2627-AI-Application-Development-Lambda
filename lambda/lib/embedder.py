@@ -9,7 +9,7 @@ def get_model():
     global _model
     if _model is None:
         logger.info("Loading sentence-transformers model: all-MiniLM-L6-v2")
-        _model = SentenceTransformer('all-MiniLM-L6-v2')
+        _model = SentenceTransformer('all-MiniLM-L6-v2', device="cpu")
         logger.info("Model loaded successfully")
     return _model
 
@@ -20,7 +20,7 @@ def generate_embedding(text: str) -> list:
 
 def generate_embeddings_batch(texts: list) -> list:
     model = get_model()
-    embeddings = model.encode(texts, convert_to_numpy=True, show_progress_bar=True)
+    embeddings = model.encode(texts, convert_to_numpy=True, show_progress_bar=False)
     return [embedding.tolist() for embedding in embeddings]
 
 if __name__ == "__main__":
