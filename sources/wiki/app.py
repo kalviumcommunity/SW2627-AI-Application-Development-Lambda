@@ -1,31 +1,44 @@
 import os
 import json
+import logging
 
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from supabase import create_client, Client
 from flask_cors import CORS
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
+logger.info("STEP 1: Loading environment variables")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
 
 if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
+    logger.error("FAILED: Missing Supabase environment variables")
     raise ValueError("Missing Supabase environment variables")
 
+logger.info("STEP 1 DONE: Environment variables loaded")
 
+logger.info("STEP 2: Creating Supabase client")
 supabase: Client = create_client(
     SUPABASE_URL,
     SUPABASE_SERVICE_KEY
 )
-
+logger.info("STEP 2 DONE: Supabase client created")
 
 BUCKET_NAME = "runbooks"
 
+logger.info("STEP 3: Initializing Flask app")
 app = Flask(__name__)
 CORS(app)
+logger.info("STEP 3 DONE: Flask app initialized")
+logger.info("Wiki Flask app initialization COMPLETE")
 
 @app.route("/")
 def index():
@@ -283,8 +296,12 @@ def get_unified_client_context(client_id):
         "services": services
     }
 
+@app.route("/health")
+def health():
+    return {"status": "healthy"}
 
 
 if __name__ == "__main__":
-    app.run(port="5001")
+    port = int(os.getenv("PORT", 5001))
+    app.run(host="0.0.0.0", port=port)
 
