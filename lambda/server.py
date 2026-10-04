@@ -22,9 +22,13 @@ app.add_middleware(
 )
 
 logger.info("BEFORE: Starting LambdaAgent initialization")
-# agent = LambdaAgent()
-agent = None
-logger.info("AFTER: LambdaAgent initialization completed")
+try:
+    agent = LambdaAgent()
+    logger.info("AFTER: LambdaAgent initialization completed")
+except Exception as e:
+    logger.error("FAILED: LambdaAgent initialization failed with error: %s", str(e))
+    logger.exception("Full traceback:")
+    raise
 
 @app.get("/")
 async def root():
