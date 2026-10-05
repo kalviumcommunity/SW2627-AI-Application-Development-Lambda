@@ -14,30 +14,33 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   title: {
-    fontSize: 18,
-    marginBottom: 15,
+    fontSize: 13,
+    marginBottom: 12,
     color: '#1c1c1c',
   },
   content: {
-    fontSize: 10,
+    fontSize: 8,
     lineHeight: 1.5,
     color: '#1c1c1c',
   },
   h1: {
-    fontSize: 18,
+    fontSize: 13,
     fontWeight: 'bold',
+    marginTop: 16,
     marginBottom: 10,
     color: '#1c1c1c',
   },
   h2: {
-    fontSize: 15,
+    fontSize: 11,
     fontWeight: 'bold',
+    marginTop: 14,
     marginBottom: 8,
     color: '#1c1c1c',
   },
   h3: {
-    fontSize: 12,
+    fontSize: 9,
     fontWeight: 'bold',
+    marginTop: 12,
     marginBottom: 6,
     color: '#1c1c1c',
   },
@@ -51,21 +54,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Courier',
     backgroundColor: '#f0f0f0',
     padding: 1,
-    fontSize: 9,
+    fontSize: 7,
   },
   codeBlock: {
     fontFamily: 'Courier',
     backgroundColor: '#f0f0f0',
     padding: 8,
-    marginBottom: 8,
-    fontSize: 9,
+    marginTop: 8,
+    marginBottom: 12,
+    fontSize: 7,
   },
   listItem: {
-    marginLeft: 15,
-    marginBottom: 3,
+    marginLeft: 12,
+    marginBottom: 2,
+    fontSize: 8,
   },
   paragraph: {
-    marginBottom: 6,
+    marginBottom: 2,
+    fontSize: 8,
   },
 });
 
@@ -200,7 +206,7 @@ function ChatContent({
           case 'heading_close':
             if (currentText.length > 0) {
               const headingStyle = currentHeadingLevel === 1 ? styles.h1 :
-                                  currentHeadingLevel === 2 ? styles.h2 : styles.h3;
+                currentHeadingLevel === 2 ? styles.h2 : styles.h3;
               result.push(<Text key={`h-${i}`} style={headingStyle}>{currentText}</Text>);
               currentText = [];
             }
@@ -376,9 +382,6 @@ function ChatContent({
 
               <div className="bg-[#fafafa]/50 text-[#1c1c1c] rounded-xl rounded-tl-none py-2.5 px-3.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-[#666]">
-                    Loading context
-                  </span>
                   <div className="flex items-center gap-1.5">
                     <span className="dot-loader dot-1" />
                     <span className="dot-loader dot-2" />
@@ -400,16 +403,14 @@ function ChatContent({
             return (
               <div
                 key={index}
-                className={`flex items-start gap-2.5 ${
-                  isUser ? "flex-row-reverse" : "flex-row"
-                }`}
+                className={`flex items-start gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"
+                  }`}
               >
                 <div
-                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-medium ${
-                    isUser
-                      ? "bg-[#1c1c1c] text-white"
-                      : "bg-[#1c1c1c] text-white"
-                  }`}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-medium ${isUser
+                    ? "bg-[#1c1c1c] text-white"
+                    : "bg-[#1c1c1c] text-white"
+                    }`}
                 >
                   {isUser ? (
                     <FiUser className="w-3.5 h-3.5" />
@@ -419,11 +420,10 @@ function ChatContent({
                 </div>
 
                 <div
-                  className={`group relative max-w-[75%] text-sm leading-relaxed ${
-                    isUser
-                      ? "bg-[#1c1c1c] text-white rounded-xl rounded-tr-none py-2.5 px-3.5"
-                      : "bg-[#fafafa]/50 text-[#1c1c1c] rounded-xl rounded-tl-none py-0 px-0"
-                  }`}
+                  className={`group relative max-w-[75%] text-sm leading-relaxed ${isUser
+                    ? "bg-[#1c1c1c] text-white rounded-xl rounded-tr-none py-2.5 px-3.5"
+                    : "bg-[#fafafa]/50 text-[#1c1c1c] rounded-xl rounded-tl-none py-0 px-0"
+                    }`}
                 >
                   <div className="markdown-body overflow-hidden break-words">
                     <ReactMarkdown
@@ -433,9 +433,8 @@ function ChatContent({
                           return (
                             <div className="my-2 overflow-x-auto rounded border border-[#e8e8e8]">
                               <table
-                                className={`w-full text-left text-xs border-collapse ${
-                                  isUser ? "text-white" : "text-[#1c1c1c]"
-                                }`}
+                                className={`w-full text-left text-xs border-collapse ${isUser ? "text-white" : "text-[#1c1c1c]"
+                                  }`}
                               >
                                 {children}
                               </table>
@@ -446,9 +445,8 @@ function ChatContent({
                         thead({ children }) {
                           return (
                             <thead
-                              className={`${
-                                isUser ? "bg-white/10" : "bg-[#fafafa]"
-                              } border-b border-[#e8e8e8]`}
+                              className={`${isUser ? "bg-white/10" : "bg-[#fafafa]"
+                                } border-b border-[#e8e8e8]`}
                             >
                               {children}
                             </thead>
@@ -474,22 +472,20 @@ function ChatContent({
                         code({ inline, className, children, ...props }) {
                           return inline ? (
                             <code
-                              className={`px-1.5 py-0.5 rounded text-xs font-mono ${
-                                isUser
-                                  ? "bg-white/20 text-white"
-                                  : "bg-slate-200 text-slate-800"
-                              }`}
+                              className={`px-1.5 py-0.5 rounded text-xs font-mono ${isUser
+                                ? "bg-white/20 text-white"
+                                : "bg-slate-200 text-slate-800"
+                                }`}
                               {...props}
                             >
                               {children}
                             </code>
                           ) : (
                             <pre
-                              className={`p-3 my-2 rounded-lg text-xs font-mono overflow-x-auto ${
-                                isUser
-                                  ? "bg-black/40 text-gray-100"
-                                  : "bg-[#1c1c1c] text-slate-100"
-                              }`}
+                              className={`p-3 my-2 rounded-lg text-xs font-mono overflow-x-auto ${isUser
+                                ? "bg-black/40 text-gray-100"
+                                : "bg-[#1c1c1c] text-slate-100"
+                                }`}
                             >
                               <code {...props}>{children}</code>
                             </pre>
@@ -502,15 +498,60 @@ function ChatContent({
                               href={href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`underline ${
-                                isUser
-                                  ? "text-white font-medium"
-                                  : "text-slate-900 font-medium hover:text-black"
-                              }`}
+                              className={`underline ${isUser
+                                ? "text-white font-medium"
+                                : "text-slate-900 font-medium hover:text-black"
+                                }`}
                               {...props}
                             >
                               {children}
                             </a>
+                          );
+                        },
+
+                        h1({ children }) {
+                          return <h1 className="text-lg font-semibold mt-2 mb-1">{children}</h1>;
+                        },
+
+                        h2({ children }) {
+                          return <h2 className="text-base font-semibold mt-2 mb-1">{children}</h2>;
+                        },
+
+                        h3({ children }) {
+                          return <h3 className="text-sm font-semibold mt-1.5 mb-0.5">{children}</h3>;
+                        },
+
+                        h4({ children }) {
+                          return <h4 className="text-sm font-semibold mt-1 mb-0.5">{children}</h4>;
+                        },
+
+                        strong({ children }) {
+                          return <strong className="font-semibold">{children}</strong>;
+                        },
+
+                        em({ children }) {
+                          return <em className="italic">{children}</em>;
+                        },
+
+                        blockquote({ children }) {
+                          return (
+                            <blockquote
+                              className={`border-l-2 pl-3 my-1.5 italic text-xs ${isUser
+                                ? "border-white/40 text-white/70"
+                                : "border-[#ccc] text-[#555]"
+                                }`}
+                            >
+                              {children}
+                            </blockquote>
+                          );
+                        },
+
+                        hr() {
+                          return (
+                            <hr
+                              className={`my-2 border-0 border-t ${isUser ? "border-white/20" : "border-[#e8e8e8]"
+                                }`}
+                            />
                           );
                         },
 
@@ -528,6 +569,10 @@ function ChatContent({
                               {children}
                             </ol>
                           );
+                        },
+
+                        li({ children }) {
+                          return <li className="leading-relaxed">{children}</li>;
                         },
 
                         p({ children }) {
@@ -602,19 +647,17 @@ function ChatContent({
                   )}
 
                   <div
-                    className={`absolute top-2 flex flex-col gap-1 ${
-                      isUser
-                        ? "-left-9"
-                        : "-right-9"
-                    } opacity-0 group-hover:opacity-100 transition-opacity`}
+                    className={`absolute top-2 flex flex-col gap-1 ${isUser
+                      ? "-left-9"
+                      : "-right-9"
+                      } opacity-0 group-hover:opacity-100 transition-opacity`}
                   >
                     <button
                       onClick={() => handleCopy(message.message, index)}
-                      className={`p-1 ${
-                        isUser
-                          ? "text-gray-400 hover:text-white"
-                          : "text-[#666] hover:text-[#1c1c1c]"
-                      }`}
+                      className={`p-1 ${isUser
+                        ? "text-gray-400 hover:text-white"
+                        : "text-[#666] hover:text-[#1c1c1c]"
+                        }`}
                       title="Copy message"
                       aria-label="Copy message"
                     >
@@ -626,11 +669,10 @@ function ChatContent({
                     </button>
                     <button
                       onClick={() => handleDownload(message, index)}
-                      className={`p-1 ${
-                        isUser
-                          ? "text-gray-400 hover:text-white"
-                          : "text-[#666] hover:text-[#1c1c1c]"
-                      }`}
+                      className={`p-1 ${isUser
+                        ? "text-gray-400 hover:text-white"
+                        : "text-[#666] hover:text-[#1c1c1c]"
+                        }`}
                       title="Download as file"
                       aria-label="Download as file"
                     >
@@ -650,9 +692,6 @@ function ChatContent({
 
               <div className="bg-[#fafafa]/50 text-[#1c1c1c] rounded-xl rounded-tl-none py-2.5 px-3.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-[#666]">
-                    {isLoadingContext ? "Loading context" : "Lambda is thinking..."}
-                  </span>
 
                   <div className="flex items-center gap-1.5">
                     <span className="dot-loader dot-1" />
