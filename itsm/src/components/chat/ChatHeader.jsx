@@ -76,7 +76,7 @@ function ChatHeader({ onClose, showUser = false }) {
             <div className="flex items-center gap-1.5">
               <span className="text-[13px] font-bold text-[#09090b] tracking-tight">
                 Lambda AI
-              </span>=
+              </span>
             </div>
 
             {incidentContext.id ? (

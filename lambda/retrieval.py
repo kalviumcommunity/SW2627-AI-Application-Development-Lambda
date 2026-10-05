@@ -9,38 +9,49 @@
 
 from supabase import create_client
 import os
+import logging
 from dotenv import load_dotenv
 
 from lib.embedder import generate_embedding
 
+logger = logging.getLogger(__name__)
+
 load_dotenv()
 
-def retrieve_knowledge_chunks(query: str, client_id: str = None, doc_types: list = None, 
+def retrieve_knowledge_chunks(query: str, client_id: str = None, doc_types: list = None,
                               match_threshold: float = 0.5, match_count: int = 5):
     supabase = create_client(
         os.getenv("SUPABASE_URL"),
         os.getenv("SUPABASE_SERVICE_KEY")
     )
-    
+
+    logger.info("retrieve_knowledge_chunks | query=%s", query)
+    logger.info("retrieve_knowledge_chunks | client_id=%s doc_types=%s match_threshold=%s match_count=%s",
+                client_id, doc_types, match_threshold, match_count)
+
     query_embedding = generate_embedding(query)
-    
+
+    logger.info("retrieve_knowledge_chunks | embedding_dimensions=%s", len(query_embedding))
+
     params = {
         "query_embedding": query_embedding,
         "match_threshold": match_threshold,
         "match_count": match_count
     }
-    
+
     if client_id:
         params["filter_client_id"] = client_id
-    
+
     if doc_types:
         params["filter_doc_types"] = doc_types
-    
+
     result = supabase.rpc("match_knowledge_chunks", params).execute()
-    
+
+    logger.info("retrieve_knowledge_chunks | result_count=%s", len(result.data) if result.data else 0)
+
     if not result.data:
         return []
-    
+
     return result.data
 
 

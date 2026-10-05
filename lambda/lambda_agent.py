@@ -33,13 +33,23 @@ class LambdaAgent:
         )
         logger.info("STEP 2 DONE: Supabase client created")
 
-        logger.info("STEP 3: Initializing Groq model")
-        self.model = init_chat_model(
-            "openai/gpt-oss-20b",
-            model_provider="groq",
-            temperature=0,
-        )
-        logger.info("STEP 3 DONE: Groq model initialized")
+        logger.info("STEP 3: Initializing model with rotation support")
+
+        self._api_keys = [
+            k for k in [
+                os.environ.get("GOOGLE_API_KEY_1"),
+                os.environ.get("GOOGLE_API_KEY_2"),
+            ] if k
+        ]
+        if not self._api_keys:
+            raise EnvironmentError("No GOOGLE_API_KEY_* environment variables found.")
+
+        self._model_name = "gemini-3.5-flash-lite"
+        self._model_provider = "google_genai"
+        self._current_key_index = 0
+
+        self.model = self._create_model()
+        logger.info("STEP 3 DONE: Model initialized with %s API key(s)", len(self._api_keys))
 
         logger.info("STEP 4: Loading system prompt")
         wiki_api_url = os.getenv("WIKI_API_URL", "http://localhost:5001").rstrip("/")
@@ -119,7 +129,7 @@ class LambdaAgent:
                 return f"Error fetching client context: {str(e)}"
 
         def get_cod_documents(client_id: str, query_context: str):
-            """Retrieve relevant COD (Client-onboarding documents) knowledge chunks for a client.
+            """Retrieve relevant COD (Client Onboarding Documents) knowledge chunks for a client.
 
             This tool searches the knowledge base for COD documents only, which contain
             operational procedures, standard operating procedures, and institutional knowledge.
@@ -136,13 +146,17 @@ class LambdaAgent:
                 client_id,
                 len(query_context or ""),
             )
+            logger.info(
+                "Tool call: get_cod_documents | query_context=%s",
+                query_context,
+            )
             try:
                 chunks = retrieve_knowledge_chunks(
                     query=query_context,
                     client_id=client_id,
                     doc_types=["cod"],
-                    match_threshold=0.5,
-                    match_count=5
+                    match_threshold=0.3,
+                    match_count=3
                 )
                 
                 if not chunks:
@@ -154,7 +168,7 @@ class LambdaAgent:
                     metadata = chunk.get("metadata") or {}
 
                     formatted_results.append({
-                        "id": str(chunk.get("document_id")),
+                        "id": str(chunk.get("source_ref")),
                         "title": chunk.get("title", "Untitled document"),
                         "type": chunk.get("doc_type", "unknown"),
                         "similarity": chunk.get("similarity", 0),
@@ -175,20 +189,54 @@ class LambdaAgent:
         # Create tools with the decorator
         self.get_client_context_tool = tool(get_client_context)
         self.get_cod_documents_tool = tool(get_cod_documents)
+        self.tools = [
+            self.get_client_context_tool,
+            self.get_cod_documents_tool,
+        ]
         logger.info("STEP 6 DONE: Tools defined")
 
         logger.info("STEP 7: Creating agent")
-        self.agent = create_agent(
+        self.agent = self._create_agent()
+        logger.info("STEP 7 DONE: Agent created")
+        logger.info("LambdaAgent initialization COMPLETE")
+
+    def _create_model(self):
+        key = self._api_keys[self._current_key_index]
+        logger.info(
+            "Creating model | key_index=%s/%s model=%s",
+            self._current_key_index + 1,
+            len(self._api_keys),
+            self._model_name,
+        )
+        return init_chat_model(
+            self._model_name,
+            model_provider=self._model_provider,
+            temperature=0,
+            google_api_key=key,
+        )
+
+    def _create_agent(self):
+        return create_agent(
             model=self.model,
-            tools=[
-                self.get_client_context_tool,
-                self.get_cod_documents_tool,
-            ],
+            tools=self.tools,
             system_prompt=self.system_prompt,
             checkpointer=self.checkpointer,
         )
-        logger.info("STEP 7 DONE: Agent created")
-        logger.info("LambdaAgent initialization COMPLETE")
+
+    def _rotate_model(self):
+        next_index = (self._current_key_index + 1) % len(self._api_keys)
+        if next_index == 0 and len(self._api_keys) > 1:
+            return False
+
+        self._current_key_index = next_index
+        logger.warning(
+            "Rotating to API key index %s/%s",
+            self._current_key_index + 1,
+            len(self._api_keys),
+        )
+        self.model = self._create_model()
+        self.agent = self._create_agent()
+        return True
 
     def _trim_conversation_history(self, thread_id: str):
         """Trim conversation history to keep only the last N messages to reduce token usage."""
@@ -254,6 +302,13 @@ class LambdaAgent:
             thread_id,
             request.query[:80],
         )
+        logger.info("Processing query | full_query=%s",
+            request.query,
+        )
+        logger.info(
+            "Processing query | metadata=%s",
+            request.metadata,
+        )
 
         context_info = []
 
@@ -272,6 +327,11 @@ class LambdaAgent:
                 f"{request.query}\n\n"
                 f"[Context: {', '.join(context_info)}]"
             )
+        
+        logger.info(
+            "Processing query | user_content_with_context=%s",
+            user_content,
+        )
 
         if thread_id is None:
             thread_id = str(uuid.uuid4())
@@ -283,8 +343,17 @@ class LambdaAgent:
             self._trim_conversation_history(thread_id)
             # Inject stored context summary
             stored_context = self._get_context_for_injection(thread_id)
+            logger.info(
+                "Processing query | stored_context_for_thread=%s | stored_context=%s",
+                thread_id,
+                stored_context,
+            )
             if stored_context:
                 user_content = f"{user_content}\n\n[Stored Context: {stored_context}]"
+                logger.info(
+                    "Processing query | user_content_with_stored_context=%s",
+                    user_content,
+                )
 
         config = {
             "configurable": {
@@ -292,17 +361,42 @@ class LambdaAgent:
             }
         }
 
-        result = self.agent.invoke(
-            {
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": user_content,
-                    }
-                ]
-            },
-            config=config,
-        )
+        result = None
+        invoke_payload = {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": user_content,
+                }
+            ]
+        }
+        last_exc = None
+        keys_tried = 0
+        while keys_tried < len(self._api_keys):
+            try:
+                result = self.agent.invoke(invoke_payload, config=config)
+                break  # success
+            except Exception as e:
+                last_exc = e
+                logger.error(
+                    "Agent invocation failed (key_index=%s): %s",
+                    self._current_key_index,
+                    e,
+                )
+                keys_tried += 1
+                if keys_tried >= len(self._api_keys):
+                    logger.error("All %s API key(s) exhausted. Raising.", len(self._api_keys))
+                    raise RuntimeError(
+                        f"All API keys exhausted after rotation. Last error: {last_exc}"
+                    ) from last_exc
+                rotated = self._rotate_model()
+                if not rotated:
+                    logger.error("Key rotation returned False — raising original error.")
+                    raise RuntimeError(
+                        f"All API keys exhausted after rotation. Last error: {last_exc}"
+                    ) from last_exc
+                logger.info("Retrying with rotated key (index=%s)...", self._current_key_index)
+
     
         last_message = result["messages"][-1]
         content = last_message.content
