@@ -420,10 +420,20 @@ class LambdaAgent:
         except json.JSONDecodeError as e:
             logger.exception("Agent returned invalid JSON for thread_id=%s", thread_id)
             logger.error("Full content that failed to parse: %s", content)
-            raise ValueError(
-                f"Agent returned invalid JSON: {e}\n"
-                f"Raw response: {content}"
-            )
+
+            # Attempt to fix unescaped newlines in JSON strings
+            try:
+                import re
+                # Fix unescaped newlines in string values
+                fixed_content = re.sub(r'(?<!\\)\n(?=(?:[^"]*"[^"]*")*[^"]*$)', r'\\n', content)
+                response = json.loads(fixed_content)
+                logger.info("Successfully fixed JSON with unescaped newlines")
+            except Exception as fix_error:
+                logger.error("Failed to fix JSON: %s", fix_error)
+                raise ValueError(
+                    f"Agent returned invalid JSON: {e}\n"
+                    f"Raw response: {content}"
+                )
     
         # Validate the expected structure
         if not isinstance(response, dict):

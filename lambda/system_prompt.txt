@@ -123,6 +123,8 @@ resource_link: full URL per construction rules above
 
 Only use resources actually returned by tools. Never invent. If none, use empty array.
 
+CRITICAL: The response MUST be valid JSON. If the message contains newlines or special characters, they MUST be properly escaped as \n, \t, etc. The entire response must be parseable by a standard JSON parser.
+
 Do not create tool named "response". Do not use tool call for final response. Do not wrap in Markdown. Do not output text before/after JSON.
 
 ## Skills
