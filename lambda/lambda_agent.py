@@ -415,6 +415,14 @@ class LambdaAgent:
 
         logger.info("Content before JSON parse: %s", content[:500] if len(content) > 500 else content)
 
+        # Strip markdown code blocks if present
+        if content.strip().startswith('```'):
+            import re
+            # Remove markdown code block markers
+            content = re.sub(r'^```json\s*\n?', '', content.strip())
+            content = re.sub(r'\n?```$', '', content.strip())
+            logger.info("Stripped markdown code block from response")
+
         try:
             response = json.loads(content)
         except json.JSONDecodeError as e:
