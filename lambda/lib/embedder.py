@@ -1,27 +1,21 @@
-from sentence_transformers import SentenceTransformer
+import requests
 import logging
 
 logger = logging.getLogger(__name__)
 
-_model = None
-
-def get_model():
-    global _model
-    if _model is None:
-        logger.info("Loading sentence-transformers model: all-MiniLM-L6-v2")
-        _model = SentenceTransformer('all-MiniLM-L6-v2', device="cpu")
-        logger.info("Model loaded successfully")
-    return _model
+EMBEDDING_SERVICE_URL = "https://embedding-service-wxlf.onrender.com/embed"
 
 def generate_embedding(text: str) -> list:
-    model = get_model()
-    embedding = model.encode(text, convert_to_numpy=True)
-    return embedding.tolist()
+    response = requests.post(EMBEDDING_SERVICE_URL, json={"texts": [text]})
+    response.raise_for_status()
+    data = response.json()
+    return data["embeddings"][0]
 
 def generate_embeddings_batch(texts: list) -> list:
-    model = get_model()
-    embeddings = model.encode(texts, convert_to_numpy=True, show_progress_bar=False)
-    return [embedding.tolist() for embedding in embeddings]
+    response = requests.post(EMBEDDING_SERVICE_URL, json={"texts": texts})
+    response.raise_for_status()
+    data = response.json()
+    return data["embeddings"]
 
 if __name__ == "__main__":
     test_text = "This is a test sentence for embedding generation."
