@@ -47,15 +47,6 @@ function IncidentsPage() {
 
       <FilterBar onSearchChange={setSearch} onFilterChange={setFilterStatus} />
       <IncidentsList incidents={filteredIncidents} />
-
-      <div className="footer">
-        <div className="footer-left">
-          <span className="sync-status">Queue synced just now</span>
-        </div>
-        <div className="footer-right">
-          <span className="filter-status">Showing {filteredIncidents.length} operational incidents</span>
-        </div>
-      </div>
     </main>
   )
 }
