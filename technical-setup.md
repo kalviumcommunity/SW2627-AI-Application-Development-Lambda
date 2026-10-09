@@ -441,7 +441,7 @@ npm run lint
 |---------|-----|--------|
 | Lambda Wiki | https://lambda-wiki.onrender.com | Deployed |
 | LambdaITSM Dashboard | https://lambda-itsm.netlify.app | Deployed |
-| Lambda Agent | - | Not deployed (run locally) |
+| Lambda Agent | https://sw2627-ai-application-development-lambda.onrender.com | Deployed |
 | Ingestion Service | - | Not deployed (development) |
 
 ---
