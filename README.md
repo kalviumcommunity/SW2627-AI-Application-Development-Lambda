@@ -36,3 +36,4 @@ There are two data sources:
 
 For similarity search across vectors we are using pgvector inside supabase. So in case the bot needs to find relevant runbooks or COD docs, it embeds the incident context using Sentence Transformer and then queries supabase. While replying back to the user, it embeds a resource object that contains title and links to the resource.  
 
+For setup, see: [Technical Setup](./technical-setup.md)
